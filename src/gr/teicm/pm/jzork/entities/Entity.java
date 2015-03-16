@@ -22,7 +22,7 @@ public abstract class Entity {
     private int luck;
     
     private boolean isAlive;
-    protected Room currentRoom = null;
+    protected Room currentRoom;
     
     
     public Entity(String name, String description, int health, int maxHealth, int strength, int agility, int luck, boolean isAlive, Room currentRoom){
