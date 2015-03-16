@@ -25,14 +25,15 @@ public class Player extends Entity{
     //Moving to the next rooms
     public void walk(String direction){
 	        
-	        Room nextRoom = currentRoom.getExit(direction);
+       Room nextRoom = currentRoom.getExit(direction);
 	
-	        if (nextRoom == null)
-	            System.out.println("There is no exit in that direction!");
-	        else {
-	            setCurrentRoom(nextRoom);
-	            System.out.println(nextRoom.getLongDescription());
-	        }
-	    }
+       if (nextRoom == null)
+	    System.out.println("There is no exit in that direction!");
+       else {
+       	    roomHistory.push(currentRoom);
+	    setCurrentRoom(nextRoom);
+	    System.out.println(nextRoom.getLongDescription());
+       }
+    }
     
 }
