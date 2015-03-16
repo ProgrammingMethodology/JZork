@@ -16,14 +16,16 @@ public abstract class Entity {
     private String description;
     private int health;
     private int maxHealth;
+    
     private int strength;
     private int agility;
     private int luck;
     
+    private boolean isAlive;
+    protected Room currentRoom = null;
     
     
-    
-    public Entity(String name, String description, int health, int maxHealth, int strength, int agility, int luck){
+    public Entity(String name, String description, int health, int maxHealth, int strength, int agility, int luck, boolean isAlive, Room currentRoom){
         this.name = name;
         this.description = description;
         this.health = health;
@@ -31,10 +33,16 @@ public abstract class Entity {
         this.strength = strength;
         this.agility = agility;
         this.luck = luck;
+        this.isAlive = isAlive;
+        this.currentRoom = currentRoom;
     }
     
     
-    
+    //Inflicted damage
+    public void minusHealth(int dmg)
+    {
+        health = health - dmg;
+    }
     
     public String getName() {
         return name;
@@ -60,6 +68,9 @@ public abstract class Entity {
         this.health = health;
         if (health > maxHealth){
             health = maxHealth;
+        }
+        else if (health <= 0){
+            isAlive = false;
         }
     }
 
@@ -97,5 +108,22 @@ public abstract class Entity {
     public void setLuck(int luck) {
         this.luck = luck;
     }
+
+    public boolean isIsAlive() {
+        return isAlive;
+    }
+
+    public void setIsAlive(boolean isAlive) {
+        this.isAlive = isAlive;
+    }
+
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
+    }
+    
     
 }
