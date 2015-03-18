@@ -26,7 +26,7 @@ public class Room {
         exits = new Hashtable();
     }
     
-    public void setExits(Room north, Room east, Room south, Room west) 
+    public void setExit(Room north, Room east, Room south, Room west) 
     {
         if(north != null)
             exits.put("north", north);
@@ -40,13 +40,18 @@ public class Room {
             
     }
     
+    public Room getExit(String direction) 
+    {
+        return (Room)exits.get(direction);
+    }
+    
     public static void printWelcome()
     {
         System.out.println();
         System.out.println("Welcome!");
         System.out.println();
         activateRoom = Room1.livingroom;
-        System.out.println(activateRoom.longDescription());
+        System.out.println(activateRoom.getLongDescription());
     }
     
     
@@ -55,7 +60,7 @@ public class Room {
         return description;
     }
         
-    public String longDescription()
+    public String getLongDescription()
     {
         return "You are in " + description + ".\n" + exitString();
     }
