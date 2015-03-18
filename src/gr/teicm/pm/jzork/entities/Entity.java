@@ -5,6 +5,7 @@
  */
 package gr.teicm.pm.jzork.entities;
 
+import gr.teicm.pm.jzork.Room;
 /**
  *
  * @author Babis

@@ -6,6 +6,7 @@
 package gr.teicm.pm.jzork.entities;
 
 import java.util.Stack;
+import gr.teicm.pm.jzork.Room;
 
 /**
  *

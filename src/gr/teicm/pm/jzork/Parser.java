@@ -1,5 +1,5 @@
 
-package gr.teicm.pm.jzork.entities;
+package gr.teicm.pm.jzork;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
