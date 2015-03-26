@@ -5,8 +5,8 @@
  */
 package gr.teicm.pm.jzork;
 
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Map;
 /**
  *
  * @author Maria
@@ -15,29 +15,20 @@ public class Room {
     
     private String roomName;
     private String description;
-    public static Hashtable exits;
-    public static Room activateRoom,nextRoom;
+    private Map<String, Room> exits;  
+    public static Room currentRoom,nextRoom;
     public static Room livingroom,kitchen,bedroom;
     
     public Room(String roomName, String description) 
     {
-    	this.roomName = roomName;
+    	
         this.description = description;
-        exits = new Hashtable();
+        exits = new HashMap<>();
     }
-    
-    public void setExit(Room north, Room east, Room south, Room west) 
+
+    public void setExit(String direction, Room neighbor)
     {
-        if(north != null)
-            exits.put("north", north);
-        if(east != null)
-            exits.put("east", east);
-        if(south != null)
-            exits.put("south", south);
-        if(west != null){
-            exits.put("west", west);
-        }
-            
+        exits.put(direction, neighbor);
     }
     
     public Room getExit(String direction) 
@@ -50,8 +41,8 @@ public class Room {
         System.out.println();
         System.out.println("Welcome!");
         System.out.println();
-        activateRoom = Room1.livingroom;
-        System.out.println(activateRoom.getLongDescription());
+        currentRoom = Room1.livingroom;
+        System.out.println(currentRoom.getLongDescription());
     }
     
     
@@ -62,22 +53,24 @@ public class Room {
         
     public String getLongDescription()
     {
-        return "You are in " + description + ".\n" + exitString();
+        return "You are in " + description + ".\n" + getExitString();
     }
     
-    public String exitString()
+    public Room nextRoom(String direction) 
     {
-        String returnString = "You see a door to the";
-        Enumeration keys;
-        keys = exits.keys();
-        while(keys.hasMoreElements())
-            returnString += " " + keys.nextElement();
-        return returnString;
+        return (Room)exits.get(direction);
     }
     
-    public String getRoomName(){
-    	
-    	return roomName;
+    private String getExitString()
+    {
+        StringBuffer result = new StringBuffer( 128 );
+        result.append( "Exits:" );
+        for(String direction : exits.keySet())
+        {
+            result.append( ' ' );
+            result.append( direction );
+        }
+        return result.toString();
     }
-
+    
 }

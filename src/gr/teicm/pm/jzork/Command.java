@@ -1,6 +1,8 @@
 
 package gr.teicm.pm.jzork;
 
+import gr.teicm.pm.jzork.entities.Player;
+
 /**
  *
  * @author Walkin
@@ -26,5 +28,5 @@ public void setSecondWord(String secondWord)
 {
         this.secondWord = secondWord;
 }
-
+public abstract boolean execute(Player player);
 }

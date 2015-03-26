@@ -13,7 +13,7 @@ public class Room3 extends Room{
     
     public static void createRoom() {
         bedroom = new Room("Bedroom", "bedroom");
-        bedroom.setExit(null, kitchen, null, null);
+        bedroom.setExit(null, null);
     }
 
     public Room3(String roomName, String description) {

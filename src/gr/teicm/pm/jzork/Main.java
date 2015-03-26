@@ -7,15 +7,21 @@ package gr.teicm.pm.jzork;
 
 /**
  *
- * @author Babis
+ * @author Maria
  */
 public class Main {
-
+    //private Parser parser;
     /**
      * @param args the command line arguments
+     * @throws java.lang.Exception
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws Exception {
+        Game main = new Game() {};
+        main.play();
+        try {
+        } catch (Exception e) {
+            System.err.println("There was a problem.");
+        }
     }
     
 }

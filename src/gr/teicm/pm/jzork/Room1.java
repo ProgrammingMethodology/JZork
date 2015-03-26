@@ -14,7 +14,7 @@ public class Room1 extends Room{
     
     public static void createRoom() {
         livingroom = new Room("Living room", "living room");
-        livingroom.setExit(null, null, null, kitchen);
+        livingroom.setExit("east", kitchen);
     }
 
     public Room1(String roomName, String description) {
