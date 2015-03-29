@@ -19,7 +19,7 @@ public GoCommand()
 public boolean execute(Player player)
     {
         if(hasSecondWord()) {
-            String direction = getSecondWord();
+            Direction direction = Direction.EAST; //getSecondWord();
             player.walk(direction);
         }
         else {

@@ -5,7 +5,7 @@
  */
 package gr.teicm.pm.jzork.entities;
 
-import gr.teicm.pm.jzork.Room;
+import gr.teicm.pm.jzork.rooms.Room;
 /**
  *
  * @author Babis
@@ -36,6 +36,9 @@ public abstract class Entity {
         this.luck = luck;
         this.isAlive = isAlive;
         this.currentRoom = currentRoom;
+    }
+    
+    public Entity(){
     }
     
     

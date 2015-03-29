@@ -1,4 +1,4 @@
-package gr.teicm.pm.jzork;
+package gr.teicm.pm.jzork.rooms;
 
 /**
  *

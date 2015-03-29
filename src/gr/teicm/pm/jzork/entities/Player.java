@@ -5,8 +5,8 @@
  */
 package gr.teicm.pm.jzork.entities;
 
-import java.util.Stack;
-import gr.teicm.pm.jzork.Room;
+import gr.teicm.pm.jzork.Direction;
+import gr.teicm.pm.jzork.rooms.Room;
 
 /**
  *
@@ -14,24 +14,25 @@ import gr.teicm.pm.jzork.Room;
  */
 public class Player extends Entity{
     
-    //History list of the visited rooms
-    private Stack roomHistory;
     
-    
-    public Player(String name, String description, int health, int maxHealth, int strength, int agility, int luck, boolean isAlive, Room currentRoom) {
-       super(name, description, health, maxHealth, strength, agility, luck, isAlive, currentRoom);
-       roomHistory = new Stack<Room>();
+    public Player() {
+        this.setMaxHealth(100);
+        this.setHealth(100);
+        this.setAgility(10);    
+        this.setLuck(10);
+        this.setStrength(10);
+        this.setIsAlive(true);
+        this.setCurrentRoom(null);
     }
     
     //Moving to the next rooms
-    public void walk(String direction){
+    public void walk(Direction direction){
 	        
        Room nextRoom = currentRoom.getExit(direction);
 	
        if (nextRoom == null)
 	    System.out.println("There is no exit in that direction!");
        else {
-       	    roomHistory.push(currentRoom);
 	    setCurrentRoom(nextRoom);
 	    System.out.println(nextRoom.getLongDescription());
        }
