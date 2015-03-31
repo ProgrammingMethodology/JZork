@@ -7,10 +7,12 @@ package gr.teicm.pm.jzork.rooms;
 
 import gr.teicm.pm.jzork.Direction;
 
+
 /**
  *
  * @author Maria
  */
+
 public class Room3 extends Room{
     
     public Room3() {

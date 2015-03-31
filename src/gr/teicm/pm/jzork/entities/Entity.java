@@ -5,15 +5,16 @@
  */
 package gr.teicm.pm.jzork.entities;
 
-import gr.teicm.pm.jzork.rooms.Room;
+import gr.teicm.pm.jzork.navigation.Room;
+
 /**
  *
  * @author Babis
  */
-public abstract class Entity {
-
+public class Entity {
     
-    private String name;
+   
+    public String name;
     private String description;
     private int health;
     private int maxHealth;
@@ -23,8 +24,7 @@ public abstract class Entity {
     private int luck;
     
     private boolean isAlive;
-    protected Room currentRoom;
-    
+    public Room currentRoom;
     
     public Entity(String name, String description, int health, int maxHealth, int strength, int agility, int luck, boolean isAlive, Room currentRoom){
         this.name = name;
@@ -38,9 +38,10 @@ public abstract class Entity {
         this.currentRoom = currentRoom;
     }
     
-    public Entity(){
+    public Entity()
+    {
+        
     }
-    
     
     //Inflicted damage
     public void minusHealth(int dmg)
@@ -121,13 +122,6 @@ public abstract class Entity {
         this.isAlive = isAlive;
     }
 
-    public Room getCurrentRoom() {
-        return currentRoom;
-    }
-
-    public void setCurrentRoom(Room currentRoom) {
-        this.currentRoom = currentRoom;
-    }
     
     
 }

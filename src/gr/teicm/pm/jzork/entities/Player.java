@@ -5,8 +5,7 @@
  */
 package gr.teicm.pm.jzork.entities;
 
-import gr.teicm.pm.jzork.Direction;
-import gr.teicm.pm.jzork.rooms.Room;
+import gr.teicm.pm.jzork.navigation.Room;
 
 /**
  *
@@ -14,27 +13,44 @@ import gr.teicm.pm.jzork.rooms.Room;
  */
 public class Player extends Entity{
     
+    //History list of the visited rooms
+    //private Stack roomHistory;
+    private Room currentRoom;
+   
     
-    public Player() {
-        this.setMaxHealth(100);
-        this.setHealth(100);
-        this.setAgility(10);    
-        this.setLuck(10);
-        this.setStrength(10);
-        this.setIsAlive(true);
-        this.setCurrentRoom(null);
+    public Player(String name, Room currentRoom){
+        
+        this.name = name;
+        this.currentRoom = currentRoom;
     }
     
+    public Player()
+    {
+        currentRoom = null;
+    }
+    
+    public Room getCurrentRoom()
+    {
+        return currentRoom;
+    }
+    
+    public void setCurrentRoom(Room room)
+    {
+        currentRoom = room;
+    }
+    
+    
     //Moving to the next rooms
-    public void walk(Direction direction){
-	        
+    public void walk(String direction){
+        
        Room nextRoom = currentRoom.getExit(direction);
 	
        if (nextRoom == null)
 	    System.out.println("There is no exit in that direction!");
        else {
+       	    //roomHistory.push(currentRoom);
 	    setCurrentRoom(nextRoom);
-	    System.out.println(nextRoom.getLongDescription());
+	    System.out.println(nextRoom.getDescription());
        }
     }
     

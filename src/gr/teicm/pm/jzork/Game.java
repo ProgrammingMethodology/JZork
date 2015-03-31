@@ -9,7 +9,6 @@ import gr.teicm.pm.jzork.rooms.Outside;
 import gr.teicm.pm.jzork.rooms.Room3;
 import gr.teicm.pm.jzork.rooms.Room;
 import gr.teicm.pm.jzork.entities.Player;
-import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -23,6 +22,11 @@ public class Game {
     public Room currentRoom;
     private boolean initialized = false;
     private String name;
+    private Outside outside;
+    private Room test;
+    private Hall hall;
+    
+    
 
     public Game() {
         parser = new Parser();
@@ -73,7 +77,7 @@ public class Game {
         createPlayer();
         ensureInitialization();
         createRooms();
-        //printWelcome();
+        printWelcome();
 
         boolean finished = false;
         while (!finished) {
@@ -118,14 +122,14 @@ public class Game {
         }
     }
 
-    /*
+    
      public void printWelcome()
      {
-     System.out.println();
-     System.out.println("Welcome " + name + "!");
-     System.out.println();
-     currentRoom = Outside.livingroom;
-     System.out.println(currentRoom.getLongDescription());
+        System.out.println();
+        System.out.println("Welcome " + name + "!");
+        System.out.println();
+        currentRoom = outside;
+        System.out.println(currentRoom.getLongDescription());
      }
-     */
+     
 }
