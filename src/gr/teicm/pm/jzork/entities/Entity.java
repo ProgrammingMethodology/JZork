@@ -16,10 +16,10 @@ public class Entity {
    
     public String name;
     private String description;
-    private int health;
+    int health;
     private int maxHealth;
     
-    private int strength;
+    int strength;
     private int agility;
     private int luck;
     

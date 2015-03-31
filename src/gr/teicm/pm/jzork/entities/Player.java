@@ -54,4 +54,18 @@ public class Player extends Entity{
        }
     }
     
+    
+    public int attack() {
+        return strength ;
+    }
+
+    public void defend(Monsters monster) {
+        int attackStrength = monster.attack();
+        health = (health > attackStrength) ? health - attackStrength : 0;
+        System.out.printf("  " + name + " is hit for %d HP of damage (%s)\n");
+        if (health == 0) {
+            System.out.println("  " + name + " has been defeated");
+        }
+    }
+    
 }
