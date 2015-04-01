@@ -5,26 +5,24 @@
  */
 package gr.teicm.pm.jzork.items;
 
-
-
 /**
  *
  * @author Walkin
  */
 public class Key extends Item {
-    private final String doorFit;
-    
-public Key (int weight, String name, String doorFit){
-    
-    super(weight, name);
-    this.doorFit = doorFit;
-}
+
+    private final String keyID;
+    private String description;
+
+    public Key(String keyID, String description) {
+
+        this.description = description;
+        this.keyID = keyID;
+    }
+
+    public String getKeyID() {
+        return keyID;
+    }
 
     
-
-    
-public String getDoor()
-{
-    return doorFit;
-}
 }

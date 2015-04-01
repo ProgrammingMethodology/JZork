@@ -26,24 +26,24 @@ public class RoomConnector {
 
     public boolean isConnectionPossible(String direction, Room room) {
         switch (direction) {
-            case "NORTH":
-                return (room.getExit("NORTH")) == null;
-            case "SOUTH":
-                return (room.getExit("SOUTH")) == null;
-            case "EAST":
-                return (room.getExit("EAST")) == null;
-            case "WEST":
-                return (room.getExit("WEST")) == null;
+            case "north":
+                return (room.getExit("north")) == null;
+            case "south":
+                return (room.getExit("south")) == null;
+            case "east":
+                return (room.getExit("east")) == null;
+            case "west":
+                return (room.getExit("west")) == null;
             default:
                 return false;
         }
     }
 
     public void RoomInitialize(Room room) {
-        room.setExit("NORTH", null);
-        room.setExit("SOUTH", null);
-        room.setExit("EAST", null);
-        room.setExit("WEST", null);
+        room.setExit("north", null);
+        room.setExit("south", null);
+        room.setExit("east", null);
+        room.setExit("west", null);
     }
 
 }

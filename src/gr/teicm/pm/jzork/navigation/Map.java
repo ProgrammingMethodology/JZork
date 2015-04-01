@@ -41,8 +41,8 @@ public class Map {
         
 
         // Rooms connection
-        connect.roomConnection(outside,"NORTH",hallway,"SOUTH");
-        connect.roomConnection(hallway,"WEST",office,"EAST");
+        connect.roomConnection(outside,"north",hallway,"south");
+        connect.roomConnection(hallway,"west",office,"east");
         
 
         // Return the starting room:

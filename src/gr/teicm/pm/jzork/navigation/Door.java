@@ -13,15 +13,39 @@ import gr.teicm.pm.jzork.items.Item;
  */
 public class Door extends Item{
     
-    boolean isLocked;
-    boolean isOpen;
+    
+    private boolean isLocked = false;
+    private boolean isOpen = false;
+    private Room firstRoom;
+    private Room secondRoom;
+    private String doorID;
+    private String firstRoomDir;
+    private String secRoomDir;
+
+    
+    public Door(String name, String description){
+        this.name = name;
+        this.description = description;
+    }
+    
+    public Door(Room firstRoom, String firstRoomDir, String secRoomDir, Room secondRoom,String description ){
+        this.firstRoom = firstRoom;
+        this.firstRoomDir = firstRoomDir;
+        this.secRoomDir = secRoomDir;
+        this.secondRoom = secondRoom;
+        this.description = description;
+        RoomConnector connect = new RoomConnector();
+        connect.roomConnection(firstRoom, firstRoomDir, secondRoom, secRoomDir);
+    }
     
     
-    public void lockDoor(){
+    public void lockDoor(String keyID){
+        if(keyID.equals(doorID))
         setIsLocked(true);
     }
     
-    public void unlockDoor(){
+    public void unlockDoor(String keyID){
+        if(keyID.equals(doorID))
         setIsLocked(false);
     }
     
@@ -32,12 +56,7 @@ public class Door extends Item{
     public void closeDoor(){
         setIsOpen(false);
     }
-    
-    public Door(String name, String description){
-        this.name = name;
-        this.description = description;
-    }
-        
+      
     public boolean isIsLocked() {
         return isLocked;
     }

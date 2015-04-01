@@ -55,7 +55,7 @@ public class Player extends Entity{
     }
     
     
-    public int attack() {
+   /* public int attack() {
         return strength ;
     }
 
@@ -67,5 +67,6 @@ public class Player extends Entity{
             System.out.println("  " + name + " has been defeated");
         }
     }
+    */
     
 }
