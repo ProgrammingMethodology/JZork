@@ -17,6 +17,7 @@ public class Room {
     
     private String roomName;
     private String description;
+    private boolean isDark;
     private HashMap<String, Room> exits;  
     //private HashMap<String, Item> items;
     

@@ -15,15 +15,15 @@ public class Entity {
     
    
     public String name;
-    private String description;
-    int health;
-    private int maxHealth;
+    public String description;
+    public int health;
+    public int maxHealth;
     
-    int strength;
-    private int agility;
-    private int luck;
+    public int strength;
+    public int agility;
+    public int luck;
     
-    private boolean isAlive;
+    public boolean isAlive;
     public Room currentRoom;
     
     public Entity(String name, String description, int health, int maxHealth, int strength, int agility, int luck, boolean isAlive, Room currentRoom){
