@@ -36,19 +36,27 @@ public class Door extends Item{
     }
     
     public Room getConnectedRoom(Room currentRoom){
-		if(!isLocked && !isOpen){
+		if(!isLocked && isOpen){
 			if(currentRoom == firstRoom)
 				return secondRoom;
                         else 
 				return firstRoom;	
-                } else if(isLocked){
-                        System.out.println("The door is locked!");
-			return currentRoom;
                 } else{
-                        System.out.println("The door is closed!");
+                        this.getDoorStatus(isLocked, isOpen);
                         return currentRoom;
-                }
 	}
+    }
+    
+    public void getDoorStatus(boolean isLocked, boolean isOpen){
+        
+        if (isLocked)
+            System.out.println("The door is locked!");
+        else if(!isOpen)
+            System.out.println("The door is closed!");
+        else if(isOpen)
+            System.out.println("The door is open!");
+     
+    }
     
     
     public void lockDoor(String keyID){
@@ -85,15 +93,6 @@ public class Door extends Item{
         this.isOpen = isOpen;
     }
     
-    public void getDoorStatus(boolean isLocked, boolean isOpen){
-        
-        if (isLocked)
-            System.out.println("The door is locked!");
-        else if(!isLocked && (!isOpen))
-            System.out.println("The door is closed!");
-        else 
-            System.out.println("The door is open!");
-     
-    }
+    
     
 }

@@ -21,7 +21,8 @@ public class Parser {
         String inputLine = "";
         String word1;
         String word2;
-
+        String word3;
+        
         System.out.print(">");
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -42,11 +43,21 @@ public class Parser {
         } else {
             word2 = null;
         }
-
+        if (tokenizer.hasMoreTokens()) {
+            word3 = tokenizer.nextToken();
+        } else {
+            word3 = null;
+        }
+        
+        
         Command command = commands.get(word1);
+        
         if (command != null) {
             command.setSecondWord(word2);
+            command.setThirdWord(word3);
         }
+        
+        
         return command;
     }
 

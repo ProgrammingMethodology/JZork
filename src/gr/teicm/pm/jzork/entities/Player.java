@@ -52,6 +52,18 @@ public class Player extends Entity {
             }
         }
     }
+    
+    public void unlockDoor(String direction) {
+        
+        Door nextDoor = currentRoom.getExit(direction);
+        
+        if (nextDoor == null) {
+            System.out.println("There is no door in this direction!");
+        } else {
+            nextDoor.setIsOpen(true);
+            System.out.println("The door has been opened!");
+        }
+    }
 
     /* public int attack() {
      return strength ;

@@ -6,6 +6,7 @@
 package gr.teicm.pm.jzork.core;
 
 import gr.teicm.pm.jzork.commands.GoCommand;
+import gr.teicm.pm.jzork.commands.OpenCommand;
 import gr.teicm.pm.jzork.commands.QuitCommand;
 import gr.teicm.pm.jzork.entities.Player;
 import gr.teicm.pm.jzork.navigation.Map;
@@ -83,6 +84,7 @@ public class Game {
         ensureInitialization();
         parser.commandWords().addCommand("go", new GoCommand());
         parser.commandWords().addCommand("quit", new QuitCommand());
+        parser.commandWords().addCommand("open", new OpenCommand());
     }
 
     public void createRooms() {

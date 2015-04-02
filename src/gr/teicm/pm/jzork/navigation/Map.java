@@ -42,7 +42,7 @@ public class Map {
         
         // Room connection with doors
         // outside north hallway
-        Door outNorthHall = new Door(outside, "north", "south", hallway, true, "Big green door");
+        Door outNorthHall = new Door(outside, "north", "south", hallway, false, "Big green door");
         Door hallWestOffice = new Door(hallway, "west", "east", office, false, "wooden door");
         
         
