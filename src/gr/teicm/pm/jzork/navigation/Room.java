@@ -13,12 +13,13 @@ import java.util.Map;
  *
  * @author Babis
  */
+
 public class Room {
     
     private String roomName;
     private String description;
     private boolean isDark;
-    private HashMap<String, Room> exits;  
+    private HashMap<String, Door> exits;  
     //private HashMap<String, Item> items;
     
     
@@ -28,14 +29,14 @@ public class Room {
         //items = new HashMap<String, Item>();
     }
 
-    public void setExit(String direction, Room neighbor)
+    public void setExit(String direction, Door door)
     {
-        exits.put(direction, neighbor);
+        exits.put(direction, door);
     }
     
-    public Room getExit(String direction) 
+    public Door getExit(String direction) 
     {
-        return (Room)exits.get(direction);
+        return (Door)exits.get(direction);
     }
 
     public String getRoomName() {
@@ -52,11 +53,6 @@ public class Room {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-    
-    public Room nextRoom(String direction) 
-    {
-        return (Room)exits.get(direction);
     }
     
     public String getExitString()

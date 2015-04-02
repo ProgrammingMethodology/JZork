@@ -11,11 +11,11 @@ package gr.teicm.pm.jzork.navigation;
  */
 public class RoomConnector {
 
-    public void roomConnection(Room firstRoom, String firstRoomExit, Room secondRoom, String secondRoomExit) {
+    public void roomConnection(Room firstRoom, String firstRoomExit, Room secondRoom, String secondRoomExit, Door door) {
 
         if (isConnectionPossible(firstRoomExit, firstRoom) && (isConnectionPossible(secondRoomExit, secondRoom))) {
-            firstRoom.setExit(firstRoomExit, secondRoom);
-            secondRoom.setExit(secondRoomExit, firstRoom);
+            firstRoom.setExit(firstRoomExit, door);
+            secondRoom.setExit(secondRoomExit, door);
         } else {
             System.out.println("Error trying to connect the " + secondRoom.getRoomName() + " room to the "
                     + firstRoomExit + " exit of the " + firstRoom.getRoomName() + " room");

@@ -9,6 +9,7 @@ package gr.teicm.pm.jzork.items;
  *
  * @author Walkin
  */
+/*
 public class Torch extends Item {
 private final int LightStr;
 public Torch (int weight, String name, int str){
@@ -20,3 +21,4 @@ public int getLightStr()
 return LightStr;
 }
 }
+*/

@@ -14,7 +14,7 @@ public class Item {
 
     public int weight;
     public String name;
-    public String description
+    public String description;
     
 
     public Item(int weight, String name, String description) {
@@ -67,5 +67,5 @@ public class Item {
         }
         return false;
     }
-    
+    */
 }

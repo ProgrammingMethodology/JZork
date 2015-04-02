@@ -9,6 +9,7 @@ package gr.teicm.pm.jzork.items;
  *
  * @author Walkin
  */
+/*
 public class Weapon extends Item {
 private final int damage;
 public Weapon (int weight, String name, int damage){
@@ -23,3 +24,4 @@ public int getdamage(){
     return damage;
 }
 }
+*/

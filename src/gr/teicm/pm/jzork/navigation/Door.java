@@ -5,6 +5,7 @@
  */
 package gr.teicm.pm.jzork.navigation;
 
+import gr.teicm.pm.jzork.entities.Player;
 import gr.teicm.pm.jzork.items.Item;
 
 /**
@@ -14,7 +15,7 @@ import gr.teicm.pm.jzork.items.Item;
 public class Door extends Item{
     
     
-    private boolean isLocked = false;
+    private boolean isLocked;
     private boolean isOpen = false;
     private Room firstRoom;
     private Room secondRoom;
@@ -22,21 +23,32 @@ public class Door extends Item{
     private String firstRoomDir;
     private String secRoomDir;
 
-    
-    public Door(String name, String description){
-        this.name = name;
-        this.description = description;
-    }
-    
-    public Door(Room firstRoom, String firstRoomDir, String secRoomDir, Room secondRoom,String description ){
+    @SuppressWarnings("LeakingThisInConstructor")
+    public Door(Room firstRoom, String firstRoomDir, String secRoomDir, Room secondRoom,boolean isLocked,String description ){
         this.firstRoom = firstRoom;
         this.firstRoomDir = firstRoomDir;
         this.secRoomDir = secRoomDir;
         this.secondRoom = secondRoom;
         this.description = description;
+        this.isLocked = isLocked;
         RoomConnector connect = new RoomConnector();
-        connect.roomConnection(firstRoom, firstRoomDir, secondRoom, secRoomDir);
+        connect.roomConnection(firstRoom, firstRoomDir, secondRoom, secRoomDir, this);
     }
+    
+    public Room getConnectedRoom(Room currentRoom){
+		if(!isLocked && !isOpen){
+			if(currentRoom == firstRoom)
+				return secondRoom;
+                        else 
+				return firstRoom;	
+                } else if(isLocked){
+                        System.out.println("The door is locked!");
+			return currentRoom;
+                } else{
+                        System.out.println("The door is closed!");
+                        return currentRoom;
+                }
+	}
     
     
     public void lockDoor(String keyID){
@@ -81,8 +93,7 @@ public class Door extends Item{
             System.out.println("The door is closed!");
         else 
             System.out.println("The door is open!");
-        
-        
+     
     }
     
 }

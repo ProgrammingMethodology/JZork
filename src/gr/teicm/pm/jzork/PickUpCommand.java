@@ -5,12 +5,14 @@ package gr.teicm.pm.jzork;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 import gr.teicm.pm.jzork.entities.Player;
 
 /**
  *
  * @author Walkin
  */
+/*
 public class PickUpCommand extends Command {
 
     private Player holder;
@@ -28,7 +30,7 @@ public class PickUpCommand extends Command {
      * @param holder the item's holder
      */
 
-    public PickUpCommand(String name, String desc, Player holder) {
+  /*  public PickUpCommand(String name, String desc, Player holder) {
         super();
         this.holder = holder;
     }
@@ -57,3 +59,4 @@ public class PickUpCommand extends Command {
     }
 
 }
+*/

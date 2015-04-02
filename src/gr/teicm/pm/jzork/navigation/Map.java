@@ -39,10 +39,12 @@ public class Map {
         connect.RoomInitialize(hallway);
         connect.RoomInitialize(office);
         
-
-        // Rooms connection
-        connect.roomConnection(outside,"north",hallway,"south");
-        connect.roomConnection(hallway,"west",office,"east");
+        
+        // Room connection with doors
+        // outside north hallway
+        Door outNorthHall = new Door(outside, "north", "south", hallway, true, "Big green door");
+        Door hallWestOffice = new Door(hallway, "west", "east", office, false, "wooden door");
+        
         
 
         // Return the starting room:

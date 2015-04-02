@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
  *
  * @author Walkin
  */
+/*
 public final class Battle {
 
     public Battle(Player player, Monsters monster) throws IOException {
@@ -36,3 +37,4 @@ public final class Battle {
     }
 
 }
+*/
