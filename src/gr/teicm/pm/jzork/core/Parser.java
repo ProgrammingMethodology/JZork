@@ -34,17 +34,20 @@ public class Parser {
         StringTokenizer tokenizer = new StringTokenizer(inputLine);
 
         if (tokenizer.hasMoreTokens()) {
-            word1 = tokenizer.nextToken();
+            String lowerword1 = tokenizer.nextToken().toLowerCase();
+            word1 = lowerword1;
         } else {
             word1 = null;
         }
         if (tokenizer.hasMoreTokens()) {
-            word2 = tokenizer.nextToken();
+            String lowerword2 = tokenizer.nextToken().toLowerCase();
+            word2 = lowerword2;
         } else {
             word2 = null;
         }
         if (tokenizer.hasMoreTokens()) {
-            word3 = tokenizer.nextToken();
+            String lowerword3 = tokenizer.nextToken().toLowerCase();
+            word3 = lowerword3;
         } else {
             word3 = null;
         }

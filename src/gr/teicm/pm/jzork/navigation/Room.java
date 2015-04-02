@@ -5,8 +5,10 @@
  */
 package gr.teicm.pm.jzork.navigation;
 
+import gr.teicm.pm.jzork.items.Item;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.Iterator;
 
     
 /**
@@ -20,12 +22,15 @@ public class Room {
     private String description;
     private boolean isDark;
     private HashMap<String, Door> exits;  
+    private ArrayList<Item> items;
+    private Item torch;
     //private HashMap<String, Item> items;
     
     
     public Room() 
     {
         exits = new HashMap<>();
+        items = new ArrayList<>();
         //items = new HashMap<String, Item>();
     }
 
@@ -66,4 +71,52 @@ public class Room {
         return result.toString();
     }
     
+    public void addCurrentItem(Item item)
+    {
+        items.add(item);
+    }
+
+    public void removeItem(String name)
+    {
+        Iterator<Item> item = items.iterator();
+            while(item.hasNext())
+            {
+                Item tmp = item.next();
+                if(tmp.getName().equals(name))
+                    item.remove();
+            }              
+    }
+    
+    public String getItemList()
+    {
+        String itemList = "Items: ";
+        for(Item item : items) {
+            itemList += item.getName() + " " + item.getDescription() + ".\n ";
+            
+        }
+        return itemList;
+    }
+    
+    public ArrayList getItems()
+    {
+        return items;
+    }
+
+    public void addItem(Item pickedUp) {
+        items.add(pickedUp);
+    }
+    
+    public Item itemLook(String name)
+    {
+        Item itemFound = null;    
+        for(Item item : items) 
+        {
+            String tmp = item.getName().toLowerCase();
+            if(tmp.equals(name.toLowerCase()))
+                itemFound = item;
+            
+        }
+        return itemFound;
+             
+    }
 }

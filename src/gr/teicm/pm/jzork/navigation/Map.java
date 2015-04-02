@@ -5,6 +5,8 @@
  */
 package gr.teicm.pm.jzork.navigation;
 
+import gr.teicm.pm.jzork.items.Item;
+
 /**
  *
  * @author Babis
@@ -14,6 +16,7 @@ public class Map {
     private Room startRoom;
 
     RoomConnector connect = new RoomConnector();
+    private Item torch;
 
     public Room generateMap() {
 
@@ -45,7 +48,7 @@ public class Map {
         Door outNorthHall = new Door(outside, "north", "south", hallway, false, "Big green door");
         Door hallWestOffice = new Door(hallway, "west", "east", office, false, "wooden door");
         
-        
+        hallway.addItem(torch);
 
         // Return the starting room:
         startRoom = outside;

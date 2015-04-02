@@ -5,6 +5,7 @@
  */
 package gr.teicm.pm.jzork.entities;
 
+import gr.teicm.pm.jzork.items.Item;
 import gr.teicm.pm.jzork.navigation.Door;
 import gr.teicm.pm.jzork.navigation.Room;
 
@@ -63,6 +64,17 @@ public class Player extends Entity {
             nextDoor.setIsOpen(true);
             System.out.println("The door has been opened!");
         }
+    }
+    
+    public void take(String command){
+        Item pickedUp = currentRoom.itemLook(command);
+        if(pickedUp != null){
+            currentRoom.addItem(pickedUp);
+            System.out.println("You picked up an item");
+            currentRoom.removeItem(command);
+        }
+        else 
+            System.out.println("Cant find tha item");
     }
 
     /* public int attack() {

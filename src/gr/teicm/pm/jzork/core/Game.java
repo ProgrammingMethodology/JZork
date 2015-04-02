@@ -6,12 +6,16 @@
 package gr.teicm.pm.jzork.core;
 
 import gr.teicm.pm.jzork.commands.GoCommand;
+import gr.teicm.pm.jzork.commands.InventoryCommand;
 import gr.teicm.pm.jzork.commands.OpenCommand;
+import gr.teicm.pm.jzork.commands.PickupCommand;
 import gr.teicm.pm.jzork.commands.QuitCommand;
 import gr.teicm.pm.jzork.entities.Player;
+import gr.teicm.pm.jzork.items.Item;
 import gr.teicm.pm.jzork.navigation.Map;
 import gr.teicm.pm.jzork.navigation.Room;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -23,6 +27,7 @@ public class Game {
     private Parser parser;
     private Player player;
     private Map map;
+    protected ArrayList<Item> inventory = new ArrayList<Item>();
     private boolean initialized = false;
     String name;
 
@@ -85,12 +90,28 @@ public class Game {
         parser.commandWords().addCommand("go", new GoCommand());
         parser.commandWords().addCommand("quit", new QuitCommand());
         parser.commandWords().addCommand("open", new OpenCommand());
+        parser.commandWords().addCommand("pickup", new PickupCommand());
+        parser.commandWords().addCommand("take", new PickupCommand());
+        parser.commandWords().addCommand("get", new PickupCommand());
+        parser.commandWords().addCommand("inventory", new InventoryCommand());
     }
 
     public void createRooms() {
         Map map = new Map();
         Room startRoom = map.generateMap();
         player.setCurrentRoom(startRoom);
+    }
+    
+    public void printInventory() {
+        String allitems = "";
+        for (Item item : inventory) {
+            allitems += "\n" + item.getName();
+        }
+        if (allitems.length() > 0) {
+            System.out.println("Your inventory:" + allitems);
+        } else {
+            System.out.println("Your inventory is empty");
+        }
     }
 
     public void printWelcome() {
