@@ -15,8 +15,9 @@ public class Item {
     public int weight;
     public String name;
     public String description;
+    public String password;
+    public boolean isOpen;
     
-
     public Item(int weight, String name, String description) {
         this.weight = weight;
         this.name = name;
@@ -50,6 +51,21 @@ public class Item {
         this.description = description;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    public boolean isIsOpen() {
+        return isOpen;
+    }
+
+    public void setIsOpen(boolean isOpen) {
+        this.isOpen = isOpen;
+    }
     
     // ??
     /*
@@ -68,4 +84,8 @@ public class Item {
         return false;
     }
     */
+
+    
+
+    
 }

@@ -5,7 +5,9 @@
  */
 package gr.teicm.pm.jzork.navigation;
 
+import gr.teicm.pm.jzork.items.Notebook;
 import gr.teicm.pm.jzork.items.Torch;
+import gr.teicm.pm.jzork.items.Vault;
 
 /**
  *
@@ -34,11 +36,18 @@ public class Map {
         Torch torch = new Torch("torch");
         hallway.addItem(torch);
         
+        
+        
         // The Office:
         office = new Room();
         office.setRoomName("office");
-        office.setDescription("You are now in the office. There is a desk with many stacks of paper. It looks like there are no other exits but the one you've entered to your east");
+        office.setDescription("You are now in the office. There is a notebook placed on the desk, and something like a vault. It looks like there are no other exits but the one you've entered to your east");
         office.setIsDark(true);
+        Vault vault = new Vault("vault","2314",true);
+        office.addItem(vault);
+        Notebook notebook = new Notebook("notebook","There is a long number written in this notebook: 010011001100. What could it be..?");
+        office.addItem(notebook);
+        
         
         // Exits initialization  
         connect.RoomInitialize(outside);

@@ -9,6 +9,7 @@ import gr.teicm.pm.jzork.Inventory;
 import gr.teicm.pm.jzork.items.Item;
 import gr.teicm.pm.jzork.navigation.Door;
 import gr.teicm.pm.jzork.navigation.Room;
+import java.util.Scanner;
 
 /**
  *
@@ -18,7 +19,7 @@ public class Player extends Entity {
 
     //History list of the visited rooms
     //private Stack roomHistory;
-    private Room currentRoom;
+    public Room currentRoom;
     Inventory inventory = new Inventory();
 
     public Player(String name, Room currentRoom) {
@@ -98,6 +99,24 @@ public class Player extends Entity {
         return tmp;
     }
 
+    public boolean tryVaultPass(){
+        Scanner input = new Scanner(System.in);
+        
+        System.out.print("Enter the vault's password: ");
+        String pass = input.next();
+        
+        String vaultPass = currentRoom.searchItem("vault").getPassword();
+        
+        
+        while (!pass.equals(vaultPass) || pass.equals("exit")){
+            System.out.println("Wrong Password! Try again or type exit to quit");
+            pass = input.next();
+        }
+        return pass.equals(vaultPass);
+       
+    }
+    
+    
     /* public int attack() {
      return strength ;
      }

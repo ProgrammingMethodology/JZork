@@ -5,6 +5,7 @@
  */
 package gr.teicm.pm.jzork.core;
 
+import gr.teicm.pm.jzork.commands.EnterCommand;
 import gr.teicm.pm.jzork.commands.GoCommand;
 import gr.teicm.pm.jzork.commands.InventoryCommand;
 import gr.teicm.pm.jzork.commands.OpenCommand;
@@ -94,6 +95,7 @@ public class Game {
         parser.commandWords().addCommand("get", new PickupCommand());
         parser.commandWords().addCommand("inventory", new InventoryCommand());
         parser.commandWords().addCommand("turnon", new TurnOnCommand());
+        parser.commandWords().addCommand("enter", new EnterCommand());
     }
 
     public void createRooms() {
