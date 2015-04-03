@@ -32,7 +32,6 @@ public class Room {
     {
         exits = new HashMap<>();
         items = new ArrayList<>();
-        figures = new HashMap<String, Inventory>();
         //items = new HashMap<String, Item>();
     }
 
@@ -47,11 +46,6 @@ public class Room {
         return result.toString();
     }
     
-    public void addItem(int weight,String name, String description)
-    {
-        Item item = new Item(weight, name, description);
-        items.add(item);
-    }  
     
     public void removeItem(String name)
     {

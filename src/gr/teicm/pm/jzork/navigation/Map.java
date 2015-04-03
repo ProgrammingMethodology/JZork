@@ -6,6 +6,7 @@
 package gr.teicm.pm.jzork.navigation;
 
 import gr.teicm.pm.jzork.items.Item;
+import gr.teicm.pm.jzork.items.Torch;
 
 /**
  *
@@ -31,7 +32,8 @@ public class Map {
         hallway = new Room();
         hallway.setRoomName("hallway");
         hallway.setDescription("You are now in the hallway room. There are two doors, one to your west and one to your south");
-        hallway.addItem(20,"torch","deccription");
+        Torch torch = new Torch("torch");
+        hallway.addItem(torch);
         
         // The Office:
         office = new Room();
