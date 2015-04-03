@@ -26,8 +26,8 @@ public class Room {
     private ArrayList<Item> items;
     private HashMap<String, Inventory> figures;
     //private HashMap<String, Item> items;
-    
-    
+   
+  
     public Room() 
     {
         exits = new HashMap<>();
@@ -36,32 +36,6 @@ public class Room {
         //items = new HashMap<String, Item>();
     }
 
-    public void setExit(String direction, Door door)
-    {
-        exits.put(direction, door);
-    }
-    
-    public Door getExit(String direction) 
-    {
-        return (Door)exits.get(direction);
-    }
-
-    public String getRoomName() {
-        return roomName;
-    }
-
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
     public String getExitString()
     {
         StringBuilder result = new StringBuilder( 128 );
@@ -123,4 +97,48 @@ public class Room {
         return itemFound;
              
     }
+    
+    public void setExit(String direction, Door door)
+    {
+        exits.put(direction, door);
+    }
+    
+    public Door getExit(String direction) 
+    {
+        return (Door)exits.get(direction);
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    public void addCurrentItem(Item item)
+    {
+        items.add(item);
+    }
+
+    public void addItem(Item pickedUp) {
+        items.add(pickedUp);
+    }
+   
+    public boolean isIsDark() {
+        return isDark;
+    }
+
+    public void setIsDark(boolean isDark) {
+        this.isDark = isDark;
+    }
+    
 }

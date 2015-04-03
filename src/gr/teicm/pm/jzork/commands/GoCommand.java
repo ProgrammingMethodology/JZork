@@ -20,6 +20,7 @@ public GoCommand()
 {
 }
 
+@Override
 public boolean execute(Player player)
     {
         if(hasSecondWord()) {

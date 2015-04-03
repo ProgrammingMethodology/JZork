@@ -15,6 +15,7 @@ import gr.teicm.pm.jzork.entities.Player;
  */
 public class InventoryCommand extends Command{
 
+    @Override
     public boolean execute(Player player) {
         if(!hasSecondWord()){
             Game game = new Game();
