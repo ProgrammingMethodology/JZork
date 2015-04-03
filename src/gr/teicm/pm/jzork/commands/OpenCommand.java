@@ -24,18 +24,22 @@ public class OpenCommand extends Command {
     public OpenCommand() {
     }
 
+    @Override
     public boolean execute(Player player) {
         if (hasSecondWord()) {
             item = getSecondWord();
+        }
+        else{
+            System.out.println("Open what?");
         }
 
         switch (item) {
             case "door":
                 if (hasThirdWord()) {
                     String direction = getThirdWord();
-                    player.unlockDoor(direction);
+                    player.openDoor(direction);
                 } else {
-                    System.out.println("Go where?");
+                    System.out.println("In which direction?");
                 }
                 return false;
 

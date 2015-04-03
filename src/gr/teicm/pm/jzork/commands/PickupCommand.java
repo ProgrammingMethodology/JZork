@@ -18,6 +18,7 @@ public class PickupCommand extends Command{
     {
         
     }
+    @Override
     public boolean execute(Player player) {
         if(hasSecondWord()) {
             String command = getSecondWord();

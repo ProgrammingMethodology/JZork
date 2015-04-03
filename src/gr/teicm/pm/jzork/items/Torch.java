@@ -5,20 +5,34 @@
  */
 package gr.teicm.pm.jzork.items;
 
+import gr.teicm.pm.jzork.navigation.Room;
+
 /**
  *
  * @author Walkin
  */
-/*
 public class Torch extends Item {
-private final int LightStr;
-public Torch (int weight, String name, int str){
-super(weight, name);
-this.LightStr = str;
+
+    //private final int LightStr;
+    Room currentRoom;
+    
+    public Torch() {
+    }
+
+    
+    public void turnOff(Room room){
+        room.setIsDark(true);
+    }
+    
+    public void turnOn(Room room){
+        room.setIsDark(false);
+    }
+         
+    
+    /*
+    public int getLightStr() {
+        return LightStr;
+    }
+    */
 }
-public int getLightStr()
-{
-return LightStr;
-}
-}
-*/
+

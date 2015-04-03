@@ -54,7 +54,7 @@ public class Player extends Entity {
         }
     }
     
-    public void unlockDoor(String direction) {
+    public void openDoor(String direction) {
         
         Door nextDoor = currentRoom.getExit(direction);
         
