@@ -21,8 +21,8 @@ public class PickupCommand extends Command{
     @Override
     public boolean execute(Player player) {
         if(hasSecondWord()) {
-            String command = getSecondWord();
-            player.take(command);
+            String itemName = getSecondWord();
+            player.pickItem(itemName);
         }
         else {
             System.out.println( "Pick up what?" );

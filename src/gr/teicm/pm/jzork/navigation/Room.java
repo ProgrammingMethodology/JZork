@@ -84,7 +84,7 @@ public class Room {
         return figures.get(name);      
     }
     
-    public Item itemLook(String name)
+    public Item searchItem(String name)
     {
         Item itemFound = null;    
         for(Item item : items) 

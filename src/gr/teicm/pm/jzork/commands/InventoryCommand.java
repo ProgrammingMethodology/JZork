@@ -13,13 +13,13 @@ import gr.teicm.pm.jzork.entities.Player;
  *
  * @author Maria
  */
+
 public class InventoryCommand extends Command{
 
     @Override
     public boolean execute(Player player) {
         if(!hasSecondWord()){
-            Game game = new Game();
-            game.printInventory();
+            player.getPlayersInventory();
         }
         else{
             System.out.println("I don't understand what you mean!");

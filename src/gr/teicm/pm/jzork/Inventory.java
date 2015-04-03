@@ -6,32 +6,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public abstract class Inventory {
+public class Inventory {
 
-    private String name;
-    private String description;
+    
+    
     protected ArrayList<Item> inventory;
-    private long health;
     protected Room currentRoom;
 
-    public Inventory(String name, String description, long health, Room currentRoom)
-    {
-        this.name = name;
-        this.description = description;
-        this.health = health;
-        inventory = new ArrayList<Item>();
-        this.currentRoom = currentRoom;
+    public Inventory(){
+        inventory = new ArrayList<>();
     }  
-    
-    public String getName()
-    {
-        return name;
-    }
-    
-    public String getDescription()
-    {
-        return description;
-    }
     
     public ArrayList getInventory()
     {
@@ -52,4 +36,20 @@ public abstract class Inventory {
                 item.remove();
             }              
     }
+    
+    
+    public void printInventory() {
+        String allitems = "";
+        for (Item item : inventory) {
+            allitems += "\n" + item.getName();
+        }
+        if (allitems.length() > 0) {
+            System.out.println("Your inventory:" + allitems);
+        } else {
+            System.out.println("Your inventory is empty");
+        }
+    }
+    
+    
+    
 }

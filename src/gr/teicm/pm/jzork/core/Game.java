@@ -11,11 +11,9 @@ import gr.teicm.pm.jzork.commands.OpenCommand;
 import gr.teicm.pm.jzork.commands.PickupCommand;
 import gr.teicm.pm.jzork.commands.QuitCommand;
 import gr.teicm.pm.jzork.entities.Player;
-import gr.teicm.pm.jzork.items.Item;
 import gr.teicm.pm.jzork.navigation.Map;
 import gr.teicm.pm.jzork.navigation.Room;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -24,10 +22,10 @@ import java.util.Scanner;
  */
 public class Game {
 
+    
     private Parser parser;
     private Player player;
     private Map map;
-    protected ArrayList<Item> inventory = new ArrayList<Item>();
     private boolean initialized = false;
     String name;
 
@@ -76,7 +74,7 @@ public class Game {
             createRooms();
         }
     }
-
+    
     public void createPlayer() {
         Scanner input = new Scanner(System.in);
         System.out.print("To start, please enter your name: ");
@@ -102,17 +100,7 @@ public class Game {
         player.setCurrentRoom(startRoom);
     }
     
-    public void printInventory() {
-        String allitems = "";
-        for (Item item : inventory) {
-            allitems += "\n" + item.getName();
-        }
-        if (allitems.length() > 0) {
-            System.out.println("Your inventory:" + allitems);
-        } else {
-            System.out.println("Your inventory is empty");
-        }
-    }
+    
 
     public void printWelcome() {
         System.out.println();

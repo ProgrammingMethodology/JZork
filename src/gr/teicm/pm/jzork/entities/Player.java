@@ -5,6 +5,7 @@
  */
 package gr.teicm.pm.jzork.entities;
 
+import gr.teicm.pm.jzork.Inventory;
 import gr.teicm.pm.jzork.items.Item;
 import gr.teicm.pm.jzork.navigation.Door;
 import gr.teicm.pm.jzork.navigation.Room;
@@ -18,7 +19,9 @@ public class Player extends Entity {
     //History list of the visited rooms
     //private Stack roomHistory;
     private Room currentRoom;
-
+    Inventory inventory = new Inventory();
+    
+    
     public Player(String name, Room currentRoom) {
 
         this.name = name;
@@ -66,15 +69,18 @@ public class Player extends Entity {
         }
     }
     
-    public void take(String command){
-        Item pickedUp = currentRoom.itemLook(command);
+    public void pickItem(String itemName){
+        Item pickedUp = currentRoom.searchItem(itemName);
         if(pickedUp != null){
-            currentRoom.getInventory("player").addItem(pickedUp);
+            inventory.addItem(pickedUp);
             System.out.println("You picked up an item");
-            currentRoom.removeItem(command);
-        }
-        else 
+            currentRoom.removeItem(itemName);
+        } else 
             System.out.println("Cant find tha item");
+    }
+    
+    public void getPlayersInventory(){
+        inventory.printInventory();
     }
 
     /* public int attack() {
