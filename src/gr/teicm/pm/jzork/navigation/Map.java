@@ -5,7 +5,6 @@
  */
 package gr.teicm.pm.jzork.navigation;
 
-import gr.teicm.pm.jzork.items.Item;
 import gr.teicm.pm.jzork.items.Torch;
 
 /**
@@ -17,7 +16,7 @@ public class Map {
     private Room startRoom;
 
     RoomConnector connect = new RoomConnector();
-    private Item torch;
+    
     private Room hallway,outside, office;
 
     public Room generateMap() {
@@ -31,15 +30,16 @@ public class Map {
         // The hallway:
         hallway = new Room();
         hallway.setRoomName("hallway");
-        hallway.setDescription("You are now in the hallway room. There are two doors, one to your west and one to your south");
+        hallway.setDescription("You are now in the hallway room. There are two doors, one to your south and one to your west. Also there is a torch on the floor.");
         Torch torch = new Torch("torch");
         hallway.addItem(torch);
         
         // The Office:
         office = new Room();
         office.setRoomName("office");
-        office.setDescription("You are now in the office. There is a desk with many stacks of paper. It looks like there are no other exits. Only the door you've entered to your east");
-
+        office.setDescription("You are now in the office. There is a desk with many stacks of paper. It looks like there are no other exits but the one you've entered to your east");
+        office.setIsDark(true);
+        
         // Exits initialization  
         connect.RoomInitialize(outside);
         connect.RoomInitialize(hallway);

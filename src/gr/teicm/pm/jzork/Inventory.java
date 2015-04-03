@@ -4,7 +4,6 @@ import gr.teicm.pm.jzork.items.Item;
 import gr.teicm.pm.jzork.navigation.Room;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class Inventory {
 
@@ -48,6 +47,20 @@ public class Inventory {
         } else {
             System.out.println("Your inventory is empty");
         }
+    }
+    
+    public boolean searchItem(String name)
+    {
+        Item itemFound = null;    
+        for(Item item : inventory) 
+        {
+            String tmp = item.getName().toLowerCase();
+            if(tmp.equals(name.toLowerCase()))
+                return true;
+            
+        }
+        return false;
+             
     }
     
     

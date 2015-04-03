@@ -20,8 +20,7 @@ public class Player extends Entity {
     //private Stack roomHistory;
     private Room currentRoom;
     Inventory inventory = new Inventory();
-    
-    
+
     public Player(String name, Room currentRoom) {
 
         this.name = name;
@@ -52,15 +51,19 @@ public class Player extends Entity {
             //roomHistory.push(currentRoom);
             if (nextRoom != currentRoom) {
                 setCurrentRoom(nextRoom);
-                System.out.println(nextRoom.getDescription());
+                if (currentRoom.isIsDark()) {
+                    System.out.println("The room is dark, you can't see anything");
+                } else {
+                    System.out.println(nextRoom.getDescription());
+                }
             }
         }
     }
-    
+
     public void openDoor(String direction) {
-        
+
         Door nextDoor = currentRoom.getExit(direction);
-        
+
         if (nextDoor == null) {
             System.out.println("There is no door in this direction!");
         } else {
@@ -68,19 +71,31 @@ public class Player extends Entity {
             System.out.println("The door has been opened!");
         }
     }
-    
-    public void pickItem(String itemName){
+
+    public void pickItem(String itemName) {
         Item pickedUp = currentRoom.searchItem(itemName);
-        if(pickedUp != null){
+        if (pickedUp != null) {
             inventory.addItem(pickedUp);
             System.out.println("You picked up an item");
             currentRoom.removeItem(itemName);
-        } else 
+        } else {
             System.out.println("Cant find tha item");
+        }
+    }
+
+    public void TurnOnLights(){
+        currentRoom.setIsDark(false);
+        System.out.println("Now you can see!");
+        System.out.println(currentRoom.getDescription());
     }
     
-    public void getPlayersInventory(){
+    public void getPlayersInventory() {
         inventory.printInventory();
+    }
+
+    public boolean searchInventoryItem(String itemName) {
+        boolean tmp = inventory.searchItem(itemName);
+        return tmp;
     }
 
     /* public int attack() {

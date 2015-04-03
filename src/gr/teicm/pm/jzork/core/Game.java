@@ -10,6 +10,7 @@ import gr.teicm.pm.jzork.commands.InventoryCommand;
 import gr.teicm.pm.jzork.commands.OpenCommand;
 import gr.teicm.pm.jzork.commands.PickupCommand;
 import gr.teicm.pm.jzork.commands.QuitCommand;
+import gr.teicm.pm.jzork.commands.TurnOnCommand;
 import gr.teicm.pm.jzork.entities.Player;
 import gr.teicm.pm.jzork.navigation.Map;
 import gr.teicm.pm.jzork.navigation.Room;
@@ -92,6 +93,7 @@ public class Game {
         parser.commandWords().addCommand("take", new PickupCommand());
         parser.commandWords().addCommand("get", new PickupCommand());
         parser.commandWords().addCommand("inventory", new InventoryCommand());
+        parser.commandWords().addCommand("turnon", new TurnOnCommand());
     }
 
     public void createRooms() {
