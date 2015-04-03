@@ -1,70 +1,55 @@
 package gr.teicm.pm.jzork;
 
 import gr.teicm.pm.jzork.items.Item;
+import gr.teicm.pm.jzork.navigation.Room;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public abstract class Inventory {
 
-    private List<Item> itemList;
-    private int id;
+    private String name;
+    private String description;
+    protected ArrayList<Item> inventory;
+    private long health;
+    protected Room currentRoom;
 
-    public Inventory(int i) {
-        id = i;
-        itemList = new ArrayList<Item>();
+    public Inventory(String name, String description, long health, Room currentRoom)
+    {
+        this.name = name;
+        this.description = description;
+        this.health = health;
+        inventory = new ArrayList<Item>();
+        this.currentRoom = currentRoom;
+    }  
+    
+    public String getName()
+    {
+        return name;
     }
-
-    public Inventory(int i, List<Item> l) {
-        id = i;
-        itemList = l;
+    
+    public String getDescription()
+    {
+        return description;
     }
-//add a newly created item in the container
-
-    public void addItem(Item it) {
-        itemList.add(it);
+    
+    public ArrayList getInventory()
+    {
+        return inventory;
     }
-
-    public static String describeItems(List<Item> items) {
-        int itCount = items.size();
-        switch (itCount) {
-            case 0:
-                return "nothing";
-            case 1:
-                return items.get(0).getName();
-            default:
-                int i;
-                String desc = "";
-                for (i = 0; i < itCount - 1; ++i) {
-                    desc += items.get(i).getName() + ", ";
-                }
-                return desc + "and " + items.get(i).getName();
-        }
+    
+    public void addItem(Item item)
+    {
+        inventory.add(item);
     }
-
-    public String describeItems() {
-        return describeItems(itemList);
-    }
-//removes the item from the container
-
-    public void removeItem(Item it) {
-        itemList.remove(it);
-    }
-
-    public boolean containsItem(Item it) {
-        return itemList.contains(it);
-    }
-
-    public Item itemWithName(String name) {
-        name = name.toLowerCase();
-        for (Item it : itemList) {
-            if (it.getName().toLowerCase().equals(name)) {
-                return it;
-            }
-        }
-        return null;
-    }
-
-    public int getId() {
-        return id;
+    
+    public void removeItem(String name)
+    {
+        Iterator<Item> item = inventory.iterator();
+        while(item.hasNext()){
+            Item tmp = item.next();
+            if(tmp.getName().equals(name))
+                item.remove();
+            }              
     }
 }

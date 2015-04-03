@@ -17,21 +17,22 @@ public class Map {
 
     RoomConnector connect = new RoomConnector();
     private Item torch;
+    private Room hallway,outside, office;
 
     public Room generateMap() {
 
-        Room outside, hallway, office;
         
         // The outside:  
         outside = new Room();
         outside.setRoomName("outside");
-        outside.setDescription("You are outside of a big building. There is an open door to your north from where you can enter");
+        outside.setDescription("You are outside of a big building. There is a door to your north from where you can enter");
 
         // The hallway:
         hallway = new Room();
         hallway.setRoomName("hallway");
-        hallway.setDescription("You are now in the hallway room. There are two doors, one to your west and one to your east");
-
+        hallway.setDescription("You are now in the hallway room. There are two doors, one to your west and one to your south");
+        hallway.addItem(20,"torch","deccription");
+        
         // The Office:
         office = new Room();
         office.setRoomName("office");
@@ -48,14 +49,13 @@ public class Map {
         Door outNorthHall = new Door(outside, "north", "south", hallway, false, "Big green door");
         Door hallWestOffice = new Door(hallway, "west", "east", office, false, "wooden door");
         
-        hallway.addItem(torch);
-
+       
         // Return the starting room:
         startRoom = outside;
         return startRoom;
 
     }
-
+    
     public Room getStartRoom() {
         return startRoom;
     }

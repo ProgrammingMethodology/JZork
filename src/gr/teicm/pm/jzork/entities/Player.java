@@ -69,7 +69,7 @@ public class Player extends Entity {
     public void take(String command){
         Item pickedUp = currentRoom.itemLook(command);
         if(pickedUp != null){
-            currentRoom.addItem(pickedUp);
+            currentRoom.getInventory("player").addItem(pickedUp);
             System.out.println("You picked up an item");
             currentRoom.removeItem(command);
         }

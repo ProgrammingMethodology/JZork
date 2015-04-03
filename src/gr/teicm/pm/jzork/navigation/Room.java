@@ -5,6 +5,7 @@
  */
 package gr.teicm.pm.jzork.navigation;
 
+import gr.teicm.pm.jzork.Inventory;
 import gr.teicm.pm.jzork.items.Item;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +24,7 @@ public class Room {
     private boolean isDark;
     private HashMap<String, Door> exits;  
     private ArrayList<Item> items;
-    private Item torch;
+    private HashMap<String, Inventory> figures;
     //private HashMap<String, Item> items;
     
     
@@ -31,6 +32,7 @@ public class Room {
     {
         exits = new HashMap<>();
         items = new ArrayList<>();
+        figures = new HashMap<String, Inventory>();
         //items = new HashMap<String, Item>();
     }
 
@@ -71,11 +73,12 @@ public class Room {
         return result.toString();
     }
     
-    public void addCurrentItem(Item item)
+    public void addItem(int weight,String name, String description)
     {
+        Item item = new Item(weight, name, description);
         items.add(item);
-    }
-
+    }  
+    
     public void removeItem(String name)
     {
         Iterator<Item> item = items.iterator();
@@ -102,8 +105,9 @@ public class Room {
         return items;
     }
 
-    public void addItem(Item pickedUp) {
-        items.add(pickedUp);
+    public Inventory getInventory(String name)
+    {
+        return figures.get(name);      
     }
     
     public Item itemLook(String name)
