@@ -5,6 +5,11 @@ import gr.teicm.pm.jzork.navigation.Room;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ *
+ * @author Maria
+ */
+
 public class Inventory {
 
     

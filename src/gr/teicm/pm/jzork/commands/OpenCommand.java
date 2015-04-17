@@ -28,21 +28,20 @@ public class OpenCommand extends Command {
     public boolean execute(Player player) {
         if (hasSecondWord()) {
             item = getSecondWord();
+            switch (item) {
+                case "door":
+                    if (hasThirdWord()) {
+                        String direction = getThirdWord();
+                        player.openDoor(direction);
+                    } else {
+                        System.out.println("In which direction?");
+                    }
+                return false;
+
+            }
         }
         else{
             System.out.println("Open what?");
-        }
-
-        switch (item) {
-            case "door":
-                if (hasThirdWord()) {
-                    String direction = getThirdWord();
-                    player.openDoor(direction);
-                } else {
-                    System.out.println("In which direction?");
-                }
-                return false;
-
         }
         return false;
     }
