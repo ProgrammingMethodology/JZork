@@ -11,7 +11,7 @@ package gr.teicm.pm.jzork.items;
  */
 
 public class Item {
-
+    public String ID;
     public int weight;
     public String name;
     public String description;
@@ -25,6 +25,14 @@ public class Item {
     }
     
     public Item(){
+    }
+    
+    public void setID(String id){
+        this.ID = id;
+    }
+    
+    public String getID(){
+        return ID;
     }
 
     public int getWeight() {
@@ -43,6 +51,7 @@ public class Item {
         this.name = name;
     }
 
+    
     public String getDescription() {
         return description;
     }
@@ -67,23 +76,10 @@ public class Item {
         this.isOpen = isOpen;
     }
     
-    // ??
-    /*
-    public boolean containsProperty(String key) {
-        return properties.containsKey(key);
+    public void printDescription(String description){
+        this.getDescription();
     }
 
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (obj instanceof Item) {
-            Item i = (Item) obj;
-            return name.equals(i.name);
-        }
-        return false;
-    }
-    */
 
     
 

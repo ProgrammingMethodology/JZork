@@ -9,18 +9,16 @@ package gr.teicm.pm.jzork.items;
  *
  * @author Walkin
  */
+public class Sword extends Weapon {
 
-public class Weapon extends Item {
-public final int damage;
-public Weapon (String name, int damage){
-//super(weight, name);
-this.damage = damage;
-}
-
-public int setdamage(int damage){
-    return damage;
-}
-public int getdamage(){
+    public Sword(String name, int damage) {
+        super(name, damage);
+        this.name = name;
+    }
+        public void setDamage(){
+        this.setdamage(60);
+    }
+    public int getDamage(){
     return damage;
 }
 }

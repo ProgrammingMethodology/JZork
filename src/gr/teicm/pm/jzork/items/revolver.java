@@ -9,15 +9,14 @@ package gr.teicm.pm.jzork.items;
  *
  * @author Walkin
  */
-/*
-public class revolver extends Weapon {
 
-    public revolver(int weight, String name, int damage) {
-        super(weight, name, damage);
+public class Revolver extends Weapon {
+
+    public Revolver(String name, int damage) {
+        super(name, damage);
+        this.name = name;
         
-         this.setdamage(100);
-         
     }
+ 
     
 }
-*/

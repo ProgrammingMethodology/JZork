@@ -5,17 +5,20 @@
  */
 package gr.teicm.pm.jzork.items;
 
+import gr.teicm.pm.jzork.navigation.Room;
+
 /**
  *
  * @author Walkin
  */
 public class Key extends Item {
+    public String id;
+    public  String keyID;
+    public String Description;
 
-    private final String keyID;
-    private String description;
-
-    public Key(String keyID, String description) {
-
+    public Key(String name, String keyID, String description) {
+        this.ID = id;
+        this.name = name;
         this.description = description;
         this.keyID = keyID;
     }

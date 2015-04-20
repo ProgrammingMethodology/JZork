@@ -33,7 +33,10 @@ public class OpenCommand extends Command {
                     if (hasThirdWord()) {
                         String direction = getThirdWord();
                         player.openDoor(direction);
-                    } else {
+                    } 
+                    
+                    
+                    else {
                         System.out.println("In which direction?");
                     }
                 return false;

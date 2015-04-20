@@ -5,6 +5,7 @@
  */
 package gr.teicm.pm.jzork.core;
 
+import gr.teicm.pm.jzork.commands.AttackCommand;
 import gr.teicm.pm.jzork.commands.EnterCommand;
 import gr.teicm.pm.jzork.commands.GoCommand;
 import gr.teicm.pm.jzork.commands.InventoryCommand;
@@ -12,6 +13,8 @@ import gr.teicm.pm.jzork.commands.OpenCommand;
 import gr.teicm.pm.jzork.commands.PickupCommand;
 import gr.teicm.pm.jzork.commands.QuitCommand;
 import gr.teicm.pm.jzork.commands.TurnOnCommand;
+import gr.teicm.pm.jzork.commands.UnlockCommand;
+import gr.teicm.pm.jzork.commands.EquipCommand;
 import gr.teicm.pm.jzork.entities.Player;
 import gr.teicm.pm.jzork.navigation.Map;
 import gr.teicm.pm.jzork.navigation.Room;
@@ -96,6 +99,9 @@ public class Game {
         parser.commandWords().addCommand("inventory", new InventoryCommand());
         parser.commandWords().addCommand("turnon", new TurnOnCommand());
         parser.commandWords().addCommand("enter", new EnterCommand());
+        parser.commandWords().addCommand("unlock", new UnlockCommand());
+        parser.commandWords().addCommand("attack", new AttackCommand());
+        parser.commandWords().addCommand("equip", new EquipCommand());
     }
 
     public void createRooms() {
@@ -111,6 +117,7 @@ public class Game {
         System.out.println("Welcome " + name + "!");
         System.out.println();
         System.out.println(player.getCurrentRoom().getDescription());
+        
     }
 
     /**

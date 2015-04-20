@@ -7,6 +7,7 @@ package gr.teicm.pm.jzork.entities;
 
 import gr.teicm.pm.jzork.Inventory;
 import gr.teicm.pm.jzork.items.Item;
+import gr.teicm.pm.jzork.items.Key;
 import gr.teicm.pm.jzork.navigation.Door;
 import gr.teicm.pm.jzork.navigation.Room;
 import java.util.Scanner;
@@ -21,6 +22,9 @@ public class Player extends Entity {
     //private Stack roomHistory;
     public Room currentRoom;
     Inventory inventory = new Inventory();
+    public Key keyID;
+    public Door doorID;
+    
 
     public Player(String name, Room currentRoom) {
 
@@ -57,6 +61,8 @@ public class Player extends Entity {
                 } else {
                     System.out.println(nextRoom.getDescription());
                 }
+                
+               
             }
         }
     }
@@ -70,14 +76,18 @@ public class Player extends Entity {
         } else {
             nextDoor.setIsOpen(true);
             System.out.println("The door has been opened!");
+     }
+        if(nextDoor.isIsLocked()){
+            System.out.println("The door is locked so you can't enter");
         }
+         
     }
 
     public void pickItem(String itemName) {
         Item pickedUp = currentRoom.searchItem(itemName);
         if (pickedUp != null) {
             inventory.addItem(pickedUp);
-            System.out.println("You picked up an item");
+            System.out.println("You picked up the " + itemName);
             currentRoom.removeItem(itemName);
         } else {
             System.out.println("Cant find tha item");
@@ -98,6 +108,8 @@ public class Player extends Entity {
         boolean tmp = inventory.searchItem(itemName);
         return tmp;
     }
+    
+  
 
     public boolean tryVaultPass(){
         Scanner input = new Scanner(System.in);
@@ -116,18 +128,32 @@ public class Player extends Entity {
        
     }
     
+     
+        
+    public void unlockdoor(String direction){
+        
+          
+        Door nextDoor = currentRoom.getExit(direction);
+        nextDoor.setIsLocked(false);
+        System.out.println("The door is now unlocked!");
+          
+    }
+
+
     
-    /* public int attack() {
-     return strength ;
+     public void attack(String enemy) {
+        
+         
      }
 
-     public void defend(Monsters monster) {
-     int attackStrength = monster.attack();
-     health = (health > attackStrength) ? health - attackStrength : 0;
-     System.out.printf("  " + name + " is hit for %d HP of damage (%s)\n");
-     if (health == 0) {
-     System.out.println("  " + name + " has been defeated");
-     }
-     }
-     */
+
+//     public void defend(Enemies monster) {
+//     
+//     health = (health - );
+//     System.out.printf("  " + name + " is hit for %d HP of damage (%s)\n");
+//     if (health == 0) {
+//     System.out.println("  " + name + " has been defeated");
+//     }
+//     }
+//     
 }

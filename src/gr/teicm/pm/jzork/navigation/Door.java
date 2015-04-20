@@ -15,22 +15,23 @@ import gr.teicm.pm.jzork.items.Item;
 public class Door extends Item{
     
     
-    private boolean isLocked;
+    public boolean isLocked;
     private boolean isOpen = false;
     private Room firstRoom;
     private Room secondRoom;
-    private String doorID;
+    public String doorID;
     private String firstRoomDir;
     private String secRoomDir;
 
     @SuppressWarnings("LeakingThisInConstructor")
-    public Door(Room firstRoom, String firstRoomDir, String secRoomDir, Room secondRoom,boolean isLocked,String description ){
+    public Door(Room firstRoom, String firstRoomDir, String secRoomDir, Room secondRoom,boolean isLocked,String description,String doorID ){
         this.firstRoom = firstRoom;
         this.firstRoomDir = firstRoomDir;
         this.secRoomDir = secRoomDir;
         this.secondRoom = secondRoom;
         this.description = description;
         this.isLocked = isLocked;
+        this.doorID = doorID;
         RoomConnector connect = new RoomConnector();
         connect.roomConnection(firstRoom, firstRoomDir, secondRoom, secRoomDir, this);
     }
@@ -55,6 +56,8 @@ public class Door extends Item{
             System.out.println("The door is closed!");
         else if(isOpen)
             System.out.println("The door is open!");
+        else if(!isLocked)
+            System.out.println("The door is already unlocked");
      
     }
     

@@ -6,6 +6,7 @@
 package gr.teicm.pm.jzork.navigation;
 
 import gr.teicm.pm.jzork.Inventory;
+import gr.teicm.pm.jzork.entities.Enemies;
 import gr.teicm.pm.jzork.items.Item;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,10 +22,13 @@ public class Room {
     
     private String roomName;
     private String description;
+    private boolean isLocked;
     private boolean isDark;
     private HashMap<String, Door> exits;  
     private ArrayList<Item> items;
     private HashMap<String, Inventory> figures;
+    private ArrayList<Enemies> monsters;
+    
     //private HashMap<String, Item> items;
    
   
@@ -32,6 +36,7 @@ public class Room {
     {
         exits = new HashMap<>();
         items = new ArrayList<>();
+        monsters = new ArrayList<>();
         //items = new HashMap<String, Item>();
     }
 
@@ -126,6 +131,10 @@ public class Room {
     public void addItem(Item pickedUp) {
         items.add(pickedUp);
     }
+    public void addEnemy(Enemies monster)
+    {  
+        monsters.add(monster);
+    }
    
     public boolean isIsDark() {
         return isDark;
@@ -134,5 +143,12 @@ public class Room {
     public void setIsDark(boolean isDark) {
         this.isDark = isDark;
     }
+    public boolean isLocked(boolean isLocked){
+        return isLocked;
+    }
+    
+   
+    
+   
     
 }

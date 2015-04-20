@@ -18,7 +18,7 @@ public class Entity {
     public String description;
     public int health;
     public int maxHealth;
-    
+    public int damage;
     public int strength;
     public int agility;
     public int luck;
@@ -96,6 +96,10 @@ public class Entity {
 
     public void setStrength(int strength) {
         this.strength = strength;
+    }
+    
+    public void setDamage(int damage){
+        this.damage = damage;
     }
 
     public int getAgility() {
