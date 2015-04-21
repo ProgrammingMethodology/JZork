@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package gr.teicm.pm.jzork.commands;
 
 import gr.teicm.pm.jzork.core.Command;
@@ -13,7 +14,7 @@ import gr.teicm.pm.jzork.entities.Player;
  *
  * @author Walkin
  */
-
+/*
     
    public class AttackCommand extends Command {
        private String enemy;
@@ -36,7 +37,7 @@ import gr.teicm.pm.jzork.entities.Player;
             }
            
         }
-        
+        */
          
        
 

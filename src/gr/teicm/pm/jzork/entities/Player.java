@@ -6,7 +6,6 @@
 package gr.teicm.pm.jzork.entities;
 
 import gr.teicm.pm.jzork.Inventory;
-import gr.teicm.pm.jzork.items.Item;
 import gr.teicm.pm.jzork.items.Key;
 import gr.teicm.pm.jzork.navigation.Door;
 import gr.teicm.pm.jzork.navigation.Room;
@@ -18,10 +17,9 @@ import java.util.Scanner;
  */
 public class Player extends Entity {
 
-    //History list of the visited rooms
-    //private Stack roomHistory;
+    
     public Room currentRoom;
-    Inventory inventory = new Inventory();
+    public Inventory inventory = new Inventory();
     public Key keyID;
     public Door doorID;
     
@@ -44,73 +42,7 @@ public class Player extends Entity {
         currentRoom = room;
     }
 
-    //Moving to the next rooms
-    public void walk(String direction) {
-
-        Door nextDoor = currentRoom.getExit(direction);
-
-        if (nextDoor == null) {
-            System.out.println("There is no exit in that direction!");
-        } else {
-            Room nextRoom = nextDoor.getConnectedRoom(currentRoom);
-            //roomHistory.push(currentRoom);
-            if (nextRoom != currentRoom) {
-                setCurrentRoom(nextRoom);
-                if (currentRoom.isIsDark()) {
-                    System.out.println("The room is dark, you can't see anything");
-                } else {
-                    System.out.println(nextRoom.getDescription());
-                }
-                
-               
-            }
-        }
-    }
-
-    public void openDoor(String direction) {
-
-        Door nextDoor = currentRoom.getExit(direction);
-
-        if (nextDoor == null) {
-            System.out.println("There is no door in this direction!");
-        } else {
-            nextDoor.setIsOpen(true);
-            System.out.println("The door has been opened!");
-     }
-        if(nextDoor.isIsLocked()){
-            System.out.println("The door is locked so you can't enter");
-        }
-         
-    }
-
-    public void pickItem(String itemName) {
-        Item pickedUp = currentRoom.searchItem(itemName);
-        if (pickedUp != null) {
-            inventory.addItem(pickedUp);
-            System.out.println("You picked up the " + itemName);
-            currentRoom.removeItem(itemName);
-        } else {
-            System.out.println("Cant find tha item");
-        }
-    }
-
-    public void TurnOnLights(){
-        currentRoom.setIsDark(false);
-        System.out.println("Now you can see!");
-        System.out.println(currentRoom.getDescription());
-    }
     
-    public void getPlayersInventory() {
-        inventory.printInventory();
-    }
-
-    public boolean searchInventoryItem(String itemName) {
-        boolean tmp = inventory.searchItem(itemName);
-        return tmp;
-    }
-    
-  
-
     public boolean tryVaultPass(){
         Scanner input = new Scanner(System.in);
         

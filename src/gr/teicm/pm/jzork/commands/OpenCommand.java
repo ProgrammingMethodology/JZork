@@ -7,6 +7,7 @@ package gr.teicm.pm.jzork.commands;
 
 import gr.teicm.pm.jzork.core.Command;
 import gr.teicm.pm.jzork.entities.Player;
+import gr.teicm.pm.jzork.navigation.Door;
 import gr.teicm.pm.jzork.navigation.Room;
 
 /**
@@ -20,32 +21,44 @@ public class OpenCommand extends Command {
      */
     private Room currentRoom;
     private String item;
+    public Player player;
 
-    public OpenCommand() {
+    public OpenCommand(Player player) {
+        this.player = player;
     }
 
     @Override
-    public boolean execute(Player player) {
+    public String execute(Player player) {
         if (hasSecondWord()) {
             item = getSecondWord();
             switch (item) {
                 case "door":
                     if (hasThirdWord()) {
                         String direction = getThirdWord();
-                        player.openDoor(direction);
-                    } 
-                    
-                    
-                    else {
-                        System.out.println("In which direction?");
+                        return openDoor(direction);
+                    } else {
+                        return "In which direction?";
                     }
-                return false;
-
             }
+        } else {
+            return "open what?";
         }
-        else{
-            System.out.println("Open what?");
+        return null;
+
+    }
+
+    public String openDoor(String direction) {
+
+        Door nextDoor = player.currentRoom.getExit(direction);
+
+        if (nextDoor == null) {
+            return "There is no door in this direction!";
+        } else if (nextDoor.isIsLocked()) {
+            return "The door is locked so you can't enter";
+        } else {
+            nextDoor.setIsOpen(true);
+            return "The door has been opened!";
         }
-        return false;
+
     }
 }

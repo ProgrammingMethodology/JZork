@@ -14,6 +14,7 @@ import gr.teicm.pm.jzork.navigation.Door;
  *
  * @author Walkin
  */
+/*
 public class UnlockCommand extends Command {
     
     
@@ -52,7 +53,7 @@ public class UnlockCommand extends Command {
       
     }
 
-
+*/
 
 
     

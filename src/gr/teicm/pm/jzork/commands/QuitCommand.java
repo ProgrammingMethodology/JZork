@@ -16,12 +16,12 @@ public class QuitCommand extends Command {
     }
 
     @Override
-    public boolean execute(Player player) {
+    public String execute(Player player) {
         if (getSecondWord() == null) {
-            return true;
+            return "quit";
         } else {
-            System.out.println("I cannot quit...");
-            return false;
+            return "I cannot quit...";
+            
         }
     }
 }

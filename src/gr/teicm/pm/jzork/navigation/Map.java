@@ -5,7 +5,6 @@
  */
 package gr.teicm.pm.jzork.navigation;
 
-import gr.teicm.pm.jzork.entities.Assasin;
 import gr.teicm.pm.jzork.entities.Burglar;
 import gr.teicm.pm.jzork.items.Knife;
 import gr.teicm.pm.jzork.items.Notebook;
@@ -24,12 +23,11 @@ public class Map {
     private Room startRoom;
 
     RoomConnector connect = new RoomConnector();
-    
-    private Room hallway,outside, office, kitchen,bedroom,bathroom,closet;
+
+    private Room hallway, outside, office, kitchen, bedroom, bathroom, closet;
 
     public Room generateMap() {
 
-        
         // The outside:  
         outside = new Room();
         outside.setRoomName("outside");
@@ -41,57 +39,50 @@ public class Map {
         hallway.setDescription("You are now in the hallway room. There are four doors, one to your south one to the north  one to your west and one to your east.there is a torch on the floor and a key in the counter.");
         Torch torch = new Torch("torch");
         hallway.addItem(torch);
-        Key key = new Key("key","1","A simple old key");
+        Key key = new Key("key", "1", "A simple old key");
         hallway.addItem(key);
-        
-        
-        
+
         // The Office:
         office = new Room();
         office.setRoomName("office");
         office.setDescription("You are now in the office. There is a notebook placed on the desk, and something like a vault. It looks like there are no other exits but the one you've entered to your east");
         office.setIsDark(true);
-        Vault vault = new Vault("vault","2314",true);
+        Vault vault = new Vault("vault", "2314", true);
         office.addItem(vault);
-        Notebook notebook = new Notebook("notebook","There is a long number written in this notebook: 010011001100. What could it be..?");
+        Notebook notebook = new Notebook("notebook", "There is a long number written in this notebook: 010011001100. What could it be..?");
         office.addItem(notebook);
-        
-        //The Kitchen:
+
+        // The Kitchen:
         kitchen = new Room();
         kitchen.setRoomName("Kitchen");
         kitchen.setDescription("You are in the kitchen.You see a knife on the counter.There is a door to the north and one in the south.There is a burglar standing in a corner of a room and he's staring at you.");
         kitchen.setIsDark(false);
-        Knife knife = new Knife("Knife","Just a kitchen knife",15);
+        Knife knife = new Knife("Knife", "Just a kitchen knife", 15);
         kitchen.addItem(knife);
         Burglar burglar = new Burglar();
         kitchen.addEnemy(burglar);
-        
-          //The Bedroom:
+
+        // The Bedroom:
         bedroom = new Room();
         bedroom.setRoomName("Bedroom");
         bedroom.setDescription("You are in the bedroom.You see an old revolver  on the counter.There is a door to the south where you came from and a closet to the east");
         bedroom.setIsDark(false);
-        Revolver revolver = new Revolver("revolver",100);
+        Revolver revolver = new Revolver("revolver", 100);
         bedroom.addItem(revolver);
-        
+
         closet = new Room();
         closet.setRoomName("closet");
         closet.setDescription("A bedroom Closet.The only useful thing you see is an old samurai sword.");
         closet.setIsDark(false);
-        Sword sword = new Sword("sword",60);
+        Sword sword = new Sword("sword", 60);
         closet.addItem(sword);
-        
-        //the bathroom
-         bathroom = new Room();
+
+        // The bathroom
+        bathroom = new Room();
         bathroom.setRoomName("Bathroom");
         bathroom.setDescription("You are in the bathroom.There is nothing that could be useful to you.The only exit is the door which you came from");
         bathroom.setIsDark(false);
-       
-      
-        
-        
-        
-        
+
         // Exits initialization  
         connect.RoomInitialize(outside);
         connect.RoomInitialize(hallway);
@@ -100,25 +91,21 @@ public class Map {
         connect.RoomInitialize(bedroom);
         connect.RoomInitialize(bathroom);
         connect.RoomInitialize(closet);
-        
-        
+
         // Room connection with doors
-        // outside north hallway
-        Door outNorthHall = new Door(outside, "north", "south", hallway, false, "Big green door","2");
-        Door hallWestOffice = new Door(hallway, "west", "east", office, true, "wooden door","1");
-        Door hallEastKitchen = new Door(hallway, "east","west", kitchen, false, "Big green door","3");
-        Door hallNorthBedroom = new Door(hallway,"north","south",bedroom,false,"Big wooded door","6");
-        Door BedroomEastCloset = new Door(bedroom, "east","west",closet,false,"Big Brown door","5");
-        Door hallNorthKitchen = new Door(kitchen, "north","south", bathroom, false, "Big green door","4");
-        
-        
-       
+        Door outNorthHall = new Door(outside, "north", "south", hallway, false, "Big green door", "2");
+        Door hallWestOffice = new Door(hallway, "west", "east", office, true, "wooden door", "1");
+        Door hallEastKitchen = new Door(hallway, "east", "west", kitchen, false, "Big green door", "3");
+        Door hallNorthBedroom = new Door(hallway, "north", "south", bedroom, false, "Big wooded door", "6");
+        Door BedroomEastCloset = new Door(bedroom, "east", "west", closet, false, "Big Brown door", "5");
+        Door hallNorthKitchen = new Door(kitchen, "north", "south", bathroom, false, "Big green door", "4");
+
         // Return the starting room:
         startRoom = outside;
         return startRoom;
 
     }
-    
+
     public Room getStartRoom() {
         return startRoom;
     }

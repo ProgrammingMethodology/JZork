@@ -40,5 +40,5 @@ public abstract class Command {
         this.thirdWord = thirdWord;
     }
     
-    public abstract boolean execute(Player player);
+    public abstract String execute(Player player);
 }

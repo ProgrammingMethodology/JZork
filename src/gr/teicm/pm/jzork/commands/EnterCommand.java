@@ -21,11 +21,11 @@ public class EnterCommand extends Command {
     }
 
     @Override
-    public boolean execute(Player player) {
+    public String execute(Player player) {
         if (hasSecondWord()) {
             item = getSecondWord();
         } else {
-            System.out.println("Open what?");
+            return "Open what?";
         }
         switch (item) {
             case "vault":
@@ -35,19 +35,20 @@ public class EnterCommand extends Command {
                         boolean success = player.tryVaultPass();
                         if (success) {
                             player.currentRoom.searchItem(item).setIsOpen(true);
-                            System.out.println("Great! You've opened the vault!");
+                            return "Great! You've opened the " +item;
                         } else {
-                            System.out.println("The vault stills closed...");
+                            return "The vault stills closed...";
                         }
 
                     }
                 } else {
-                    System.out.println("Enter vault what?");
+                    return "Enter vault what?";
                 }
-                return false;
+                
 
         }
-        return false;
+        return null;
+        
         
     }
 }

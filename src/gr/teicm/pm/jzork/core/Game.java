@@ -5,16 +5,7 @@
  */
 package gr.teicm.pm.jzork.core;
 
-import gr.teicm.pm.jzork.commands.AttackCommand;
-import gr.teicm.pm.jzork.commands.EnterCommand;
-import gr.teicm.pm.jzork.commands.GoCommand;
-import gr.teicm.pm.jzork.commands.InventoryCommand;
-import gr.teicm.pm.jzork.commands.OpenCommand;
-import gr.teicm.pm.jzork.commands.PickupCommand;
-import gr.teicm.pm.jzork.commands.QuitCommand;
-import gr.teicm.pm.jzork.commands.TurnOnCommand;
-import gr.teicm.pm.jzork.commands.UnlockCommand;
-import gr.teicm.pm.jzork.commands.EquipCommand;
+import gr.teicm.pm.jzork.commands.*;
 import gr.teicm.pm.jzork.entities.Player;
 import gr.teicm.pm.jzork.navigation.Map;
 import gr.teicm.pm.jzork.navigation.Room;
@@ -32,8 +23,10 @@ public class Game {
     private Player player;
     private Map map;
     private boolean initialized = false;
+    String output;
     String name;
-
+    private View view = new View();
+    
     public void play() throws IOException {
         createPlayer();
         ensureInitialization();
@@ -45,7 +38,11 @@ public class Game {
             if (command == null) {
                 System.out.println("I don't understand what you mean!");
             } else {
-                finished = command.execute(player);
+                output = command.execute(player);
+                if(output.equals("quit"))
+                    finished = true;
+                else
+                    view.printThis(output);
             }
         }
         System.out.println("Thank you for playing.Good bye.");
@@ -90,18 +87,18 @@ public class Game {
 
     public void createCommands() {
         ensureInitialization();
-        parser.commandWords().addCommand("go", new GoCommand());
+        parser.commandWords().addCommand("go", new GoCommand(player));
         parser.commandWords().addCommand("quit", new QuitCommand());
-        parser.commandWords().addCommand("open", new OpenCommand());
-        parser.commandWords().addCommand("pickup", new PickupCommand());
-        parser.commandWords().addCommand("take", new PickupCommand());
-        parser.commandWords().addCommand("get", new PickupCommand());
-        parser.commandWords().addCommand("inventory", new InventoryCommand());
-        parser.commandWords().addCommand("turnon", new TurnOnCommand());
+        parser.commandWords().addCommand("open", new OpenCommand(player));
+        parser.commandWords().addCommand("pickup", new PickupCommand(player));
+        parser.commandWords().addCommand("take", new PickupCommand(player));
+        parser.commandWords().addCommand("get", new PickupCommand(player));
+        parser.commandWords().addCommand("inventory", new InventoryCommand(player));
+        parser.commandWords().addCommand("turnon", new TurnOnCommand(player));
         parser.commandWords().addCommand("enter", new EnterCommand());
-        parser.commandWords().addCommand("unlock", new UnlockCommand());
-        parser.commandWords().addCommand("attack", new AttackCommand());
-        parser.commandWords().addCommand("equip", new EquipCommand());
+        //parser.commandWords().addCommand("unlock", new UnlockCommand());
+        //parser.commandWords().addCommand("attack", new AttackCommand());
+        //parser.commandWords().addCommand("equip", new EquipCommand());
     }
 
     public void createRooms() {

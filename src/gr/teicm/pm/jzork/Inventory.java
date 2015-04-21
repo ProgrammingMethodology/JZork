@@ -42,17 +42,19 @@ public class Inventory {
     }
     
     
-    public void printInventory() {
+    public String printInventory() {
         String allitems = "";
         for (Item item : inventory) {
             allitems += "\n" + item.getName();
         }
         if (allitems.length() > 0) {
-            System.out.println("Your inventory:" + allitems);
+            return "Your inventory:" + allitems;
         } else {
-            System.out.println("Your inventory is empty");
+            return "Your inventory is empty";
         }
     }
+    
+    
     
     public boolean searchItem(String name)
     {

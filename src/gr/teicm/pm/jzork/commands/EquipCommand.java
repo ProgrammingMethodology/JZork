@@ -12,6 +12,7 @@ import gr.teicm.pm.jzork.entities.Player;
  *
  * @author Walkin
  */
+/*
 public class EquipCommand extends Command {
     public String equipedItem;
     
@@ -37,7 +38,7 @@ public class EquipCommand extends Command {
       
     }
 }
-      
+     */ 
      
 
 
