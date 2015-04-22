@@ -65,11 +65,11 @@ public class Room {
     
     public String getItemList()
     {
-        String itemList = "Items: ";
+        String itemList = "There is ";
         for(Item item : items) {
-            itemList += item.getName() + " " + item.getDescription() + ".\n ";
-            
+            itemList += item.getItemDetails() + " and ";
         }
+        itemList = itemList.substring(0, itemList.length()-5);
         return itemList;
     }
     

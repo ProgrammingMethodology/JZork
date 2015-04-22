@@ -15,6 +15,7 @@ public class Item {
     public int weight;
     public String name;
     public String description;
+    public String itemDetails;
     public String password;
     public boolean isOpen;
     
@@ -59,6 +60,14 @@ public class Item {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    public String getItemDetails() {
+        return itemDetails;
+    }
+
+    public void setItemDetails(String itemDetails) {
+        this.itemDetails = itemDetails;
+    }
 
     public String getPassword() {
         return password;
@@ -79,9 +88,9 @@ public class Item {
     public void printDescription(String description){
         this.getDescription();
     }
-
-
+    
     
 
+    
     
 }

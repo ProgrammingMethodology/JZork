@@ -13,13 +13,14 @@ import gr.teicm.pm.jzork.navigation.Room;
  */
 public class Key extends Item {
     public String id;
-    public  String keyID;
+    public String keyID;
     public String Description;
 
-    public Key(String name, String keyID, String description) {
+    public Key(String name, String keyID, String description, String itemDetails) {
         this.ID = id;
         this.name = name;
         this.description = description;
+        this.itemDetails = itemDetails;
         this.keyID = keyID;
     }
 

@@ -17,10 +17,11 @@ public class Vault extends Item{
     private boolean available;
     private boolean isOpen = false;
     
-    public Vault(String name, String password, boolean available){
+    public Vault(String name, String password, boolean available, String itemDetails){
         this.name = name;
         this.password = password;
         this.available = available;
+        this.itemDetails = itemDetails;
     }
 
     public boolean isAvailable() {

@@ -46,7 +46,7 @@ public class GoCommand extends Command {
                 if (player.currentRoom.isIsDark()) {
                     return "The room is dark, you can't see anything";
                 } else {
-                    return nextRoom.getDescription();
+                    return nextRoom.getDescription() + nextRoom.getItemList() + ".";
                 }
             }
         }

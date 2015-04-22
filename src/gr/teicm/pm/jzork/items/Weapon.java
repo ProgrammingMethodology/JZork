@@ -11,16 +11,19 @@ package gr.teicm.pm.jzork.items;
  */
 
 public class Weapon extends Item {
-public final int damage;
-public Weapon (String name, int damage){
-//super(weight, name);
-this.damage = damage;
-}
 
-public int setdamage(int damage){
-    return damage;
-}
-public int getdamage(){
-    return damage;
-}
+    public final int damage;
+
+    public Weapon(String name, int damage) {
+//super(weight, name);
+        this.damage = damage;
+    }
+
+    public int setdamage(int damage) {
+        return damage;
+    }
+
+    public int getdamage() {
+        return damage;
+    }
 }

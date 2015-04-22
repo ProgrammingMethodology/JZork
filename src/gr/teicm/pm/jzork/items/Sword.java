@@ -11,14 +11,17 @@ package gr.teicm.pm.jzork.items;
  */
 public class Sword extends Weapon {
 
-    public Sword(String name, int damage) {
+    public Sword(String name, int damage, String itemDetails) {
         super(name, damage);
         this.name = name;
+        this.itemDetails = itemDetails;
     }
-        public void setDamage(){
+
+    public void setDamage() {
         this.setdamage(60);
     }
-    public int getDamage(){
-    return damage;
-}
+
+    public int getDamage() {
+        return damage;
+    }
 }

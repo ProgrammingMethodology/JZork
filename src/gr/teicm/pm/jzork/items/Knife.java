@@ -10,11 +10,11 @@ package gr.teicm.pm.jzork.items;
  * @author Walkin
  */
 public class Knife extends Item {
-      public Knife(String name, String description, int damage){
+
+    public Knife(String name, String description, int damage, String itemDetails) {
         this.name = name;
         this.description = description;
-        
-        
-    
-}
+        this.itemDetails = itemDetails;
+
+    }
 }

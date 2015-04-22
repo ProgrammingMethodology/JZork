@@ -11,9 +11,10 @@ package gr.teicm.pm.jzork.items;
  */
 public class Notebook extends Item {
     
-    public Notebook(String name, String description){
+    public Notebook(String name, String description, String itemDetails){
         this.name = name;
         this.description = description;
+        this.itemDetails = itemDetails;
     }
     
     

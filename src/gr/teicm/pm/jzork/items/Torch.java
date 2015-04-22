@@ -16,8 +16,10 @@ public class Torch extends Item {
     //private final int LightStr;
     Room currentRoom;
     
-    public Torch(String name) {
+    public Torch(String name, String description, String itemDetails) {
         this.name = name;
+        this.description = description;
+        this.itemDetails = itemDetails;
     }
 
     

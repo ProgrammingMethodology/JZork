@@ -12,9 +12,10 @@ package gr.teicm.pm.jzork.items;
 
 public class Revolver extends Weapon {
 
-    public Revolver(String name, int damage) {
+    public Revolver(String name, int damage, String itemDetails) {
         super(name, damage);
         this.name = name;
+        this.itemDetails = itemDetails;
         
     }
  
