@@ -5,13 +5,14 @@
  */
 package gr.teicm.pm.jzork.items;
 
+import gr.teicm.pm.jzork.interfaces.ILight;
 import gr.teicm.pm.jzork.navigation.Room;
 
 /**
  *
  * @author Walkin
  */
-public class Torch extends Item {
+public class Torch extends Item implements ILight{
 
     //private final int LightStr;
     //Room currentRoom;
@@ -30,6 +31,7 @@ public class Torch extends Item {
         room.setIsDark(false);
     }
 
+    @Override
     public String turnLightOn(Room currentRoom) {
         if (currentRoom.isIsDark()) {
             currentRoom.setIsDark(false);

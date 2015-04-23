@@ -3,7 +3,9 @@ package gr.teicm.pm.jzork.commands;
 import gr.teicm.pm.jzork.core.Command;
 import gr.teicm.pm.jzork.entities.Player;
 import gr.teicm.pm.jzork.items.Door;
+import gr.teicm.pm.jzork.items.Item;
 import gr.teicm.pm.jzork.navigation.Room;
+import java.util.Iterator;
 
 /**
  *
@@ -44,12 +46,17 @@ public class GoCommand extends Command {
             if (nextRoom != null) {
                 player.setCurrentRoom(nextRoom);
                 if (player.currentRoom.isIsDark()) {
+                    Iterator<Item> item = player.currentRoom.items.iterator();
+                    while (item.hasNext()) {
+                        Item tmp = item.next();
+                        if(!tmp.getName().equals("switch") || !tmp.getName().equals("lamp"))
+                        tmp.setIsAvailable(false);
+                    }
                     return "The room is dark, you can't see anything";
                 } else {
                     return nextRoom.getDescription() + nextRoom.getItemList() + ".";
                 }
-            }
-            else{
+            } else {
                 return nextDoor.getDoorStatus(nextDoor.isLocked, nextDoor.isOpen);
             }
         }

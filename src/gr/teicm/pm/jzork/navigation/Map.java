@@ -43,7 +43,7 @@ public class Map {
         office.setRoomName("office");
         office.setDescription("You are now in the office. It looks like there are no other exits but the one you've entered to your east.");
         office.setIsDark(true);
-        Vault vault = new Vault("vault", "2314", true, "a password protected vault in the wall");
+        Vault vault = new Vault("vault", "2314", true, "a 4-digit password protected vault in the wall");
         office.addItem(vault);
         Notebook notebook = new Notebook("notebook", "There is a long number written in this notebook: 010011001100. What could it be..?", "a notebook placed on the desk");
         office.addItem(notebook);

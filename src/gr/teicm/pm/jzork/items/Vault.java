@@ -57,6 +57,7 @@ public class Vault extends Item {
 
             while (!pass.equals(password) || pass.equals("quit")) {
                 System.out.println("Wrong Password! Try again or type exit to quit");
+                pass = input.next();
             }
             if (pass.equals(password)) {
                 isLocked = false;
