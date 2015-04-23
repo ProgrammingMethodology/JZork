@@ -5,8 +5,6 @@
  */
 package gr.teicm.pm.jzork.items;
 
-import gr.teicm.pm.jzork.navigation.Room;
-
 /**
  *
  * @author Walkin
@@ -14,7 +12,6 @@ import gr.teicm.pm.jzork.navigation.Room;
 public class Key extends Item {
     public String id;
     public String keyID;
-    public String Description;
 
     public Key(String name, String keyID, String description, String itemDetails) {
         this.ID = id;

@@ -7,45 +7,39 @@ package gr.teicm.pm.jzork.commands;
 
 import gr.teicm.pm.jzork.core.Command;
 import gr.teicm.pm.jzork.entities.Player;
+import gr.teicm.pm.jzork.items.Item;
+import gr.teicm.pm.jzork.items.Torch;
 
 /**
  *
  * @author Babis
  */
-
 public class TurnOnCommand extends Command {
 
     public Player player;
-    
+    public Item obj;
+
     public TurnOnCommand(Player player) {
         this.player = player;
     }
 
     @Override
-    public String execute(Player player){
-        if(hasSecondWord()) {
+    public String execute(Player player) {
+        if (hasSecondWord()) {
             String item = getSecondWord();
-            if (item.equals("torch")){
-                if(player.inventory.searchItem(item))
-                    return turnOnLights();
-                else
+            if (item.equals("torch")) {
+                if (player.inventory.isItemValid(item)) {
+                    obj = player.inventory.searchItem(item);
+                    Torch torch = (Torch) obj;
+                    return torch.turnLightOn(player.currentRoom);
+                } else {
                     return "You can't find this item";
+                }
             }
-        }
-        else {
+        } else {
             return "Turn on what?";
         }
         return null;
     }
-    
-    public String turnOnLights(){
-        if(player.currentRoom.isIsDark()){
-        player.currentRoom.setIsDark(false);
-        return "Now you can see!\n" + player.currentRoom.getDescription();
-        }
-        else
-            return "You don't need light to see. The room isn't so dark at all.";
-    }
-    
-}
 
+}

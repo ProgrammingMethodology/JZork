@@ -68,6 +68,7 @@ public class Room {
     {
         String itemList = "There is ";
         for(Item item : items) {
+            if(item.isAvailable)
             itemList += item.getItemDetails() + " and ";
         }
         itemList = itemList.substring(0, itemList.length()-5);
@@ -95,6 +96,20 @@ public class Room {
             
         }
         return itemFound;
+             
+    }
+    
+     public boolean isItemValid(String name)
+    {
+            
+        for(Item item : items) 
+        {
+            String tmp = item.getName().toLowerCase();
+            if(tmp.equals(name.toLowerCase()))
+                return true;
+            
+        }
+        return false;
              
     }
     

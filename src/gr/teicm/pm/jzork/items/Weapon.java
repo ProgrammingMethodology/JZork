@@ -12,7 +12,7 @@ package gr.teicm.pm.jzork.items;
 
 public class Weapon extends Item {
 
-    public final int damage;
+    public int damage;
 
     public Weapon(String name, int damage) {
 //super(weight, name);

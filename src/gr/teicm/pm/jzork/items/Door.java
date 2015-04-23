@@ -5,7 +5,6 @@
  */
 package gr.teicm.pm.jzork.items;
 
-import gr.teicm.pm.jzork.items.Item;
 import gr.teicm.pm.jzork.navigation.Room;
 import gr.teicm.pm.jzork.navigation.RoomConnector;
 
@@ -15,8 +14,7 @@ import gr.teicm.pm.jzork.navigation.RoomConnector;
  */
 public class Door extends Item {
 
-    public boolean isLocked;
-    public boolean isOpen = false;
+    
     private final Room firstRoom, secondRoom;
     public String doorID;
     public final String firstRoomDir, secRoomDir;
@@ -73,18 +71,24 @@ public class Door extends Item {
         }
     }
 
+    /*
     public void openDoor() {
         setIsOpen(true);
     }
+    */
+    
+    
 
     public void closeDoor() {
         setIsOpen(false);
     }
 
+    @Override
     public boolean isIsLocked() {
         return isLocked;
     }
 
+    @Override
     public void setIsLocked(boolean isLocked) {
         this.isLocked = isLocked;
     }

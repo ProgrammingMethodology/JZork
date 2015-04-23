@@ -7,7 +7,8 @@ package gr.teicm.pm.jzork.commands;
 
 import gr.teicm.pm.jzork.core.Command;
 import gr.teicm.pm.jzork.entities.Player;
-import java.util.Scanner;
+import gr.teicm.pm.jzork.items.Item;
+import gr.teicm.pm.jzork.items.Vault;
 
 /**
  *
@@ -17,7 +18,8 @@ public class EnterCommand extends Command {
 
     private String item;
     private final Player player;
-    
+    public Item obj;
+
     public EnterCommand(Player player) {
         this.player = player;
     }
@@ -34,40 +36,36 @@ public class EnterCommand extends Command {
                 if (hasThirdWord()) {
                     String noun = getThirdWord();
                     if (noun.equals("password")) {
-                        boolean success = enterPass();
-                        if (success) {
-                            player.currentRoom.searchItem(item).setIsOpen(true);
-                            return "Great! You've opened the " +item;
+                        if (player.currentRoom.isItemValid(item)) {
+                            obj = player.currentRoom.searchItem(item);
+                            Vault vault = (Vault) obj;
+                            return vault.enterPassword(player);
                         } else {
-                            return "The vault stills closed...";
+                            return "I can't see a " + item + " here";
                         }
-
                     }
                 } else {
                     return "Enter vault what?";
                 }
-                
-
         }
-        return null;
-        
-        
+        return "gdsgdsg";
+
     }
-    
-    public boolean enterPass(){
+    /*
+    public boolean enterPass() {
         Scanner input = new Scanner(System.in);
-        
+
         System.out.print("Enter the vault's password: ");
         String pass = input.next();
-        
+
         String vaultPass = player.currentRoom.searchItem("vault").getPassword();
-        
-        
-        while (!pass.equals(vaultPass) || pass.equals("exit")){
+
+        while (!pass.equals(vaultPass) || pass.equals("exit")) {
             System.out.println("Wrong Password! Try again or type exit to quit");
             pass = input.next();
         }
         return pass.equals(vaultPass);
-       
+
     }
+    */
 }

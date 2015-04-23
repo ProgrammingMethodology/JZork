@@ -56,9 +56,9 @@ public class Inventory {
     
     
     
-    public boolean searchItem(String name)
+    public boolean isItemValid(String name)
     {
-        Item itemFound = null;    
+            
         for(Item item : inventory) 
         {
             String tmp = item.getName().toLowerCase();
@@ -67,6 +67,20 @@ public class Inventory {
             
         }
         return false;
+             
+    }
+    
+    public Item searchItem(String name)
+    {
+        Item itemFound = null;    
+        for(Item item : inventory) 
+        {
+            String tmp = item.getName().toLowerCase();
+            if(tmp.equals(name.toLowerCase()))
+                itemFound = item;
+            
+        }
+        return itemFound;
              
     }
     

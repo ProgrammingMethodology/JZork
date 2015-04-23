@@ -16,7 +16,7 @@ public class Item {
     public String description;
     public String itemDetails;
     public String password;
-    public boolean isOpen;
+    public boolean isOpen = false;
     public boolean isLocked;
     public boolean isAvailable;
     
