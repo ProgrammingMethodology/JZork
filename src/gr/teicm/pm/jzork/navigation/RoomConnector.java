@@ -5,17 +5,19 @@
  */
 package gr.teicm.pm.jzork.navigation;
 
+import gr.teicm.pm.jzork.items.Door;
+
 /**
  *
  * @author Babis
  */
 public class RoomConnector {
 
-    public void roomConnection(Room firstRoom, String firstRoomExit, Room secondRoom, String secondRoomExit) {
+    public void roomConnection(Room firstRoom, String firstRoomExit, Room secondRoom, String secondRoomExit, Door door) {
 
         if (isConnectionPossible(firstRoomExit, firstRoom) && (isConnectionPossible(secondRoomExit, secondRoom))) {
-            firstRoom.setExit(firstRoomExit, secondRoom);
-            secondRoom.setExit(secondRoomExit, firstRoom);
+            firstRoom.setExit(firstRoomExit, door);
+            secondRoom.setExit(secondRoomExit, door);
         } else {
             System.out.println("Error trying to connect the " + secondRoom.getRoomName() + " room to the "
                     + firstRoomExit + " exit of the " + firstRoom.getRoomName() + " room");
@@ -26,24 +28,24 @@ public class RoomConnector {
 
     public boolean isConnectionPossible(String direction, Room room) {
         switch (direction) {
-            case "NORTH":
-                return (room.getExit("NORTH")) == null;
-            case "SOUTH":
-                return (room.getExit("SOUTH")) == null;
-            case "EAST":
-                return (room.getExit("EAST")) == null;
-            case "WEST":
-                return (room.getExit("WEST")) == null;
+            case "north":
+                return (room.getExit("north")) == null;
+            case "south":
+                return (room.getExit("south")) == null;
+            case "east":
+                return (room.getExit("east")) == null;
+            case "west":
+                return (room.getExit("west")) == null;
             default:
                 return false;
         }
     }
 
     public void RoomInitialize(Room room) {
-        room.setExit("NORTH", null);
-        room.setExit("SOUTH", null);
-        room.setExit("EAST", null);
-        room.setExit("WEST", null);
+        room.setExit("north", null);
+        room.setExit("south", null);
+        room.setExit("east", null);
+        room.setExit("west", null);
     }
 
 }

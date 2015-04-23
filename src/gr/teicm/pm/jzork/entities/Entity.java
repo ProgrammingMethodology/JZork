@@ -15,15 +15,15 @@ public class Entity {
     
    
     public String name;
-    private String description;
-    private int health;
-    private int maxHealth;
+    public String description;
+    public int health;
+    public int maxHealth;
+    public int damage;
+    public int strength;
+    public int agility;
+    public int luck;
     
-    private int strength;
-    private int agility;
-    private int luck;
-    
-    private boolean isAlive;
+    public boolean isAlive;
     public Room currentRoom;
     
     public Entity(String name, String description, int health, int maxHealth, int strength, int agility, int luck, boolean isAlive, Room currentRoom){
@@ -96,6 +96,10 @@ public class Entity {
 
     public void setStrength(int strength) {
         this.strength = strength;
+    }
+    
+    public void setDamage(int damage){
+        this.damage = damage;
     }
 
     public int getAgility() {

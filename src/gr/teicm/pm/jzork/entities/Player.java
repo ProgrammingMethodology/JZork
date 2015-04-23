@@ -5,53 +5,66 @@
  */
 package gr.teicm.pm.jzork.entities;
 
+import gr.teicm.pm.jzork.Inventory;
+import gr.teicm.pm.jzork.items.Key;
+import gr.teicm.pm.jzork.items.Door;
 import gr.teicm.pm.jzork.navigation.Room;
+import java.util.Scanner;
 
 /**
  *
  * @author Babis
  */
-public class Player extends Entity{
+public class Player extends Entity {
+
     
-    //History list of the visited rooms
-    //private Stack roomHistory;
-    private Room currentRoom;
-   
+    public Inventory inventory = new Inventory();
+    public Key keyID;
+    public Door doorID;
     
-    public Player(String name, Room currentRoom){
-        
+
+    public Player(String name, Room currentRoom) {
+
         this.name = name;
         this.currentRoom = currentRoom;
     }
-    
-    public Player()
-    {
+
+    public Player() {
         currentRoom = null;
     }
-    
-    public Room getCurrentRoom()
-    {
+
+    public Room getCurrentRoom() {
         return currentRoom;
     }
-    
-    public void setCurrentRoom(Room room)
-    {
+
+    public void setCurrentRoom(Room room) {
         currentRoom = room;
     }
+
     
-    
-    //Moving to the next rooms
-    public void walk(String direction){
+    public void unlockdoor(String direction){
         
-       Room nextRoom = currentRoom.getExit(direction);
-	
-       if (nextRoom == null)
-	    System.out.println("There is no exit in that direction!");
-       else {
-       	    //roomHistory.push(currentRoom);
-	    setCurrentRoom(nextRoom);
-	    System.out.println(nextRoom.getDescription());
-       }
+        Door nextDoor = currentRoom.getExit(direction);
+        nextDoor.setIsLocked(false);
+        System.out.println("The door is now unlocked!");
+          
     }
+
+
     
+     public void attack(String enemy) {
+        
+         
+     }
+
+
+//     public void defend(Enemies monster) {
+//     
+//     health = (health - );
+//     System.out.printf("  " + name + " is hit for %d HP of damage (%s)\n");
+//     if (health == 0) {
+//     System.out.println("  " + name + " has been defeated");
+//     }
+//     }
+//     
 }

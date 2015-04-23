@@ -5,36 +5,122 @@
  */
 package gr.teicm.pm.jzork.navigation;
 
+import gr.teicm.pm.jzork.items.Door;
+import gr.teicm.pm.jzork.Inventory;
+import gr.teicm.pm.jzork.entities.Enemies;
+import gr.teicm.pm.jzork.items.Item;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.Iterator;
 
     
 /**
  *
  * @author Babis
  */
+
 public class Room {
     
     private String roomName;
     private String description;
-    private HashMap<String, Room> exits;  
+    private boolean isLocked;
+    private boolean isDark;
+    private HashMap<String, Door> exits;  
+    private ArrayList<Item> items;
+    private HashMap<String, Inventory> figures;
+    private ArrayList<Enemies> monsters;
+    
     //private HashMap<String, Item> items;
-    
-    
+   
+  
     public Room() 
     {
         exits = new HashMap<>();
+        items = new ArrayList<>();
+        monsters = new ArrayList<>();
         //items = new HashMap<String, Item>();
     }
 
-    public void setExit(String direction, Room neighbor)
+    public String getExitString()
     {
-        exits.put(direction, neighbor);
+        StringBuilder result = new StringBuilder( 128 );
+        result.append( "Exits:" );
+        exits.keySet().stream().forEach((direction) -> {
+            result.append( ' ' );
+            result.append( direction );
+        });
+        return result.toString();
     }
     
-    public Room getExit(String direction) 
+    
+    public void removeItem(String name)
     {
-        return (Room)exits.get(direction);
+        Iterator<Item> item = items.iterator();
+            while(item.hasNext())
+            {
+                Item tmp = item.next();
+                if(tmp.getName().equals(name))
+                    item.remove();
+            }              
+    }
+    
+    public String getItemList()
+    {
+        String itemList = "There is ";
+        for(Item item : items) {
+            if(item.isAvailable)
+            itemList += item.getItemDetails() + " and ";
+        }
+        itemList = itemList.substring(0, itemList.length()-5);
+        return itemList;
+    }
+    
+    public ArrayList getItems()
+    {
+        return items;
+    }
+
+    public Inventory getInventory(String name)
+    {
+        return figures.get(name);      
+    }
+    
+    public Item searchItem(String name)
+    {
+        Item itemFound = null;    
+        for(Item item : items) 
+        {
+            String tmp = item.getName().toLowerCase();
+            if(tmp.equals(name.toLowerCase()))
+                itemFound = item;
+            
+        }
+        return itemFound;
+             
+    }
+    
+     public boolean isItemValid(String name)
+    {
+            
+        for(Item item : items) 
+        {
+            String tmp = item.getName().toLowerCase();
+            if(tmp.equals(name.toLowerCase()))
+                return true;
+            
+        }
+        return false;
+             
+    }
+    
+    public void setExit(String direction, Door door)
+    {
+        exits.put(direction, door);
+    }
+    
+    public Door getExit(String direction) 
+    {
+        return (Door)exits.get(direction);
     }
 
     public String getRoomName() {
@@ -53,20 +139,32 @@ public class Room {
         this.description = description;
     }
     
-    public Room nextRoom(String direction) 
+    public void addCurrentItem(Item item)
     {
-        return (Room)exits.get(direction);
+        items.add(item);
+    }
+
+    public void addItem(Item pickedUp) {
+        items.add(pickedUp);
+    }
+    public void addEnemy(Enemies monster)
+    {  
+        monsters.add(monster);
+    }
+   
+    public boolean isIsDark() {
+        return isDark;
+    }
+
+    public void setIsDark(boolean isDark) {
+        this.isDark = isDark;
+    }
+    public boolean isLocked(boolean isLocked){
+        return isLocked;
     }
     
-    public String getExitString()
-    {
-        StringBuilder result = new StringBuilder( 128 );
-        result.append( "Exits:" );
-        exits.keySet().stream().forEach((direction) -> {
-            result.append( ' ' );
-            result.append( direction );
-        });
-        return result.toString();
-    }
+   
+    
+   
     
 }
