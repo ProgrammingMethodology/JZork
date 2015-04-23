@@ -5,6 +5,7 @@
  */
 package gr.teicm.pm.jzork.navigation;
 
+import gr.teicm.pm.jzork.items.Door;
 import gr.teicm.pm.jzork.Inventory;
 import gr.teicm.pm.jzork.entities.Enemies;
 import gr.teicm.pm.jzork.items.Item;

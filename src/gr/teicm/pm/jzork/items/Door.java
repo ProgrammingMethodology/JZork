@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gr.teicm.pm.jzork.navigation;
+package gr.teicm.pm.jzork.items;
 
 import gr.teicm.pm.jzork.items.Item;
+import gr.teicm.pm.jzork.navigation.Room;
+import gr.teicm.pm.jzork.navigation.RoomConnector;
 
 /**
  *
@@ -14,18 +16,21 @@ import gr.teicm.pm.jzork.items.Item;
 public class Door extends Item {
 
     public boolean isLocked;
-    private boolean isOpen = false;
-    private final Room firstRoom;
-    private final Room secondRoom;
+    public boolean isOpen = false;
+    private final Room firstRoom, secondRoom;
     public String doorID;
+    public final String firstRoomDir, secRoomDir;
 
     @SuppressWarnings("LeakingThisInConstructor")
     public Door(Room firstRoom, String firstRoomDir, String secRoomDir, Room secondRoom, boolean isLocked, String description, String doorID) {
         this.firstRoom = firstRoom;
         this.secondRoom = secondRoom;
+        this.firstRoomDir = firstRoomDir;
+        this.secRoomDir = secRoomDir;
         this.description = description;
         this.isLocked = isLocked;
         this.doorID = doorID;
+
         RoomConnector connect = new RoomConnector();
         connect.roomConnection(firstRoom, firstRoomDir, secondRoom, secRoomDir, this);
     }
@@ -38,8 +43,7 @@ public class Door extends Item {
                 return firstRoom;
             }
         } else {
-            this.getDoorStatus(isLocked, isOpen);
-            return currentRoom;
+            return null;
         }
     }
 
@@ -51,10 +55,9 @@ public class Door extends Item {
             return "The door is closed!";
         } else if (isOpen) {
             return "The door is open!";
-        } else if (!isLocked) {
+        } else {
             return "The door is already unlocked";
         }
-        return null;
 
     }
 

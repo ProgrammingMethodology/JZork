@@ -7,6 +7,7 @@ package gr.teicm.pm.jzork.commands;
 
 import gr.teicm.pm.jzork.core.Command;
 import gr.teicm.pm.jzork.entities.Player;
+import java.util.Scanner;
 
 /**
  *
@@ -15,9 +16,10 @@ import gr.teicm.pm.jzork.entities.Player;
 public class EnterCommand extends Command {
 
     private String item;
-
-    public EnterCommand() {
-
+    private final Player player;
+    
+    public EnterCommand(Player player) {
+        this.player = player;
     }
 
     @Override
@@ -25,14 +27,14 @@ public class EnterCommand extends Command {
         if (hasSecondWord()) {
             item = getSecondWord();
         } else {
-            return "Open what?";
+            return "Enter what?";
         }
         switch (item) {
             case "vault":
                 if (hasThirdWord()) {
                     String noun = getThirdWord();
                     if (noun.equals("password")) {
-                        boolean success = player.tryVaultPass();
+                        boolean success = enterPass();
                         if (success) {
                             player.currentRoom.searchItem(item).setIsOpen(true);
                             return "Great! You've opened the " +item;
@@ -50,5 +52,22 @@ public class EnterCommand extends Command {
         return null;
         
         
+    }
+    
+    public boolean enterPass(){
+        Scanner input = new Scanner(System.in);
+        
+        System.out.print("Enter the vault's password: ");
+        String pass = input.next();
+        
+        String vaultPass = player.currentRoom.searchItem("vault").getPassword();
+        
+        
+        while (!pass.equals(vaultPass) || pass.equals("exit")){
+            System.out.println("Wrong Password! Try again or type exit to quit");
+            pass = input.next();
+        }
+        return pass.equals(vaultPass);
+       
     }
 }

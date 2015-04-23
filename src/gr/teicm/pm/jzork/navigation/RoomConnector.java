@@ -5,6 +5,8 @@
  */
 package gr.teicm.pm.jzork.navigation;
 
+import gr.teicm.pm.jzork.items.Door;
+
 /**
  *
  * @author Babis

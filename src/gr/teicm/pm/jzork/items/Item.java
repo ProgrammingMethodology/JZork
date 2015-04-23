@@ -12,18 +12,14 @@ package gr.teicm.pm.jzork.items;
 
 public class Item {
     public String ID;
-    public int weight;
     public String name;
     public String description;
     public String itemDetails;
     public String password;
     public boolean isOpen;
+    public boolean isLocked;
+    public boolean isAvailable;
     
-    public Item(int weight, String name, String description) {
-        this.weight = weight;
-        this.name = name;
-        this.description = description;
-    }
     
     public Item(){
     }
@@ -34,14 +30,6 @@ public class Item {
     
     public String getID(){
         return ID;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
     }
 
     public String getName() {
@@ -87,6 +75,22 @@ public class Item {
     
     public void printDescription(String description){
         this.getDescription();
+    }
+
+    public boolean isIsLocked() {
+        return isLocked;
+    }
+
+    public void setIsLocked(boolean isLocked) {
+        this.isLocked = isLocked;
+    }
+
+    public boolean isIsAvailable() {
+        return isAvailable;
+    }
+
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
     }
     
     

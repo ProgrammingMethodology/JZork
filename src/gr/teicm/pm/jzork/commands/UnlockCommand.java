@@ -8,8 +8,8 @@ package gr.teicm.pm.jzork.commands;
 import gr.teicm.pm.jzork.core.Command;
 import gr.teicm.pm.jzork.entities.Player;
 import gr.teicm.pm.jzork.items.Key;
-import gr.teicm.pm.jzork.navigation.Door;
-import gr.teicm.pm.jzork.navigation.Door;
+import gr.teicm.pm.jzork.items.Door;
+import gr.teicm.pm.jzork.items.Door;
 /**
  *
  * @author Walkin

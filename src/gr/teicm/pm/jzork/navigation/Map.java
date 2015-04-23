@@ -5,19 +5,15 @@
  */
 package gr.teicm.pm.jzork.navigation;
 
+import gr.teicm.pm.jzork.items.*;
 import gr.teicm.pm.jzork.entities.Burglar;
-import gr.teicm.pm.jzork.items.Knife;
-import gr.teicm.pm.jzork.items.Notebook;
-import gr.teicm.pm.jzork.items.Torch;
-import gr.teicm.pm.jzork.items.Vault;
-import gr.teicm.pm.jzork.items.Revolver;
-import gr.teicm.pm.jzork.items.Key;
-import gr.teicm.pm.jzork.items.Sword;
+
 
 /**
  *
  * @author Babis
  */
+
 public class Map {
 
     private Room startRoom;
@@ -94,7 +90,7 @@ public class Map {
 
         // Room connection with doors
         Door outNorthHall = new Door(outside, "north", "south", hallway, false, "Big green door", "2");
-        Door hallWestOffice = new Door(hallway, "west", "east", office, true, "wooden door", "1");
+        Door hallWestOffice = new Door(hallway, "west", "east", office, false, "wooden door", "1");
         Door hallEastKitchen = new Door(hallway, "east", "west", kitchen, false, "Big green door", "3");
         Door hallNorthBedroom = new Door(hallway, "north", "south", bedroom, false, "Big wooded door", "6");
         Door BedroomEastCloset = new Door(bedroom, "east", "west", closet, false, "Big Brown door", "5");

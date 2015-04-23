@@ -13,35 +13,19 @@ import java.util.Scanner;
  */
 public class Vault extends Item{
     
-    private String password;
-    private boolean available;
-    private boolean isOpen = false;
+    
+    
     
     public Vault(String name, String password, boolean available, String itemDetails){
         this.name = name;
         this.password = password;
-        this.available = available;
+        this.isAvailable = available;
         this.itemDetails = itemDetails;
+        this.isOpen = false;
     }
 
-    public boolean isAvailable() {
-        return available;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
-
-    public boolean isIsOpen() {
-        return isOpen;
-    }
-
-    public void setIsOpen(boolean isOpen) {
-        this.isOpen = isOpen;
-    }
     
-    
-    public boolean tryPassword(){
+    public boolean enterPassword(){
         Scanner input = new Scanner(System.in);
         
         System.out.print("Enter the vault's password: ");

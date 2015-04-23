@@ -2,7 +2,7 @@ package gr.teicm.pm.jzork.commands;
 
 import gr.teicm.pm.jzork.core.Command;
 import gr.teicm.pm.jzork.entities.Player;
-import gr.teicm.pm.jzork.navigation.Door;
+import gr.teicm.pm.jzork.items.Door;
 import gr.teicm.pm.jzork.navigation.Room;
 
 /**
@@ -41,7 +41,7 @@ public class GoCommand extends Command {
             return "There is no exit in that direction!";
         } else {
             Room nextRoom = nextDoor.getConnectedRoom(player.currentRoom);
-            if (nextRoom != currentRoom) {
+            if (nextRoom != null) {
                 player.setCurrentRoom(nextRoom);
                 if (player.currentRoom.isIsDark()) {
                     return "The room is dark, you can't see anything";
@@ -49,7 +49,9 @@ public class GoCommand extends Command {
                     return nextRoom.getDescription() + nextRoom.getItemList() + ".";
                 }
             }
+            else{
+                return nextDoor.getDoorStatus(nextDoor.isLocked, nextDoor.isOpen);
+            }
         }
-        return null;
     }
 }

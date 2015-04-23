@@ -19,13 +19,13 @@ import java.util.Scanner;
 public class Game {
 
     
-    private Parser parser;
-    private Player player;
+    private final Parser parser;
+    private final Player player;
     private Map map;
     private boolean initialized = false;
     String output;
     String name;
-    private View view = new View();
+    private final View view = new View();
     
     public void play() throws IOException {
         createPlayer();
@@ -95,7 +95,7 @@ public class Game {
         parser.commandWords().addCommand("get", new PickupCommand(player));
         parser.commandWords().addCommand("inventory", new InventoryCommand(player));
         parser.commandWords().addCommand("turnon", new TurnOnCommand(player));
-        parser.commandWords().addCommand("enter", new EnterCommand());
+        parser.commandWords().addCommand("enter", new EnterCommand(player));
         //parser.commandWords().addCommand("unlock", new UnlockCommand());
         //parser.commandWords().addCommand("attack", new AttackCommand());
         //parser.commandWords().addCommand("equip", new EquipCommand());
@@ -122,7 +122,7 @@ public class Game {
      * @throws java.io.IOException
      */
     public static void main(String args[]) throws IOException {
-        System.out.println("Welcome to the Zork Game,");
+        System.out.println("Welcome to the Zork Game\n");
         Game theGame = new Game();
         theGame.play();
     }

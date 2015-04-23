@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Walkin/Documents/NetBeansProjects/JZork/src/gr/teicm/pm/jzork/entities/Enemies.java</file>
+            <file>file:/C:/Users/Babis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/core/Game.java</file>
+            <file>file:/C:/Users/Babis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/Inventory.java</file>
+            <file>file:/C:/Users/Babis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/entities/Player.java</file>
+            <file>file:/C:/Users/Babis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/commands/GoCommand.java</file>
+            <file>file:/C:/Users/Babis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/commands/TurnOnCommand.java</file>
+            <file>file:/C:/Users/Babis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/navigation/Door.java</file>
         </group>
     </open-files>
 </project-private>
