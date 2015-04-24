@@ -8,6 +8,7 @@ package gr.teicm.pm.jzork.commands;
 import gr.teicm.pm.jzork.core.Command;
 import gr.teicm.pm.jzork.entities.Player;
 import gr.teicm.pm.jzork.items.Item;
+import gr.teicm.pm.jzork.items.LightSwitch;
 import gr.teicm.pm.jzork.items.Torch;
 
 /**
@@ -18,6 +19,7 @@ public class TurnOnCommand extends Command {
 
     public Player player;
     public Item obj;
+    public String item;
 
     public TurnOnCommand(Player player) {
         this.player = player;
@@ -26,20 +28,31 @@ public class TurnOnCommand extends Command {
     @Override
     public String execute(Player player) {
         if (hasSecondWord()) {
-            String item = getSecondWord();
-            if (item.equals("torch")) {
-                if (player.inventory.isItemValid(item)) {
-                    obj = player.inventory.searchItem(item);
-                    Torch torch = (Torch) obj;
-                    return torch.turnLightOn(player.currentRoom);
-                } else {
+            item = getSecondWord();
+            switch (item) {
+                case "torch":
+                    if (player.inventory.isItemValid(item)) {
+                        obj = player.inventory.searchItem(item);
+                        Torch torch = (Torch) obj;
+                        return torch.turnLightOn(player.currentRoom);
+                    } else {
+                        return "You can't find this item";
+                    }
+                case "switch":
+                    if (player.currentRoom.isItemValid(item)) {
+                        obj = player.currentRoom.searchItem(item);
+                        LightSwitch lightSwitch = (LightSwitch) obj;
+                        return lightSwitch.turnLightOn(player.currentRoom);
+                    } else {
+                        return "You can't find this item";
+                    }
+                default: 
                     return "You can't find this item";
-                }
             }
-        } else {
-            return "Turn on what?";
-        }
-        return null;
-    }
 
+        }
+        return "Turn on what?";
+    }
+       
+    
 }

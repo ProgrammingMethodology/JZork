@@ -19,7 +19,6 @@ public class OpenCommand extends Command {
     /**
      * Constructor for objects of class GoCommand
      */
-    private Room currentRoom;
     private String item;
     public Player player;
 

@@ -25,6 +25,7 @@ public class Vault extends Item {
         this.isAvailable = available;
         this.itemDetails = itemDetails;
         this.isLocked = true;
+        this.isPickable = false;
         items = new ArrayList<>();
     }
 

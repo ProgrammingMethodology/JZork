@@ -19,6 +19,8 @@ public class Key extends Item {
         this.description = description;
         this.itemDetails = itemDetails;
         this.keyID = keyID;
+        this.isPickable = true;
+
     }
 
     public String getKeyID() {

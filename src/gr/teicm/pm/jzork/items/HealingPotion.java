@@ -12,21 +12,23 @@ import gr.teicm.pm.jzork.interfaces.IDrinkable;
  *
  * @author Babis
  */
-public class HealingPotion extends Item implements IDrinkable{
+public class HealingPotion extends Item implements IDrinkable {
 
     int percentage;
-    
+
     public HealingPotion(String name, String description, String itemDetails, int percentage) {
         this.name = name;
         this.description = description;
         this.itemDetails = itemDetails;
         this.percentage = percentage;
+        this.isPickable = true;
+
     }
-    
+
     @Override
-    public void drink(Player player){
+    public void drink(Player player) {
         int max = player.getMaxHealth();
         int currentHealth = player.getHealth();
-        player.setHealth((max/100)*percentage + currentHealth);
+        player.setHealth((max / 100) * percentage + currentHealth);
     }
 }

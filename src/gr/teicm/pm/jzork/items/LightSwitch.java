@@ -7,44 +7,35 @@ package gr.teicm.pm.jzork.items;
 
 import gr.teicm.pm.jzork.interfaces.ILight;
 import gr.teicm.pm.jzork.navigation.Room;
+import java.util.Iterator;
 
 /**
  *
- * @author Walkin
+ * @author Babis
  */
-public class Torch extends Item implements ILight{
+public class LightSwitch extends Item implements ILight{
 
-    //private final int LightStr;
-    //Room currentRoom;
-
-    public Torch(String name, String description, String itemDetails) {
+    public LightSwitch(String name, String description, String itemDetails) {
         this.name = name;
         this.description = description;
         this.itemDetails = itemDetails;
-        this.isPickable = true;
+        this.isPickable = false;
     }
-
-    public void turnOff(Room room) {
-        room.setIsDark(true);
-    }
-
-    public void turnOn(Room room) {
-        room.setIsDark(false);
-    }
-
+    
     @Override
     public String turnLightOn(Room currentRoom) {
         if (currentRoom.isIsDark()) {
             currentRoom.setIsDark(false);
+            Iterator<Item> item = currentRoom.items.iterator();
+                    while (item.hasNext()) {
+                        Item tmp = item.next();
+                        tmp.setIsAvailable(true);
+                    }
+            
             return "Now you can see!\n" + currentRoom.getDescription() + currentRoom.getItemList() + ".";
         } else {
             return "You don't need light to see. The room isn't so dark at all.";
         }
     }
-
-    /*
-     public int getLightStr() {
-     return LightStr;
-     }
-     */
+    
 }

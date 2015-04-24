@@ -17,9 +17,9 @@ public class GoCommand extends Command {
      * Constructor for objects of class GoCommand
      */
     public Player player;
-    private Room currentRoom;
     public String view;
-
+    public Item tmp;
+    
     public GoCommand(Player player) {
         this.player = player;
     }
@@ -47,11 +47,17 @@ public class GoCommand extends Command {
                 player.setCurrentRoom(nextRoom);
                 if (player.currentRoom.isIsDark()) {
                     Iterator<Item> item = player.currentRoom.items.iterator();
-                    while (item.hasNext()) {
-                        Item tmp = item.next();
-                        if(!tmp.getName().equals("switch") || !tmp.getName().equals("lamp"))
-                        tmp.setIsAvailable(false);
-                    }
+                    while (item.hasNext() ) {
+                        tmp = item.next();
+                        if(!tmp.getName().equals("switch") || !tmp.getName().equals("lamp")){
+                            tmp.setIsAvailable(false);
+                        }
+                        else 
+                        {
+                            tmp.setIsAvailable(true);
+                        }
+                        
+                    } 
                     return "The room is dark, you can't see anything";
                 } else {
                     return nextRoom.getDescription() + nextRoom.getItemList() + ".";

@@ -28,6 +28,7 @@ public class Door extends Item {
         this.description = description;
         this.isLocked = isLocked;
         this.doorID = doorID;
+        this.isPickable = false;
 
         RoomConnector connect = new RoomConnector();
         connect.roomConnection(firstRoom, firstRoomDir, secondRoom, secRoomDir, this);

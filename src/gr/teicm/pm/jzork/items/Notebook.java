@@ -15,6 +15,8 @@ public class Notebook extends Item {
         this.name = name;
         this.description = description;
         this.itemDetails = itemDetails;
+        this.isPickable = true;
+        
     }
     
     

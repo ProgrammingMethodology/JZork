@@ -36,7 +36,7 @@ public class EnterCommand extends Command {
                 if (hasThirdWord()) {
                     String noun = getThirdWord();
                     if (noun.equals("password")) {
-                        if (player.currentRoom.isItemValid(item)) {
+                        if (player.currentRoom.isItemValid(item) && player.currentRoom.searchItem(item).isAvailable) {
                             obj = player.currentRoom.searchItem(item);
                             Vault vault = (Vault) obj;
                             return vault.enterPassword(player);
@@ -48,24 +48,8 @@ public class EnterCommand extends Command {
                     return "Enter vault what?";
                 }
         }
-        return "gdsgdsg";
+        return "Enter what?";
 
     }
-    /*
-    public boolean enterPass() {
-        Scanner input = new Scanner(System.in);
-
-        System.out.print("Enter the vault's password: ");
-        String pass = input.next();
-
-        String vaultPass = player.currentRoom.searchItem("vault").getPassword();
-
-        while (!pass.equals(vaultPass) || pass.equals("exit")) {
-            System.out.println("Wrong Password! Try again or type exit to quit");
-            pass = input.next();
-        }
-        return pass.equals(vaultPass);
-
-    }
-    */
+   
 }

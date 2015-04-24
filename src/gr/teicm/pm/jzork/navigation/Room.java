@@ -23,7 +23,6 @@ public class Room {
     
     private String roomName;
     private String description;
-    private boolean isLocked;
     private boolean isDark;
     private HashMap<String, Door> exits;  
     public ArrayList<Item> items;
