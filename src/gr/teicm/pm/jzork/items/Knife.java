@@ -15,6 +15,6 @@ public class Knife extends Item {
         this.name = name;
         this.description = description;
         this.itemDetails = itemDetails;
-
+        this.isPickable = true;
     }
 }

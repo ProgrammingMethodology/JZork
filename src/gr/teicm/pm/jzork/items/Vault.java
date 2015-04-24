@@ -25,6 +25,7 @@ public class Vault extends Item {
         this.isAvailable = available;
         this.itemDetails = itemDetails;
         this.isLocked = true;
+        this.isPickable = false;
         items = new ArrayList<>();
     }
 
@@ -57,6 +58,7 @@ public class Vault extends Item {
 
             while (!pass.equals(password) || pass.equals("quit")) {
                 System.out.println("Wrong Password! Try again or type exit to quit");
+                pass = input.next();
             }
             if (pass.equals(password)) {
                 isLocked = false;

@@ -35,7 +35,7 @@ public class PickupCommand extends Command {
 
     public String pickItem(String itemName) {
         Item pickedUp = player.currentRoom.searchItem(itemName);
-        if (pickedUp != null) {
+        if (pickedUp != null && pickedUp.isAvailable) {
             player.inventory.addItem(pickedUp);
             player.currentRoom.removeItem(itemName);
             return "You picked up " +itemName;

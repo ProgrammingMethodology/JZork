@@ -23,10 +23,9 @@ public class Room {
     
     private String roomName;
     private String description;
-    private boolean isLocked;
     private boolean isDark;
     private HashMap<String, Door> exits;  
-    private ArrayList<Item> items;
+    public ArrayList<Item> items;
     private HashMap<String, Inventory> figures;
     private ArrayList<Enemies> monsters;
     

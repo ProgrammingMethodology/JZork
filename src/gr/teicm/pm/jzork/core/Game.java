@@ -18,7 +18,6 @@ import java.util.Scanner;
  */
 public class Game {
 
-    
     private final Parser parser;
     private final Player player;
     private Map map;
@@ -26,7 +25,7 @@ public class Game {
     String output;
     String name;
     private final View view = new View();
-    
+
     public void play() throws IOException {
         createPlayer();
         ensureInitialization();
@@ -39,10 +38,11 @@ public class Game {
                 System.out.println("I don't understand what you mean!");
             } else {
                 output = command.execute(player);
-                if(output.equals("quit"))
+                if (output.equals("quit")) {
                     finished = true;
-                else
+                } else {
                     view.printThis(output);
+                }
             }
         }
         System.out.println("Thank you for playing.Good bye.");
@@ -76,7 +76,7 @@ public class Game {
             createRooms();
         }
     }
-    
+
     public void createPlayer() {
         Scanner input = new Scanner(System.in);
         System.out.print("To start, please enter your name: ");
@@ -96,6 +96,9 @@ public class Game {
         parser.commandWords().addCommand("inventory", new InventoryCommand(player));
         parser.commandWords().addCommand("turnon", new TurnOnCommand(player));
         parser.commandWords().addCommand("enter", new EnterCommand(player));
+        parser.commandWords().addCommand("examine", new ExamineCommand(player));
+        parser.commandWords().addCommand("look", new ExamineCommand(player));
+
         //parser.commandWords().addCommand("unlock", new UnlockCommand());
         //parser.commandWords().addCommand("attack", new AttackCommand());
         //parser.commandWords().addCommand("equip", new EquipCommand());
@@ -106,15 +109,13 @@ public class Game {
         Room startRoom = map.generateMap();
         player.setCurrentRoom(startRoom);
     }
-    
-    
 
     public void printWelcome() {
         System.out.println();
         System.out.println("Welcome " + name + "!");
         System.out.println();
         System.out.println(player.getCurrentRoom().getDescription());
-        
+
     }
 
     /**

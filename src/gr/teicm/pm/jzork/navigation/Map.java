@@ -35,20 +35,26 @@ public class Map {
         hallway.setDescription("You are now in the hallway room. There are four doors, one to your south, one to the north, one to your west and one to your east. ");
         Torch torch = new Torch("torch", "Just a torch", "a torch on the floor");
         hallway.addItem(torch);
-        Key key = new Key("key", "1", "An old key", "a key in the counter");
+        torch.setIsAvailable(true);
+        Key key = new Key("key", "1", "An old key", "a key on the counter");
+        key.setIsAvailable(true);
         hallway.addItem(key);
+        
 
         // The Office:
         office = new Room();
         office.setRoomName("office");
         office.setDescription("You are now in the office. It looks like there are no other exits but the one you've entered to your east.");
         office.setIsDark(true);
-        Vault vault = new Vault("vault", "2314", true, "a password protected vault in the wall");
+        LightSwitch lightSwitch = new LightSwitch ("switch","A light switch.","a light switch on the wall");
+        office.addItem(lightSwitch);
+        Vault vault = new Vault("vault", "2314", true, "a 4-digit password protected vault in the wall");
         office.addItem(vault);
         Notebook notebook = new Notebook("notebook", "There is a long number written in this notebook: 010011001100. What could it be..?", "a notebook placed on the desk");
         office.addItem(notebook);
         Key bedroomKey = new Key("key","2","An old key","an old key");
         HealingPotion healingPotion = new HealingPotion("potion","A red potion that will restore a percentage of your max health points.","A red healing potion",25);
+        
         bedroomKey.setIsAvailable(false);
         healingPotion.setIsAvailable(false);
         vault.addItem(bedroomKey);

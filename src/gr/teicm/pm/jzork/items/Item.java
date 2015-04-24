@@ -19,7 +19,7 @@ public class Item {
     public boolean isOpen = false;
     public boolean isLocked;
     public boolean isAvailable;
-    
+    public boolean isPickable;
     
     public Item(){
     }
@@ -91,6 +91,14 @@ public class Item {
 
     public void setIsAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
+    }
+
+    public boolean isIsPickable() {
+        return isPickable;
+    }
+
+    public void setIsPickable(boolean isPickable) {
+        this.isPickable = isPickable;
     }
     
     
