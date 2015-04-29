@@ -5,11 +5,13 @@
  */
 package gr.teicm.pm.jzork.entities;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Walkin
  */
-public class Dog extends Enemies {
+public class Dog extends Enemies implements Serializable {
     	public Dog(){
 		this.setName("Dog");
 		this.setHealth(30);

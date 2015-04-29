@@ -5,11 +5,13 @@
  */
 package gr.teicm.pm.jzork.entities;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Walkin
  */
-public class Assasin extends Enemies {
+public class Assasin extends Enemies implements Serializable {
     
 	public Assasin(int playerLevel){
             

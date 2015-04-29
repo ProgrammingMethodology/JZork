@@ -9,6 +9,7 @@ import gr.teicm.pm.jzork.items.Door;
 import gr.teicm.pm.jzork.Inventory;
 import gr.teicm.pm.jzork.entities.Enemies;
 import gr.teicm.pm.jzork.items.Item;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -19,7 +20,7 @@ import java.util.Iterator;
  * @author Babis
  */
 
-public class Room {
+public class Room implements Serializable {
     
     private String roomName;
     private String description;

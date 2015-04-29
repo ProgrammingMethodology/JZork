@@ -6,12 +6,13 @@
 package gr.teicm.pm.jzork.entities;
 
 import gr.teicm.pm.jzork.navigation.Room;
+import java.io.Serializable;
 
 /**
  *
  * @author Babis
  */
-public class Entity {
+public class Entity implements Serializable {
     
    
     public String name;

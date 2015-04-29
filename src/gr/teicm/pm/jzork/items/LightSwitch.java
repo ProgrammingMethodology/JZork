@@ -7,13 +7,14 @@ package gr.teicm.pm.jzork.items;
 
 import gr.teicm.pm.jzork.interfaces.ILight;
 import gr.teicm.pm.jzork.navigation.Room;
+import java.io.Serializable;
 import java.util.Iterator;
 
 /**
  *
  * @author Babis
  */
-public class LightSwitch extends Item implements ILight{
+public class LightSwitch extends Item implements ILight, Serializable {
 
     public LightSwitch(String name, String description, String itemDetails) {
         this.name = name;

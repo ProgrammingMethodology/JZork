@@ -5,11 +5,13 @@
  */
 package gr.teicm.pm.jzork.items;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Babis
  */
-public class Notebook extends Item {
+public class Notebook extends Item implements Serializable {
     
     public Notebook(String name, String description, String itemDetails){
         this.name = name;

@@ -5,12 +5,14 @@
  */
 package gr.teicm.pm.jzork.items;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Walkin
  */
 
-public class Revolver extends Weapon {
+public class Revolver extends Weapon implements Serializable {
 
     public Revolver(String name, int damage, String itemDetails) {
         super(name, damage);

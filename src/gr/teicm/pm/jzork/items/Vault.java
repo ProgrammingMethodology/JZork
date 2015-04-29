@@ -6,6 +6,7 @@
 package gr.teicm.pm.jzork.items;
 
 import gr.teicm.pm.jzork.entities.Player;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -14,7 +15,7 @@ import java.util.Scanner;
  *
  * @author Babis
  */
-public class Vault extends Item {
+public class Vault extends Item implements Serializable {
 
     private Player player;
     private ArrayList<Item> items;

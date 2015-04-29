@@ -5,11 +5,13 @@
  */
 package gr.teicm.pm.jzork.items;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Walkin
  */
-public class Knife extends Item {
+public class Knife extends Item implements Serializable {
 
     public Knife(String name, String description, int damage, String itemDetails) {
         this.name = name;

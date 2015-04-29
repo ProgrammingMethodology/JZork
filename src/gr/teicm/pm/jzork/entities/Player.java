@@ -9,13 +9,14 @@ import gr.teicm.pm.jzork.Inventory;
 import gr.teicm.pm.jzork.items.Key;
 import gr.teicm.pm.jzork.items.Door;
 import gr.teicm.pm.jzork.navigation.Room;
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  *
  * @author Babis
  */
-public class Player extends Entity {
+public class Player extends Entity implements Serializable {
 
     
     public Inventory inventory = new Inventory();

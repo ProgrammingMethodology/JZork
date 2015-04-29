@@ -7,6 +7,7 @@ package gr.teicm.pm.jzork.navigation;
 
 import gr.teicm.pm.jzork.items.*;
 import gr.teicm.pm.jzork.entities.Burglar;
+import java.io.Serializable;
 
 
 /**
@@ -14,7 +15,7 @@ import gr.teicm.pm.jzork.entities.Burglar;
  * @author Babis
  */
 
-public class Map {
+public class Map implements Serializable {
 
     private Room startRoom;
 

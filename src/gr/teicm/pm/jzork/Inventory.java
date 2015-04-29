@@ -2,6 +2,7 @@ package gr.teicm.pm.jzork;
 
 import gr.teicm.pm.jzork.items.Item;
 import gr.teicm.pm.jzork.navigation.Room;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -10,7 +11,7 @@ import java.util.Iterator;
  * @author Maria
  */
 
-public class Inventory {
+public class Inventory implements Serializable {
 
     
     

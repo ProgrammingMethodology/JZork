@@ -7,12 +7,13 @@ package gr.teicm.pm.jzork.items;
 
 import gr.teicm.pm.jzork.navigation.Room;
 import gr.teicm.pm.jzork.navigation.RoomConnector;
+import java.io.Serializable;
 
 /**
  *
  * @author Babis
  */
-public class Door extends Item {
+public class Door extends Item implements Serializable {
 
     
     private final Room firstRoom, secondRoom;

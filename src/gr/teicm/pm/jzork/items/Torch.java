@@ -7,12 +7,13 @@ package gr.teicm.pm.jzork.items;
 
 import gr.teicm.pm.jzork.interfaces.ILight;
 import gr.teicm.pm.jzork.navigation.Room;
+import java.io.Serializable;
 
 /**
  *
  * @author Walkin
  */
-public class Torch extends Item implements ILight{
+public class Torch extends Item implements ILight, Serializable {
 
     //private final int LightStr;
     //Room currentRoom;

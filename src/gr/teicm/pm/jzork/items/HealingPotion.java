@@ -7,12 +7,13 @@ package gr.teicm.pm.jzork.items;
 
 import gr.teicm.pm.jzork.entities.Player;
 import gr.teicm.pm.jzork.interfaces.IDrinkable;
+import java.io.Serializable;
 
 /**
  *
  * @author Babis
  */
-public class HealingPotion extends Item implements IDrinkable {
+public class HealingPotion extends Item implements IDrinkable, Serializable {
 
     int percentage;
 

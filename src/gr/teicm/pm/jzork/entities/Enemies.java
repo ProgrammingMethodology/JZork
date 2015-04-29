@@ -5,11 +5,13 @@
  */
 package gr.teicm.pm.jzork.entities;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Walkin
  */
-public abstract class Enemies extends Entity {
+public abstract class Enemies extends Entity implements Serializable {
     
 
  

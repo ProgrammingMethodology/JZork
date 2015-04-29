@@ -5,11 +5,13 @@
  */
 package gr.teicm.pm.jzork.items;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Walkin
  */
-public class Key extends Item {
+public class Key extends Item implements Serializable {
     public String id;
     public String keyID;
 

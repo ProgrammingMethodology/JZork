@@ -6,12 +6,13 @@
 package gr.teicm.pm.jzork.navigation;
 
 import gr.teicm.pm.jzork.items.Door;
+import java.io.Serializable;
 
 /**
  *
  * @author Babis
  */
-public class RoomConnector {
+public class RoomConnector implements Serializable {
 
     public void roomConnection(Room firstRoom, String firstRoomExit, Room secondRoom, String secondRoomExit, Door door) {
 
