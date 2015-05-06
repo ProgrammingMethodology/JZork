@@ -79,8 +79,6 @@ public class Map implements Serializable {
         bedroom.setRoomName("Bedroom");
         bedroom.setDescription("You are in the bedroom. There is a door to the south where you came from and a closet to the east");
         bedroom.setIsDark(false);
-        Revolver revolver = new Revolver("revolver", 100, "an old revolver on the counter");
-        bedroom.addItem(revolver);
 
         closet = new Room();
         closet.setRoomName("closet");
@@ -106,7 +104,7 @@ public class Map implements Serializable {
 
         // Room connection with doors
         Door outNorthHall = new Door(outside, "north", "south", hallway, false, "Big green door", "2");
-        Door hallWestOffice = new Door(hallway, "west", "east", office, false, "wooden door", "1");
+        Door hallWestOffice = new Door(hallway, "west", "east", office, true, "wooden door", "1");
         Door hallEastKitchen = new Door(hallway, "east", "west", kitchen, false, "Big green door", "3");
         Door hallNorthBedroom = new Door(hallway, "north", "south", bedroom, false, "Big wooded door", "6");
         Door BedroomEastCloset = new Door(bedroom, "east", "west", closet, false, "Big Brown door", "5");

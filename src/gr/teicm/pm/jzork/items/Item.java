@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 
 public class Item implements Serializable {
-    public String ID;
+    public String id;
     public String name;
     public String description;
     public String itemDetails;
@@ -26,12 +26,12 @@ public class Item implements Serializable {
     public Item(){
     }
     
-    public void setID(String id){
-        this.ID = id;
+    public void setId(String id){
+        this.id = id;
     }
     
-    public String getID(){
-        return ID;
+    public String getId(){
+        return id;
     }
 
     public String getName() {

@@ -14,7 +14,6 @@ import gr.teicm.pm.jzork.entities.Player;
  */
 public class InventoryCommand extends Command {
 
-    public Player player;
 
     public InventoryCommand(Player player) {
         this.player = player;

@@ -17,7 +17,6 @@ import gr.teicm.pm.jzork.items.Vault;
 public class EnterCommand extends Command {
 
     private String item;
-    private final Player player;
     public Item obj;
 
     public EnterCommand(Player player) {

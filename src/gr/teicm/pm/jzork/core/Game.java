@@ -23,12 +23,13 @@ public class Game {
     private static Player loadedPlayer;
     private Map map;
     private boolean initialized = false;
-    String output;
-    String name;
+    private String output;
+    private String name;
     private boolean loaded;
-    private final View view = new View();
+    
 
     public void play() throws IOException {
+        GUI gui = new GUI();
         createPlayer();
         LoadCommand loadIfExists = new LoadCommand(true);
         loadIfExists.execute(player);
@@ -58,7 +59,7 @@ public class Game {
                         System.out.println(player.getCurrentRoom().getDescription());
                         LoadCommand.setLoaded();
                     }
-                    view.printThis(output);
+                    System.out.println(output);
                 }
             }
         }
@@ -124,8 +125,7 @@ public class Game {
         parser.commandWords().addCommand("look", new ExamineCommand(player));
         parser.commandWords().addCommand("save", new SaveCommand());
         parser.commandWords().addCommand("load", new LoadCommand());
-
-        //parser.commandWords().addCommand("unlock", new UnlockCommand());
+        parser.commandWords().addCommand("unlock", new UnlockCommand(player));
         //parser.commandWords().addCommand("attack", new AttackCommand());
         //parser.commandWords().addCommand("equip", new EquipCommand());
     }

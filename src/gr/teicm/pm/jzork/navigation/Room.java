@@ -20,7 +20,7 @@ import java.util.Iterator;
  * @author Babis
  */
 
-public class Room implements Serializable {
+public class Room implements Serializable{
     
     private String roomName;
     private String description;

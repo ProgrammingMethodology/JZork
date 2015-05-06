@@ -15,7 +15,6 @@ import gr.teicm.pm.jzork.items.Item;
  */
 public class PickupCommand extends Command {
 
-    public Player player;
     
     public PickupCommand(Player player) {
         this.player = player;

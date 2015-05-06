@@ -37,7 +37,7 @@ public class Torch extends Item implements ILight, Serializable {
     public String turnLightOn(Room currentRoom) {
         if (currentRoom.isIsDark()) {
             currentRoom.setIsDark(false);
-            return "Now you can see!\n" + currentRoom.getDescription() + currentRoom.getItemList() + ".";
+            return "Now you can see! " + currentRoom.getDescription() + currentRoom.getItemList() + ".";
         } else {
             return "You don't need light to see. The room isn't so dark at all.";
         }

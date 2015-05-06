@@ -16,7 +16,6 @@ public class GoCommand extends Command {
     /**
      * Constructor for objects of class GoCommand
      */
-    public Player player;
     public String view;
     public Item tmp;
     
