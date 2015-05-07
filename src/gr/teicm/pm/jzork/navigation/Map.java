@@ -7,6 +7,7 @@ package gr.teicm.pm.jzork.navigation;
 
 import gr.teicm.pm.jzork.items.*;
 import gr.teicm.pm.jzork.entities.Burglar;
+import gr.teicm.pm.jzork.entities.Player;
 import java.io.Serializable;
 
 
@@ -122,6 +123,14 @@ public class Map implements Serializable {
 
     public void setStartRoom(Room startRoom) {
         this.startRoom = startRoom;
+    }
+    
+    public void createMap(boolean loaded, Player player) {
+        Map map = new Map();
+        if(!loaded) {
+            Room starting = map.generateMap();
+            player.setCurrentRoom(starting);
+        }
     }
 
 }

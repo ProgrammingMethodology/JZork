@@ -35,12 +35,12 @@ public class UnlockCommand extends Command {
                     } else {
                         return "In which direction?";
                     }
+                default: return "Unlock what?";
             }
+            
         } else {
-            return "unlock what?";
+            return "Unlock what?";
         }
-        return null;
-
     }
     
     public String unlockDoor(String direction, Player player) {

@@ -22,6 +22,7 @@ import javax.swing.text.*;
  *
  * @author Babis
  */
+/*
 public class MessageConsole
 {
 	private JTextComponent textComponent;
@@ -41,6 +42,7 @@ public class MessageConsole
 	 *  The messages can either be appended to the end of the console or
 	 *  inserted as the first line of the console.
 	 */
+/*
 	public MessageConsole(JTextComponent textComponent, boolean isAppend)
 	{
 		this.textComponent = textComponent;
@@ -53,6 +55,7 @@ public class MessageConsole
 	 *  Redirect the output from the standard output to the console
 	 *  using the default text color and null PrintStream
 	 */
+/*
 	public void redirectOut()
 	{
 		redirectOut(null, null);
@@ -64,6 +67,7 @@ public class MessageConsole
 	 *  is specified the message will be added to the Document before
 	 *  it is also written to the PrintStream.
 	 */
+/*
 	public void redirectOut(Color textColor, PrintStream printStream)
 	{
 		ConsoleOutputStream cos = new ConsoleOutputStream(textColor, printStream);
@@ -74,6 +78,7 @@ public class MessageConsole
 	 *  Redirect the output from the standard error to the console
 	 *  using the default text color and null PrintStream
 	 */
+/*
 	public void redirectErr()
 	{
 		redirectErr(null, null);
@@ -85,6 +90,7 @@ public class MessageConsole
 	 *  is specified the message will be added to the Document before
 	 *  it is also written to the PrintStream.
 	 */
+/*
 	public void redirectErr(Color textColor, PrintStream printStream)
 	{
 		ConsoleOutputStream cos = new ConsoleOutputStream(textColor, printStream);
@@ -114,6 +120,7 @@ public class MessageConsole
 	 *  The text displayed in the Document can be color coded to indicate
 	 *  the output source.
 	 */
+/*
 	class ConsoleOutputStream extends ByteArrayOutputStream
 	{
 		private final String EOL = System.getProperty("line.separator");
@@ -125,6 +132,7 @@ public class MessageConsole
 		/*
 		 *  Specify the option text color and PrintStream
 		 */
+/*
 		public ConsoleOutputStream(Color textColor, PrintStream printStream)
 		{
 			if (textColor != null)
@@ -149,6 +157,8 @@ public class MessageConsole
 		 *  The message will be treated differently depending on whether the line
 		 *  will be appended or inserted into the Document
 		 */
+
+/*
                 @Override
 		public void flush()
 		{
@@ -170,6 +180,7 @@ public class MessageConsole
 		 *
 		 *  newLine + message
 		 */
+/*
 		private void handleAppend(String message)
 		{
 			//  This check is needed in case the text in the Document has been
@@ -196,6 +207,7 @@ public class MessageConsole
 		 *
 		 *  message + newLine
 		 */
+/*
 		private void handleInsert(String message)
 		{
 			buffer.append(message);
@@ -211,6 +223,7 @@ public class MessageConsole
 		 *  appropriate order so we can now update the Document and send the
 		 *  text to the optional PrintStream.
 		 */
+/*
 		private void clearBuffer()
 		{
 			//  In case both the standard out and standard err are being redirected
@@ -249,3 +262,4 @@ public class MessageConsole
 		}
 	}
 }
+*/
