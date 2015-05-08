@@ -46,18 +46,20 @@ public class GoCommand extends Command {
                 player.setCurrentRoom(nextRoom);
                 if (player.currentRoom.isIsDark()) {
                     Iterator<Item> item = player.currentRoom.items.iterator();
-                    while (item.hasNext() ) {
+                    while (item.hasNext() )
+                    {
                         tmp = item.next();
-                        if(!tmp.getName().equals("switch") || !tmp.getName().equals("lamp")){
-                            tmp.setIsAvailable(false);
-                        }
-                        else 
+                        if(tmp.getName().equals("switch"))
                         {
                             tmp.setIsAvailable(true);
                         }
+                        else 
+                        {
+                            tmp.setIsAvailable(false);
+                        }
                         
                     } 
-                    return "The room is dark, you can't see anything";
+                    return "The room is dark, you can't see anything. " + nextRoom.getItemList() + ".";
                 } else {
                     return nextRoom.getDescription() + nextRoom.getItemList() + ".";
                 }

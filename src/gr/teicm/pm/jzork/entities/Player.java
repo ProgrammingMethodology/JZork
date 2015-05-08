@@ -19,6 +19,7 @@ public class Player extends Entity implements Serializable {
     
     public Inventory inventory = new Inventory();
     
+    
     public Player(String name) {
 
         this.name = name;

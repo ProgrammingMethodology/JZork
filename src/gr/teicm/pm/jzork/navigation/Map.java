@@ -54,7 +54,7 @@ public class Map implements Serializable {
         office.addItem(vault);
         Notebook notebook = new Notebook("notebook", "There is a long number written in this notebook: 010011001100. What could it be..?", "a notebook placed on the desk");
         office.addItem(notebook);
-        Key bedroomKey = new Key("key","2","An old key","an old key");
+        Key bedroomKey = new Key("key","6","An old key","an old key");
         Potion potion = new Potion("potion","A red potion that will restore a percentage of your max health points.","A red healing potion",25);
         
         bedroomKey.setIsAvailable(false);
@@ -107,7 +107,7 @@ public class Map implements Serializable {
         Door outNorthHall = new Door(outside, "north", "south", hallway, false, "Big green door", "2");
         Door hallWestOffice = new Door(hallway, "west", "east", office, true, "wooden door", "1");
         Door hallEastKitchen = new Door(hallway, "east", "west", kitchen, false, "Big green door", "3");
-        Door hallNorthBedroom = new Door(hallway, "north", "south", bedroom, false, "Big wooded door", "6");
+        Door hallNorthBedroom = new Door(hallway, "north", "south", bedroom, true, "Big wooded door", "6");
         Door BedroomEastCloset = new Door(bedroom, "east", "west", closet, false, "Big Brown door", "5");
         Door hallNorthKitchen = new Door(kitchen, "north", "south", bathroom, false, "Big green door", "4");
 
