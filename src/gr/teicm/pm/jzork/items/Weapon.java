@@ -5,20 +5,19 @@
  */
 package gr.teicm.pm.jzork.items;
 
+import gr.teicm.pm.jzork.entities.Player;
+import gr.teicm.pm.jzork.interfaces.IEquipable;
 import java.io.Serializable;
 
 /**
  *
  * @author Walkin
  */
-
-public class Weapon extends Item implements Serializable {
+public class Weapon extends Item implements Serializable, IEquipable {
 
     public int damage;
 
-    public Weapon(String name, int damage) {
-//super(weight, name);
-        this.damage = damage;
+    public Weapon() {
     }
 
     public int setdamage(int damage) {
@@ -27,5 +26,16 @@ public class Weapon extends Item implements Serializable {
 
     public int getdamage() {
         return damage;
+    }
+
+    @Override
+    public String equip(Player player) {
+        if (player.getEquipedWeapon() != null) {
+            player.inventory.addItem(player.getEquipedWeapon());
+        }
+        player.setEquipedWeapon(this);
+        player.inventory.removeItem(this.name);
+        player.setFullDamage(player.getDamage() + this.getdamage());
+        return "You have equiped " + this.getName();
     }
 }

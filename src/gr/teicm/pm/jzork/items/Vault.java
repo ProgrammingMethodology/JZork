@@ -17,14 +17,13 @@ import java.util.Scanner;
  */
 public class Vault extends Item implements Serializable {
 
-    private Player player;
     private ArrayList<Item> items;
 
-    public Vault(String name, String password, boolean available, String itemDetails) {
-        this.name = name;
+    public Vault(String password, boolean available, String itemLocDescription) {
+        this.name = "vault";
         this.password = password;
         this.isAvailable = available;
-        this.itemDetails = itemDetails;
+        this.itemLocDescription = itemLocDescription;
         this.isLocked = true;
         this.isPickable = false;
         items = new ArrayList<>();
@@ -44,7 +43,7 @@ public class Vault extends Item implements Serializable {
         String itemList = "There is ";
         for (Item item : items) {
             item.setIsAvailable(true);
-            itemList += item.getItemDetails() + " and ";
+            itemList += item.getItemLocDescription() + " and ";
         }
         itemList = itemList.substring(0, itemList.length() - 5);
         return itemList;

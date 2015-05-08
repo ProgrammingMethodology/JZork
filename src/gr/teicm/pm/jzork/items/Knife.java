@@ -11,12 +11,13 @@ import java.io.Serializable;
  *
  * @author Walkin
  */
-public class Knife extends Item implements Serializable {
+public class Knife extends Weapon implements Serializable {
 
-    public Knife(String name, String description, int damage, String itemDetails) {
-        this.name = name;
+    public Knife(String description, String itemLocDescription) {
+        this.name = "knife";
+        this.damage = 15;
         this.description = description;
-        this.itemDetails = itemDetails;
+        this.itemLocDescription = itemLocDescription;
         this.isPickable = true;
     }
 }

@@ -6,8 +6,7 @@
 package gr.teicm.pm.jzork.entities;
 
 import gr.teicm.pm.jzork.Inventory;
-import gr.teicm.pm.jzork.items.Key;
-import gr.teicm.pm.jzork.items.Door;
+import gr.teicm.pm.jzork.items.Weapon;
 import gr.teicm.pm.jzork.navigation.Room;
 import java.io.Serializable;
 import java.util.Scanner;
@@ -20,18 +19,20 @@ public class Player extends Entity implements Serializable {
 
     
     public Inventory inventory = new Inventory();
-    public Key keyID;
-    public Door doorID;
+    public Weapon equipedWeapon;
     
-
-    public Player(String name, Room currentRoom) {
+    public Player(String name) {
 
         this.name = name;
-        this.currentRoom = currentRoom;
+        
     }
 
     public Player() {
         currentRoom = null;
+        this.maxHealth = 100;
+        this.health = 75;
+        this.damage = 5;
+        this.fullDamage = this.damage;
     }
 
     public Room getCurrentRoom() {
@@ -41,16 +42,33 @@ public class Player extends Entity implements Serializable {
     public void setCurrentRoom(Room room) {
         currentRoom = room;
     }
-
     
-    public void unlockdoor(String direction){
+    public void createPlayer(boolean loaded, Player player) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("To start, please enter your name: ");
+        name = input.next();
         
-        Door nextDoor = currentRoom.getExit(direction);
-        nextDoor.setIsLocked(false);
-        System.out.println("The door is now unlocked!");
-          
+        if(!loaded) {
+            player = new Player();
+            player.setName(name);
+        } else {
+            System.out.println("Loading game . . .");
+        }
     }
 
+    public Weapon getEquipedWeapon() {
+        return equipedWeapon;
+    }
+
+    public void setEquipedWeapon(Weapon equipedWeapon) {
+        this.equipedWeapon = equipedWeapon;
+    }
+    
+    public String printStats(Player player){
+        
+        return "Your stats are:" + "\nHealth: " +player.getHealth() 
+                + "/" + player.getMaxHealth() +"\nDamage: " + player.getFullDamage();  
+    }
 
     
      public void attack(String enemy) {

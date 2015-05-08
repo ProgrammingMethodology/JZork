@@ -13,5 +13,5 @@ import gr.teicm.pm.jzork.entities.Player;
  */
 public interface IDrinkable {
  
-    public void drink(Player player);
+    public String drink(Player player);
 }

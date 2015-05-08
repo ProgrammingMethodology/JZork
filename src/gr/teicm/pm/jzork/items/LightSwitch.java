@@ -16,10 +16,10 @@ import java.util.Iterator;
  */
 public class LightSwitch extends Item implements ILight, Serializable {
 
-    public LightSwitch(String name, String description, String itemDetails) {
-        this.name = name;
+    public LightSwitch(String description, String itemLocDescription) {
+        this.name = "switch";
         this.description = description;
-        this.itemDetails = itemDetails;
+        this.itemLocDescription = itemLocDescription;
         this.isPickable = false;
     }
     
@@ -33,7 +33,7 @@ public class LightSwitch extends Item implements ILight, Serializable {
                         tmp.setIsAvailable(true);
                     }
             
-            return "Now you can see!\n" + currentRoom.getDescription() + currentRoom.getItemList() + ".";
+            return "Now you can see! " + currentRoom.getDescription() + currentRoom.getItemList() + ".";
         } else {
             return "You don't need light to see. The room isn't so dark at all.";
         }

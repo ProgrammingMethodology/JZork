@@ -13,22 +13,21 @@ import java.io.Serializable;
  *
  * @author Babis
  */
-public class Door extends Item implements Serializable {
+public class Door extends Item implements Serializable{
 
     
     private final Room firstRoom, secondRoom;
-    public String doorID;
     public final String firstRoomDir, secRoomDir;
 
     @SuppressWarnings("LeakingThisInConstructor")
-    public Door(Room firstRoom, String firstRoomDir, String secRoomDir, Room secondRoom, boolean isLocked, String description, String doorID) {
+    public Door(Room firstRoom, String firstRoomDir, String secRoomDir, Room secondRoom, boolean isLocked, String description, String id) {
         this.firstRoom = firstRoom;
         this.secondRoom = secondRoom;
         this.firstRoomDir = firstRoomDir;
         this.secRoomDir = secRoomDir;
         this.description = description;
         this.isLocked = isLocked;
-        this.doorID = doorID;
+        this.id = id;
         this.isPickable = false;
 
         RoomConnector connect = new RoomConnector();
@@ -62,23 +61,17 @@ public class Door extends Item implements Serializable {
     }
 
     public void lockDoor(String keyID) {
-        if (keyID.equals(doorID)) {
+        if (keyID.equals(id)) {
             setIsLocked(true);
         }
     }
 
     public void unlockDoor(String keyID) {
-        if (keyID.equals(doorID)) {
+        if (keyID.equals(id)) {
             setIsLocked(false);
         }
     }
 
-    /*
-    public void openDoor() {
-        setIsOpen(true);
-    }
-    */
-    
     
 
     public void closeDoor() {

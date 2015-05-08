@@ -43,7 +43,7 @@ public class SaveCommand extends SaveLoadCommand {
             oos.close();
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("I'm sorry, didn't saved.Try again.");
+            return "I'm sorry, didn't saved.Try again.";
         }
         
         return "saved";

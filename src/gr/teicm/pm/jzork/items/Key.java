@@ -11,23 +11,19 @@ import java.io.Serializable;
  *
  * @author Walkin
  */
-public class Key extends Item implements Serializable {
-    public String id;
-    public String keyID;
+public class Key extends Item implements Serializable{
+    
 
-    public Key(String name, String keyID, String description, String itemDetails) {
-        this.ID = id;
-        this.name = name;
+    public Key(String id, String description, String itemDetails) {
+        
+        this.name = "key";
+        this.id = id;
         this.description = description;
-        this.itemDetails = itemDetails;
-        this.keyID = keyID;
+        this.itemLocDescription = itemDetails;
         this.isPickable = true;
-
     }
 
-    public String getKeyID() {
-        return keyID;
-    }
+    
 
     
 }

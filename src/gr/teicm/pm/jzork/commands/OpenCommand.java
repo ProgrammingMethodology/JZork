@@ -8,7 +8,6 @@ package gr.teicm.pm.jzork.commands;
 import gr.teicm.pm.jzork.core.Command;
 import gr.teicm.pm.jzork.entities.Player;
 import gr.teicm.pm.jzork.items.Door;
-import gr.teicm.pm.jzork.navigation.Room;
 
 /**
  *
@@ -20,7 +19,6 @@ public class OpenCommand extends Command {
      * Constructor for objects of class GoCommand
      */
     private String item;
-    public Player player;
 
     public OpenCommand(Player player) {
         this.player = player;

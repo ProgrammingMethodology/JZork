@@ -7,6 +7,7 @@ package gr.teicm.pm.jzork.navigation;
 
 import gr.teicm.pm.jzork.items.*;
 import gr.teicm.pm.jzork.entities.Burglar;
+import gr.teicm.pm.jzork.entities.Player;
 import java.io.Serializable;
 
 
@@ -34,11 +35,9 @@ public class Map implements Serializable {
         hallway = new Room();
         hallway.setRoomName("hallway");
         hallway.setDescription("You are now in the hallway room. There are four doors, one to your south, one to the north, one to your west and one to your east. ");
-        Torch torch = new Torch("torch", "Just a torch", "a torch on the floor");
+        Torch torch = new Torch("Just a torch", "a torch on the floor");
         hallway.addItem(torch);
-        torch.setIsAvailable(true);
-        Key key = new Key("key", "1", "An old key", "a key on the counter");
-        key.setIsAvailable(true);
+        Key key = new Key("1", "An old key", "a key on the counter");
         hallway.addItem(key);
         
 
@@ -47,19 +46,19 @@ public class Map implements Serializable {
         office.setRoomName("office");
         office.setDescription("You are now in the office. It looks like there are no other exits but the one you've entered to your east.");
         office.setIsDark(true);
-        LightSwitch lightSwitch = new LightSwitch ("switch","A light switch.","a light switch on the wall");
+        LightSwitch lightSwitch = new LightSwitch ("A light switch.","a light switch on the wall");
         office.addItem(lightSwitch);
-        Vault vault = new Vault("vault", "2314", true, "a 4-digit password protected vault in the wall");
+        Vault vault = new Vault("2314", true, "a 4-digit password protected vault in the wall");
         office.addItem(vault);
-        Notebook notebook = new Notebook("notebook", "There is a long number written in this notebook: 010011001100. What could it be..?", "a notebook placed on the desk");
+        Notebook notebook = new Notebook("There is a long number written in this notebook: 010011001100. What could it be..?", "a notebook placed on the desk");
         office.addItem(notebook);
-        Key bedroomKey = new Key("key","2","An old key","an old key");
-        HealingPotion healingPotion = new HealingPotion("potion","A red potion that will restore a percentage of your max health points.","A red healing potion",25);
+        Key bedroomKey = new Key("6","An old key","an old key");
+        Potion potion = new Potion(25,"A red potion that will restore a percentage of your max health points.","A red potion");
         
         bedroomKey.setIsAvailable(false);
-        healingPotion.setIsAvailable(false);
+        potion.setIsAvailable(false);
         vault.addItem(bedroomKey);
-        vault.addItem(healingPotion);
+        vault.addItem(potion);
         
 
         
@@ -69,7 +68,7 @@ public class Map implements Serializable {
         kitchen.setRoomName("Kitchen");
         kitchen.setDescription("You are in the kitchen. There is a door to the north and one in the south.There is a burglar standing in a corner of a room and he's staring at you.");
         kitchen.setIsDark(false);
-        Knife knife = new Knife("Knife", "Just a kitchen knife", 15, "a knife on the counter");
+        Knife knife = new Knife("Just a kitchen knife","a knife on the counter");
         kitchen.addItem(knife);
         Burglar burglar = new Burglar();
         kitchen.addEnemy(burglar);
@@ -79,15 +78,16 @@ public class Map implements Serializable {
         bedroom.setRoomName("Bedroom");
         bedroom.setDescription("You are in the bedroom. There is a door to the south where you came from and a closet to the east");
         bedroom.setIsDark(false);
-        Revolver revolver = new Revolver("revolver", 100, "an old revolver on the counter");
-        bedroom.addItem(revolver);
 
+        //THe Bedroom Closet:
         closet = new Room();
         closet.setRoomName("closet");
-        closet.setDescription("A bedroom Closet.");
-        closet.setIsDark(false);
-        Sword sword = new Sword("sword", 60, "an old samurai sword");
+        closet.setDescription("You are now in the bedroom closet.");
+        closet.setIsDark(true);
+        Sword sword = new Sword("an old samurai sword","an old samurai sword on the shelf");
         closet.addItem(sword);
+        Key kitchenKey = new Key("3","An old key","an old key hanging ");
+        closet.addItem(kitchenKey);
 
         // The bathroom
         bathroom = new Room();
@@ -106,9 +106,9 @@ public class Map implements Serializable {
 
         // Room connection with doors
         Door outNorthHall = new Door(outside, "north", "south", hallway, false, "Big green door", "2");
-        Door hallWestOffice = new Door(hallway, "west", "east", office, false, "wooden door", "1");
-        Door hallEastKitchen = new Door(hallway, "east", "west", kitchen, false, "Big green door", "3");
-        Door hallNorthBedroom = new Door(hallway, "north", "south", bedroom, false, "Big wooded door", "6");
+        Door hallWestOffice = new Door(hallway, "west", "east", office, true, "wooden door", "1");
+        Door hallEastKitchen = new Door(hallway, "east", "west", kitchen, true, "Big green door", "3");
+        Door hallNorthBedroom = new Door(hallway, "north", "south", bedroom, true, "Big wooded door", "6");
         Door BedroomEastCloset = new Door(bedroom, "east", "west", closet, false, "Big Brown door", "5");
         Door hallNorthKitchen = new Door(kitchen, "north", "south", bathroom, false, "Big green door", "4");
 
@@ -124,6 +124,14 @@ public class Map implements Serializable {
 
     public void setStartRoom(Room startRoom) {
         this.startRoom = startRoom;
+    }
+    
+    public void createMap(boolean loaded, Player player) {
+        Map map = new Map();
+        if(!loaded) {
+            Room starting = map.generateMap();
+            player.setCurrentRoom(starting);
+        }
     }
 
 }

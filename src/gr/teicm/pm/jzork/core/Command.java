@@ -9,8 +9,10 @@ import gr.teicm.pm.jzork.interfaces.ICommand;
  */
 public abstract class Command implements ICommand{
 
+    
     private String secondWord;
     private String thirdWord;
+    public Player player;
     
     public Command() {
         secondWord = null;

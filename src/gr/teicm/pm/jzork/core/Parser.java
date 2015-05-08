@@ -87,7 +87,8 @@ public class Parser {
           "the",
           "a",
           "an",
-          "to"
+          "to",
+          "with"
         };
         HashSet ignored = new HashSet(Arrays.asList(ignoredWords));
         StringTokenizer tokenizer = new StringTokenizer(word);

@@ -8,9 +8,7 @@ package gr.teicm.pm.jzork.core;
 import gr.teicm.pm.jzork.commands.*;
 import gr.teicm.pm.jzork.entities.Player;
 import gr.teicm.pm.jzork.navigation.Map;
-import gr.teicm.pm.jzork.navigation.Room;
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  *
@@ -18,18 +16,28 @@ import java.util.Scanner;
  */
 public class Game {
 
-    private Parser parser;
+    private final Parser parser;
     private Player player;
+    private final Map map;
     private static Player loadedPlayer;
-    private Map map;
+    private static CommandWords commands;
     private boolean initialized = false;
-    String output;
-    String name;
+    private String output;
     private boolean loaded;
-    private final View view = new View();
+    
 
+    public Game() {
+        loaded = false;
+        player = new Player();
+        parser = new Parser();
+        map = new Map();
+        commands = new CommandWords();
+    }
+    
+    
     public void play() throws IOException {
-        createPlayer();
+        //GUI gui = new GUI();
+        player.createPlayer(loaded, player);
         LoadCommand loadIfExists = new LoadCommand(true);
         loadIfExists.execute(player);
         loaded = LoadCommand.getLoaded();
@@ -37,7 +45,7 @@ public class Game {
         if(loaded) {
             player = loadedPlayer;     
             LoadCommand.setLoaded();
-        }
+        }   
         ensureInitialization();
         printWelcome();
 
@@ -54,11 +62,11 @@ public class Game {
                     loaded = LoadCommand.getLoaded();
                     if(loaded) {
                         player = loadedPlayer;
-                        createCommands();
+                        commands.createCommands(parser,player);
                         System.out.println(player.getCurrentRoom().getDescription());
                         LoadCommand.setLoaded();
                     }
-                    view.printThis(output);
+                    System.out.println(output);
                 }
             }
         }
@@ -66,84 +74,20 @@ public class Game {
 
     }
 
-    public Game() {
-        loaded = false;
-        player = new Player();
-        parser = new Parser();
-    }
-
-    public Game(Player player, Parser parser) {
-        loaded = false;
-        this.player = player;
-        this.parser = parser;
-    }
-
-    public final Parser parser() {
-        ensureInitialization();
-        return parser;
-    }
-
-    public final Player player() {
-        ensureInitialization();
-        return player;
-    }
-
     private void ensureInitialization() {
         if (!initialized) {
             initialized = true;
-            createCommands();
-            createRooms();
-        }
-    }
-
-    public void createPlayer() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("To start, please enter your name: ");
-        name = input.next();
-        
-        if(!loaded) {
-            player = new Player();
-            player.setName(name);
-        } else {
-            System.out.println("Loading game . . .");
-        }
-    }
-
-    public void createCommands() {
-        ensureInitialization();
-        parser.commandWords().addCommand("go", new GoCommand(player));
-        parser.commandWords().addCommand("quit", new QuitCommand());
-        parser.commandWords().addCommand("open", new OpenCommand(player));
-        parser.commandWords().addCommand("pickup", new PickupCommand(player));
-        parser.commandWords().addCommand("take", new PickupCommand(player));
-        parser.commandWords().addCommand("get", new PickupCommand(player));
-        parser.commandWords().addCommand("inventory", new InventoryCommand(player));
-        parser.commandWords().addCommand("turnon", new TurnOnCommand(player));
-        parser.commandWords().addCommand("enter", new EnterCommand(player));
-        parser.commandWords().addCommand("examine", new ExamineCommand(player));
-        parser.commandWords().addCommand("look", new ExamineCommand(player));
-        parser.commandWords().addCommand("save", new SaveCommand());
-        parser.commandWords().addCommand("load", new LoadCommand());
-
-        //parser.commandWords().addCommand("unlock", new UnlockCommand());
-        //parser.commandWords().addCommand("attack", new AttackCommand());
-        //parser.commandWords().addCommand("equip", new EquipCommand());
-    }
-
-    public void createRooms() {
-        Map map = new Map();
-        if(!loaded) {
-            Room startRoom = map.generateMap();
-            player.setCurrentRoom(startRoom);
+            commands.createCommands(parser,player);
+            map.createMap(loaded, player);
         }
     }
 
     public void printWelcome() {
         System.out.println();
         if(!loaded)
-            System.out.println("Welcome " + name + "!");
+            System.out.println("Welcome " + player.getName() + "!");
         else
-            System.out.println("Welcome back " + name + "!");
+            System.out.println("Welcome back " + player.getName() + "!");
         System.out.println();
         System.out.println(player.getCurrentRoom().getDescription());
     }

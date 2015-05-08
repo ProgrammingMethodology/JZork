@@ -17,7 +17,7 @@ import gr.teicm.pm.jzork.items.Torch;
  */
 public class TurnOnCommand extends Command {
 
-    public Player player;
+    
     public Item obj;
     public String item;
 

@@ -10,27 +10,22 @@ import gr.teicm.pm.jzork.entities.Player;
 
 /**
  *
- * @author Maria
+ * @author Babis
  */
-public class InventoryCommand extends Command {
+public class StatsCommand extends Command {
 
-
-    public InventoryCommand(Player player) {
+    public StatsCommand(Player player) {
         this.player = player;
     }
-
+    
     @Override
     public String execute(Player player) {
         if (!hasSecondWord()) {
-            return getPlayersInventory();
+            return player.printStats(player);
         } else {
             return "I don't understand what you mean!";
         }
 
     }
-
-    public String getPlayersInventory() {
-        return player.inventory.printInventory();
-    }
-
+    
 }

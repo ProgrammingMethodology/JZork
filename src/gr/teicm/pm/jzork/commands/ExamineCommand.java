@@ -15,7 +15,6 @@ import gr.teicm.pm.jzork.items.Item;
  */
 public class ExamineCommand extends Command {
 
-    public Player player;
 
     public ExamineCommand(Player player) {
         this.player = player;

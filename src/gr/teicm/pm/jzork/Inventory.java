@@ -15,7 +15,7 @@ public class Inventory implements Serializable {
 
     
     
-    protected ArrayList<Item> inventory;
+    public ArrayList<Item> inventory;
     protected Room currentRoom;
 
     public Inventory(){
