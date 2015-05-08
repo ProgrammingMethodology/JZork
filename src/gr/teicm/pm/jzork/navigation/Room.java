@@ -25,7 +25,7 @@ public class Room implements Serializable{
     private String roomName;
     private String description;
     private boolean isDark;
-    private HashMap<String, Door> exits;  
+    private final HashMap<String, Door> exits;  
     public ArrayList<Item> items;
     private HashMap<String, Inventory> figures;
     private ArrayList<Enemies> monsters;

@@ -55,12 +55,12 @@ public class Map implements Serializable {
         Notebook notebook = new Notebook("notebook", "There is a long number written in this notebook: 010011001100. What could it be..?", "a notebook placed on the desk");
         office.addItem(notebook);
         Key bedroomKey = new Key("key","2","An old key","an old key");
-        HealingPotion healingPotion = new HealingPotion("potion","A red potion that will restore a percentage of your max health points.","A red healing potion",25);
+        Potion potion = new Potion("potion","A red potion that will restore a percentage of your max health points.","A red healing potion",25);
         
         bedroomKey.setIsAvailable(false);
-        healingPotion.setIsAvailable(false);
+        potion.setIsAvailable(false);
         vault.addItem(bedroomKey);
-        vault.addItem(healingPotion);
+        vault.addItem(potion);
         
 
         
@@ -70,7 +70,7 @@ public class Map implements Serializable {
         kitchen.setRoomName("Kitchen");
         kitchen.setDescription("You are in the kitchen. There is a door to the north and one in the south.There is a burglar standing in a corner of a room and he's staring at you.");
         kitchen.setIsDark(false);
-        Knife knife = new Knife("Knife", "Just a kitchen knife", 15, "a knife on the counter");
+        Knife knife = new Knife("knife", "Just a kitchen knife", 15, "a knife on the counter");
         kitchen.addItem(knife);
         Burglar burglar = new Burglar();
         kitchen.addEnemy(burglar);

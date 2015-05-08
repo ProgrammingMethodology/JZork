@@ -13,11 +13,11 @@ import java.io.Serializable;
  *
  * @author Babis
  */
-public class HealingPotion extends Item implements IDrinkable, Serializable {
+public class Potion extends Item implements IDrinkable, Serializable {
 
     int percentage;
 
-    public HealingPotion(String name, String description, String itemDetails, int percentage) {
+    public Potion(String name, String description, String itemDetails, int percentage) {
         this.name = name;
         this.description = description;
         this.itemDetails = itemDetails;
@@ -27,9 +27,16 @@ public class HealingPotion extends Item implements IDrinkable, Serializable {
     }
 
     @Override
-    public void drink(Player player) {
-        int max = player.getMaxHealth();
+    public String drink(Player player) {
+        int maxHealth = player.getMaxHealth();
         int currentHealth = player.getHealth();
-        player.setHealth((max / 100) * percentage + currentHealth);
+        if (currentHealth == maxHealth){
+            return "Your health is already full!";
+        }
+        else{
+            player.setHealth((maxHealth / 100) * percentage + currentHealth);
+            return player.getHealth() - currentHealth + " health points have been restored";
+        }
+        
     }
 }
