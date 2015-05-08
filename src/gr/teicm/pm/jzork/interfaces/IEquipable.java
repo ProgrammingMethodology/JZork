@@ -13,6 +13,6 @@ import gr.teicm.pm.jzork.entities.Player;
  */
 public interface IEquipable {
     
-        public void equip(Player player);
+        public String equip(Player player);
 
 }

@@ -13,10 +13,11 @@ import java.io.Serializable;
  */
 
 public class Item implements Serializable {
+    
     public String id;
     public String name;
     public String description;
-    public String itemDetails;
+    public String itemLocDescription;
     public String password;
     public boolean isOpen = false;
     public boolean isLocked;
@@ -24,6 +25,7 @@ public class Item implements Serializable {
     public boolean isPickable;
     
     public Item(){
+        this.isAvailable = true;
     }
     
     public void setId(String id){
@@ -51,12 +53,12 @@ public class Item implements Serializable {
         this.description = description;
     }
     
-    public String getItemDetails() {
-        return itemDetails;
+    public String getItemLocDescription() {
+        return itemLocDescription;
     }
 
-    public void setItemDetails(String itemDetails) {
-        this.itemDetails = itemDetails;
+    public void setItemLocDescription(String itemLocDescription) {
+        this.itemLocDescription = itemLocDescription;
     }
 
     public String getPassword() {

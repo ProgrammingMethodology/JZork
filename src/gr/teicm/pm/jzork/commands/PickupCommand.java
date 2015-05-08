@@ -15,7 +15,6 @@ import gr.teicm.pm.jzork.items.Item;
  */
 public class PickupCommand extends Command {
 
-    
     public PickupCommand(Player player) {
         this.player = player;
     }
@@ -29,15 +28,18 @@ public class PickupCommand extends Command {
             return "Pick up what?";
         }
 
-         
     }
 
     public String pickItem(String itemName) {
         Item pickedUp = player.currentRoom.searchItem(itemName);
         if (pickedUp != null && pickedUp.isAvailable) {
-            player.inventory.addItem(pickedUp);
-            player.currentRoom.removeItem(itemName);
-            return "You picked up " +itemName;
+            if (pickedUp.isPickable) {
+                player.inventory.addItem(pickedUp);
+                player.currentRoom.removeItem(itemName);
+                return "You picked up " + itemName;
+            } else {
+                return "There is no need to pick this up.";
+            }
         } else {
             return "Can't find that item";
         }

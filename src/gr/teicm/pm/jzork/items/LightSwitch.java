@@ -16,10 +16,10 @@ import java.util.Iterator;
  */
 public class LightSwitch extends Item implements ILight, Serializable {
 
-    public LightSwitch(String name, String description, String itemDetails) {
-        this.name = name;
+    public LightSwitch(String description, String itemLocDescription) {
+        this.name = "switch";
         this.description = description;
-        this.itemDetails = itemDetails;
+        this.itemLocDescription = itemLocDescription;
         this.isPickable = false;
     }
     

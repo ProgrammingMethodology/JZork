@@ -60,7 +60,7 @@ public class Room implements Serializable {
         String itemList = "There is ";
         for (Item item : items) {
             if (item.isAvailable) {
-                itemList += item.getItemDetails() + " and ";
+                itemList += item.getItemLocDescription() + " and ";
             }
         }
         itemList = itemList.substring(0, itemList.length() - 5);

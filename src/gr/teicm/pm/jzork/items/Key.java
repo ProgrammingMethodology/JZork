@@ -14,12 +14,12 @@ import java.io.Serializable;
 public class Key extends Item implements Serializable{
     
 
-    public Key(String name, String id, String description, String itemDetails) {
+    public Key(String id, String description, String itemDetails) {
         
-        this.name = name;
+        this.name = "key";
         this.id = id;
         this.description = description;
-        this.itemDetails = itemDetails;
+        this.itemLocDescription = itemDetails;
         this.isPickable = true;
     }
 

@@ -17,12 +17,13 @@ public class Potion extends Item implements IDrinkable, Serializable {
 
     int percentage;
 
-    public Potion(String name, String description, String itemDetails, int percentage) {
-        this.name = name;
+    public Potion( int percentage, String description, String itemLocDescription) {
+        this.name = "potion";
         this.description = description;
-        this.itemDetails = itemDetails;
+        this.itemLocDescription = itemLocDescription;
         this.percentage = percentage;
         this.isPickable = true;
+        
 
     }
 
@@ -35,6 +36,7 @@ public class Potion extends Item implements IDrinkable, Serializable {
         }
         else{
             player.setHealth((maxHealth / 100) * percentage + currentHealth);
+            player.inventory.removeItem(this.name);
             return player.getHealth() - currentHealth + " health points have been restored";
         }
         

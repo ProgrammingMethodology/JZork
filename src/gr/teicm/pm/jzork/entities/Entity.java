@@ -20,6 +20,7 @@ public class Entity implements Serializable {
     public int health;
     public int maxHealth;
     public int damage;
+    public int fullDamage;
     public int strength;
     public int agility;
     public int luck;
@@ -98,6 +99,10 @@ public class Entity implements Serializable {
     public void setStrength(int strength) {
         this.strength = strength;
     }
+
+    public int getDamage() {
+        return damage;
+    }
     
     public void setDamage(int damage){
         this.damage = damage;
@@ -117,6 +122,14 @@ public class Entity implements Serializable {
 
     public void setLuck(int luck) {
         this.luck = luck;
+    }
+
+    public int getFullDamage() {
+        return fullDamage;
+    }
+
+    public void setFullDamage(int fullDamage) {
+        this.fullDamage = fullDamage;
     }
 
     public boolean isIsAlive() {

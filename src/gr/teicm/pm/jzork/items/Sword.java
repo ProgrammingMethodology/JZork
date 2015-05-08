@@ -13,17 +13,12 @@ import java.io.Serializable;
  */
 public class Sword extends Weapon implements Serializable {
 
-    public Sword(String name, int damage, String itemDetails) {
-        super(name, damage);
-        this.name = name;
-        this.itemDetails = itemDetails;
+    public Sword(String description, String itemLocDescription) {
+        this.name = "sword";
+        this.damage = 25;
+        this.description = description;
+        this.itemLocDescription = itemLocDescription;
+        this.isPickable = true;
     }
-
-    public void setDamage() {
-        this.setdamage(60);
-    }
-
-    public int getDamage() {
-        return damage;
-    }
+    
 }

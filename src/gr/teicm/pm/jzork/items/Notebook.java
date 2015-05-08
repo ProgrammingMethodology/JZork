@@ -13,11 +13,11 @@ import java.io.Serializable;
  */
 public class Notebook extends Item implements Serializable {
     
-    public Notebook(String name, String description, String itemDetails){
-        this.name = name;
+    public Notebook(String description, String itemLocDescription){
+        this.name = "notebook";
         this.description = description;
-        this.itemDetails = itemDetails;
-        this.isPickable = true;
+        this.itemLocDescription = itemLocDescription;
+        this.isPickable = false;
         
     }
     

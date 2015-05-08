@@ -6,6 +6,7 @@
 package gr.teicm.pm.jzork.entities;
 
 import gr.teicm.pm.jzork.Inventory;
+import gr.teicm.pm.jzork.items.Weapon;
 import gr.teicm.pm.jzork.navigation.Room;
 import java.io.Serializable;
 import java.util.Scanner;
@@ -18,15 +19,20 @@ public class Player extends Entity implements Serializable {
 
     
     public Inventory inventory = new Inventory();
-    
+    public Weapon equipedWeapon;
     
     public Player(String name) {
 
         this.name = name;
+        
     }
 
     public Player() {
         currentRoom = null;
+        this.maxHealth = 100;
+        this.health = 75;
+        this.damage = 5;
+        this.fullDamage = this.damage;
     }
 
     public Room getCurrentRoom() {
@@ -48,6 +54,20 @@ public class Player extends Entity implements Serializable {
         } else {
             System.out.println("Loading game . . .");
         }
+    }
+
+    public Weapon getEquipedWeapon() {
+        return equipedWeapon;
+    }
+
+    public void setEquipedWeapon(Weapon equipedWeapon) {
+        this.equipedWeapon = equipedWeapon;
+    }
+    
+    public String printStats(Player player){
+        
+        return "Your stats are:" + "\nHealth: " +player.getHealth() 
+                + "/" + player.getMaxHealth() +"\nDamage: " + player.getFullDamage();  
     }
 
     
