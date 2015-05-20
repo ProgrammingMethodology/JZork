@@ -21,9 +21,15 @@ public class Player extends Entity implements Serializable {
     public Inventory inventory = new Inventory();
     public Weapon equipedWeapon;
     
+    
     public Player(String name) {
 
         this.name = name;
+        currentRoom = null;
+        this.maxHealth = 100;
+        this.health = 75;
+        this.damage = 5;
+        this.fullDamage = this.damage;
         
     }
 
@@ -70,20 +76,23 @@ public class Player extends Entity implements Serializable {
                 + "/" + player.getMaxHealth() +"\nDamage: " + player.getFullDamage();  
     }
 
+    public boolean isAlive() {
+        return health > 0;
+    }
     
-     public void attack(String enemy) {
-        
-         
-     }
-
-
+//     public int attack(String enemy) {
+//        return Player.this.damage;
+//         
+//     }
+//
+//
 //     public void defend(Enemies monster) {
 //     
-//     health = (health - );
+//     health = (health - monster.damage  );
 //     System.out.printf("  " + name + " is hit for %d HP of damage (%s)\n");
 //     if (health == 0) {
 //     System.out.println("  " + name + " has been defeated");
 //     }
 //     }
-//     
+     
 }

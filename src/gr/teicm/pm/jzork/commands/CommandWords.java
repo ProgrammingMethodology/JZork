@@ -50,6 +50,7 @@ public class CommandWords {
         parser.commandWords().addCommand("drink", new DrinkCommand(player));
         parser.commandWords().addCommand("equip", new EquipCommand(player));
         parser.commandWords().addCommand("stats", new StatsCommand(player));
+        parser.commandWords().addCommand("attack", new AttackCommand());
         //parser.commandWords().addCommand("attack", new AttackCommand());
     }
     

@@ -9,6 +9,7 @@ import gr.teicm.pm.jzork.commands.*;
 import gr.teicm.pm.jzork.entities.Player;
 import gr.teicm.pm.jzork.navigation.Map;
 import java.io.IOException;
+import jdk.nashorn.internal.codegen.CompilerConstants;
 
 /**
  *
@@ -17,7 +18,7 @@ import java.io.IOException;
 public class Game {
 
     private final Parser parser;
-    private Player player;
+    private static Player player;
     private final Map map;
     private static Player loadedPlayer;
     private static CommandWords commands;
@@ -51,23 +52,27 @@ public class Game {
 
         boolean finished = false;
         while (!finished) {
-            Command command = parser.getCommand();
-            if (command == null) {
-                System.out.println("I don't understand what you mean!");
-            } else {
-                output = command.execute(player);
-                if (output.equals("quit")) {
-                    finished = true;
+            if(player.isAlive()) {
+                Command command = parser.getCommand();
+                if (command == null) {
+                    System.out.println("I don't understand what you mean!");
                 } else {
-                    loaded = LoadCommand.getLoaded();
-                    if(loaded) {
-                        player = loadedPlayer;
-                        commands.createCommands(parser,player);
-                        System.out.println(player.getCurrentRoom().getDescription());
-                        LoadCommand.setLoaded();
+                    output = command.execute(player);
+                    if (output.equals("quit")) {
+                        finished = true;
+                    } else {
+                        loaded = LoadCommand.getLoaded();
+                        if(loaded) {
+                            player = loadedPlayer;
+                            commands.createCommands(parser,player);
+                            System.out.println(player.getCurrentRoom().getDescription());
+                            LoadCommand.setLoaded();
+                        }
+                        System.out.println(output);
                     }
-                    System.out.println(output);
                 }
+            } else {
+                finished = true;
             }
         }
         System.out.println("Thank you for playing.Good bye.");
@@ -94,6 +99,10 @@ public class Game {
     
     public static void SetLoadedPlayer(Player player) {
         loadedPlayer = player;
+    }
+    
+    public static void updatePlayer(Player p) {
+        player = p;
     }
 
     /**

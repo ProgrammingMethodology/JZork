@@ -52,10 +52,10 @@ public abstract class Enemies extends Entity implements Serializable {
      this.luck = luck;
  }
  
-     public int attack(int damage) {
-        return Enemies.this.damage ;
-    }
-
+//     public int attack(int damage) {
+//        return Enemies.this.damage ;
+//    }
+//
 //    public void defend(Player player) {
 //        int attackStrength = damage;
 //        health = (health - player.attack(name));
