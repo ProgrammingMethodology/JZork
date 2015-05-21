@@ -7,7 +7,7 @@ package gr.teicm.pm.jzork.commands;
 
 import gr.teicm.pm.jzork.core.Command;
 import gr.teicm.pm.jzork.entities.Player;
-import gr.teicm.pm.jzork.items.Door;
+import gr.teicm.pm.jzork.items.*;
 
 /**
  *
@@ -36,7 +36,22 @@ public class OpenCommand extends Command {
                     } else {
                         return "In which direction?";
                     }
+                case "chest":
+                    if (!hasThirdWord()) {
+                        if (!player.currentRoom.isItemValid(item)) {
+                            return "You can't find this item";
+                        } else {
+                            Item obj = player.currentRoom.searchItem(item);
+                            Chest chest = (Chest) obj;
+                            chest.setIsOpen(true);
+                            return "The chest is open now";
+                        }
+                    } else {
+                        return "Just open this item.";
+                    }
+
             }
+
         } else {
             return "open what?";
         }

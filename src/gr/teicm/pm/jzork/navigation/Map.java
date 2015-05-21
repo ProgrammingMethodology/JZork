@@ -112,6 +112,8 @@ public class Map implements Serializable {
         cellar.setDescription("You are in an old cellar.The only door is the one you entered.There is an small potion vile on a old table.");
         cellar.setIsDark(true);
         cellar.addItem(potion);
+        Chest chest = new Chest(false, "A chest", "an old chest on the floor");
+        hallway.addItem(chest);
        
         
    

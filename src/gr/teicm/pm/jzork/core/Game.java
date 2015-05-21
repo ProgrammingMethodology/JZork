@@ -64,7 +64,7 @@ public class Game {
                         loaded = LoadCommand.getLoaded();
                         if(loaded) {
                             player = loadedPlayer;
-                            commands.createCommands(parser,player);
+                            parser.commandWords().createCommands(parser,player,commands);
                             System.out.println(player.getCurrentRoom().getDescription());
                             LoadCommand.setLoaded();
                         }
@@ -82,7 +82,7 @@ public class Game {
     private void ensureInitialization() {
         if (!initialized) {
             initialized = true;
-            commands.createCommands(parser,player);
+            parser.commandWords().createCommands(parser,player,commands);
             map.createMap(loaded, player);
         }
     }
@@ -104,7 +104,7 @@ public class Game {
     public static void updatePlayer(Player p) {
         player = p;
     }
-
+    
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
