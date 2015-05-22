@@ -12,45 +12,65 @@ import java.util.Iterator;
  */
 public class CommandWords {
 
-    private HashMap commands;
+    public final HashMap<String, Command>  commands = new HashMap();
+    public final HashMap<String, String>  desCommands = new HashMap();
+    private Player player;
+    private Parser parser;
+    private CommandWords words;
+
 
     public CommandWords() {
-
-        commands = new HashMap();
+       
+        
     }
 
     public Command get(String word) {
-        return (Command) commands.get(word);
+        return commands.get(word);
     }
 
-    public void addCommand(String word, Command command) {
-        commands.put(word, command);
+    public void addCommand(String word, String description, Command command) {
+        commands.put( word, command );
+        desCommands.put(word, description);
     }
 
-    public void showall() {
-        for (Iterator i = commands.keySet().iterator(); i.hasNext();) {
-            System.out.print(i.next() + "");
+    public String showAll()
+    {
+        parser = new Parser();
+        player = new Player();
+        words = new CommandWords();
+        createCommands(parser,player,words);
+        
+        String results = "";
+        Iterator<String> descmdSetIterator = desCommands.keySet().iterator();
+        while(descmdSetIterator.hasNext()) {
+            String des = descmdSetIterator.next();
+            results = results + des + " :  " + desCommands.get(des) + " \n" ;
         }
+        return results;
     }
-    public void createCommands(Parser parser, Player player) {
-        parser.commandWords().addCommand("go", new GoCommand(player));
-        parser.commandWords().addCommand("quit", new QuitCommand());
-        parser.commandWords().addCommand("open", new OpenCommand(player));
-        parser.commandWords().addCommand("pickup", new PickupCommand(player));
-        parser.commandWords().addCommand("take", new PickupCommand(player));
-        parser.commandWords().addCommand("get", new PickupCommand(player));
-        parser.commandWords().addCommand("inventory", new InventoryCommand(player));
-        parser.commandWords().addCommand("turnon", new TurnOnCommand(player));
-        parser.commandWords().addCommand("enter", new EnterCommand(player));
-        parser.commandWords().addCommand("examine", new ExamineCommand(player));
-        parser.commandWords().addCommand("look", new ExamineCommand(player));
-        parser.commandWords().addCommand("save", new SaveCommand());
-        parser.commandWords().addCommand("load", new LoadCommand());
-        parser.commandWords().addCommand("unlock", new UnlockCommand(player));
-        parser.commandWords().addCommand("drink", new DrinkCommand(player));
-        parser.commandWords().addCommand("equip", new EquipCommand(player));
-        parser.commandWords().addCommand("stats", new StatsCommand(player));
+    
+    public void createCommands(Parser parser, Player player, CommandWords words) {
+        addCommand("go", "To navigate.", new GoCommand(player));
+        addCommand("quit", "To quit from the game.", new QuitCommand());
+        addCommand("open", "To open an item.", new OpenCommand(player));
+        addCommand("pickup", "To get an item.", new PickupCommand(player));
+        addCommand("take", "To get an item.", new PickupCommand(player));
+        addCommand("get", "To get an item.", new PickupCommand(player));
+        addCommand("inventory", "To see your inventory.", new InventoryCommand(player));
+        addCommand("turnon", "To turn on a torch or a switch.", new TurnOnCommand(player));
+        addCommand("enter", "To enter. For example in a vault.", new EnterCommand(player));
+        addCommand("examine", "To examine an item.", new ExamineCommand(player));
+        addCommand("look", "To examine an item.", new ExamineCommand(player));
+        addCommand("save", "To save your game.", new SaveCommand());
+        addCommand("load", "To load your game.", new LoadCommand());
+        addCommand("unlock", "To unlock an item.", new UnlockCommand(player));
+        addCommand("drink", "To drink.", new DrinkCommand(player));
+        addCommand("equip", "To equip an item.", new EquipCommand(player));
+        addCommand("stats", "To see your statics.", new StatsCommand(player));
+        addCommand("attack", "To attack enemies.", new AttackCommand());
         //parser.commandWords().addCommand("attack", new AttackCommand());
+        addCommand("help", "To see the list with words you can use.", new HelpCommand(words));
+        addCommand("drop", "To see the list with words you can use.", new DropCommand(player));
     }
     
 }

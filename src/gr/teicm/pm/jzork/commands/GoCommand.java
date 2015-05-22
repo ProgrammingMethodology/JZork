@@ -61,7 +61,7 @@ public class GoCommand extends Command {
                     } 
                     return "The room is dark, you can't see anything. " + nextRoom.getItemList() + ".";
                 } else {
-                    return nextRoom.getDescription() + nextRoom.getItemList() + ".";
+                    return nextRoom.getDescription() + nextRoom.getItemList();
                 }
             } else {
                 return nextDoor.getDoorStatus(nextDoor.isLocked, nextDoor.isOpen);

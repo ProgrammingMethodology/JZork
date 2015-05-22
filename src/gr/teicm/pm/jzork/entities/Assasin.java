@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class Assasin extends Enemies implements Serializable {
     
-	public Assasin(int playerLevel){
+	public Assasin(){
             
 		this.setName("Assasin");
 		this.setHealthM(55);

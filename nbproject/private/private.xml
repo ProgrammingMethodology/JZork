@@ -3,7 +3,37 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Babis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/core/LimitLinesDocumentListener.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/entities/Player.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/commands/DropCommand.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/navigation/Map.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/commands/EnterCommand.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/commands/OpenCommand.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/items/Revolver.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/core/Parser.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/items/LightSwitch.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/interfaces/ILight.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/items/Potion.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/commands/HelpCommand.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/commands/PickupCommand.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/items/Door.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/items/Vault.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/commands/AttackCommand.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/Inventory.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/core/Command.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/items/Chest.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/items/Knife.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/items/Item.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/commands/DrinkCommand.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/items/Key.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/core/Game.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/navigation/Room.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/commands/CommandWords.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/items/Sword.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/core/MessageConsole.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/commands/QuitCommand.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/items/Torch.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/commands/TurnOnCommand.java</file>
+            <file>file:/C:/Users/giannis/Documents/GitHub/JZork/src/gr/teicm/pm/jzork/commands/ExamineCommand.java</file>
         </group>
     </open-files>
 </project-private>

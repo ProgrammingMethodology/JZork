@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.TreeMap;
 
 /**
  *
@@ -26,13 +27,13 @@ public class Room implements Serializable {
     private final HashMap<String, Door> exits;
     public ArrayList<Item> items;
     private HashMap<String, Inventory> figures;
-    private ArrayList<Enemies> monsters;
+    private final TreeMap<String, Enemies> monsters =
+            new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
     //private HashMap<String, Item> items;
     public Room() {
         exits = new HashMap<>();
         items = new ArrayList<>();
-        monsters = new ArrayList<>();
         //items = new HashMap<String, Item>();
     }
 
@@ -63,7 +64,7 @@ public class Room implements Serializable {
                 itemList += item.getItemLocDescription() + " and ";
             }
         }
-        itemList = itemList.substring(0, itemList.length() - 5);
+        itemList = (items.isEmpty()) ? "" : itemList.substring(0, itemList.length() - 5) + ".";
         return itemList;
     }
 
@@ -133,8 +134,14 @@ public class Room implements Serializable {
         items.add(pickedUp);
     }
 
-    public void addEnemy(Enemies monster) {
-        monsters.add(monster);
+    public void addEnemy(Enemies monster)
+    {  
+        if(!monsters.containsKey(monster.getName()))
+            monsters.put(monster.getName(), monster);     
+    }
+    
+    public TreeMap<String, Enemies> getEnemies () {
+        return monsters;
     }
 
     public boolean isIsDark() {
