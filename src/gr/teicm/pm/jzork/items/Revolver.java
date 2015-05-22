@@ -14,12 +14,13 @@ import java.io.Serializable;
 
 public class Revolver extends Weapon implements Serializable {
 
-    public Revolver(String name, int damage, String itemDetails) {
-        super(name, damage);
-        this.name = name;
-        this.itemDetails = itemDetails;
+    public Revolver(String description, String itemLocDescription) {
+        this.name = "revolver";
+        this.damage = 40;
+        this.description = description;
+        this.itemLocDescription = itemLocDescription;
+        this.isPickable = true;
+        
         
     }
- 
-    
 }

@@ -38,24 +38,26 @@ public class OpenCommand extends Command {
                     }
                 case "chest":
                     if (!hasThirdWord()) {
+
                         if (!player.currentRoom.isItemValid(item)) {
                             return "You can't find this item";
                         } else {
                             Item obj = player.currentRoom.searchItem(item);
                             Chest chest = (Chest) obj;
-                            chest.setIsOpen(true);
-                            return "The chest is open now";
+                            return chest.openChest(player);
                         }
+
                     } else {
                         return "Just open this item.";
                     }
+                default:
+                    return "open what?";
 
             }
 
         } else {
             return "open what?";
         }
-        return null;
 
     }
 

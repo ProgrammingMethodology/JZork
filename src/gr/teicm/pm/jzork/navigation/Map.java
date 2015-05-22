@@ -36,10 +36,16 @@ public class Map implements Serializable {
         hallway = new Room();
         hallway.setRoomName("hallway");
         hallway.setDescription("You are now in the hallway room. There are four doors, one to your south, one to the north, one to your west and one to your east. ");
-        Torch torch = new Torch("Just a torch", "a torch on the floor");
-        hallway.addItem(torch);
-        Key key = new Key("1", "An old key", "a key on the counter");
-        hallway.addItem(key);
+        Torch torch = new Torch("Just a torch", "a torch");
+        //hallway.addItem(torch);
+        Key officeKey = new Key("1", "An old key", "a key");
+        //hallway.addItem(officeKey);
+        Chest chest = new Chest(false, "A chest", "an old chest on the floor");
+        hallway.addItem(chest);
+        torch.setIsAvailable(false);
+        officeKey.setIsAvailable(false);
+        chest.addItem(torch);
+        chest.addItem(officeKey);
         
 
         // The Office:
@@ -112,8 +118,7 @@ public class Map implements Serializable {
         cellar.setDescription("You are in an old cellar.The only door is the one you entered.There is an small potion vile on a old table.");
         cellar.setIsDark(true);
         cellar.addItem(potion);
-        Chest chest = new Chest(false, "A chest", "an old chest on the floor");
-        hallway.addItem(chest);
+        
        
         
    

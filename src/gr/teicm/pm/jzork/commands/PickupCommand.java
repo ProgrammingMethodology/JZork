@@ -36,12 +36,12 @@ public class PickupCommand extends Command {
             if (pickedUp.isPickable) {
                 player.inventory.addItem(pickedUp);
                 player.currentRoom.removeItem(itemName);
-                return "You picked up " + itemName;
+                return "You picked up " + itemName + ".";
             } else {
                 return "There is no need to pick this up.";
             }
         } else {
-            return "Can't find that item";
+            return "Can't find that item.";
         }
     }
 

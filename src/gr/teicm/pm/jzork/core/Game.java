@@ -25,7 +25,6 @@ public class Game {
     private boolean initialized = false;
     private String output;
     private boolean loaded;
-    
 
     public Game() {
         loaded = false;
@@ -34,25 +33,24 @@ public class Game {
         map = new Map();
         commands = new CommandWords();
     }
-    
-    
+
     public void play() throws IOException {
         //GUI gui = new GUI();
         player.createPlayer(loaded, player);
         LoadCommand loadIfExists = new LoadCommand(true);
         loadIfExists.execute(player);
         loaded = LoadCommand.getLoaded();
-        
-        if(loaded) {
-            player = loadedPlayer;     
+
+        if (loaded) {
+            player = loadedPlayer;
             LoadCommand.setLoaded();
-        }   
+        }
         ensureInitialization();
         printWelcome();
 
         boolean finished = false;
         while (!finished) {
-            if(player.isAlive()) {
+            if (player.isAlive()) {
                 Command command = parser.getCommand();
                 if (command == null) {
                     System.out.println("I don't understand what you mean!");
@@ -62,9 +60,9 @@ public class Game {
                         finished = true;
                     } else {
                         loaded = LoadCommand.getLoaded();
-                        if(loaded) {
+                        if (loaded) {
                             player = loadedPlayer;
-                            parser.commandWords().createCommands(parser,player,commands);
+                            parser.commandWords().createCommands(parser, player, commands);
                             System.out.println(player.getCurrentRoom().getDescription());
                             LoadCommand.setLoaded();
                         }
@@ -82,29 +80,30 @@ public class Game {
     private void ensureInitialization() {
         if (!initialized) {
             initialized = true;
-            parser.commandWords().createCommands(parser,player,commands);
+            parser.commandWords().createCommands(parser, player, commands);
             map.createMap(loaded, player);
         }
     }
 
     public void printWelcome() {
         System.out.println();
-        if(!loaded)
+        if (!loaded) {
             System.out.println("Welcome " + player.getName() + "!");
-        else
+        } else {
             System.out.println("Welcome back " + player.getName() + "!");
+        }
         System.out.println();
         System.out.println(player.getCurrentRoom().getDescription());
     }
-    
+
     public static void SetLoadedPlayer(Player player) {
         loadedPlayer = player;
     }
-    
+
     public static void updatePlayer(Player p) {
         player = p;
     }
-    
+
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
