@@ -10,6 +10,7 @@ import gr.teicm.pm.jzork.entities.Player;
 import gr.teicm.pm.jzork.items.Item;
 import gr.teicm.pm.jzork.items.Knife;
 import gr.teicm.pm.jzork.items.Revolver;
+import gr.teicm.pm.jzork.items.Shotgun;
 import gr.teicm.pm.jzork.items.Sword;
 
 /**
@@ -52,6 +53,16 @@ public class EquipCommand extends Command {
                     } else {
                         return "You can't find this item";
                     }
+                
+                 case "shotgun":
+                    if (player.inventory.isItemValid(item)) {
+                        Item obj = player.inventory.searchItem(item);
+                        Shotgun shotgun = (Shotgun) obj;
+                        return shotgun.equip(player);
+                    } else {
+                        return "You can't find this item";
+                    }
+                
                 default: 
                     return "You can't find this item";
             }

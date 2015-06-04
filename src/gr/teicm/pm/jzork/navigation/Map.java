@@ -6,6 +6,7 @@
 package gr.teicm.pm.jzork.navigation;
 
 import gr.teicm.pm.jzork.entities.Assasin;
+import gr.teicm.pm.jzork.entities.Boss;
 import gr.teicm.pm.jzork.items.*;
 import gr.teicm.pm.jzork.entities.Burglar;
 import gr.teicm.pm.jzork.entities.Player;
@@ -23,7 +24,7 @@ public class Map implements Serializable {
 
     RoomConnector connect = new RoomConnector();
 
-    private Room hallway, outside, office, kitchen, bedroom, bathroom, closet, basement,cellar;
+    private Room hallway, outside, office, kitchen, bedroom, bathroom, closet, basement,cellar,TreasureRoom;
 
     public Room generateMap() {
 
@@ -85,16 +86,21 @@ public class Map implements Serializable {
         bedroom.setRoomName("Bedroom");
         bedroom.setDescription("You are in the bedroom. There is a door to the south where you came from and a closet to the east");
         bedroom.setIsDark(false);
-
+        Revolver revolver = new Revolver("An old smith and wesson revolver","A revolver on the bed");
+        bedroom.addItem(revolver);
+        
         //THe Bedroom Closet:
         closet = new Room();
         closet.setRoomName("closet");
         closet.setDescription("You are now in the bedroom closet.");
         closet.setIsDark(true);
         Sword sword = new Sword("an old samurai sword","an old samurai sword on the shelf");
+        Shotgun shotgun = new Shotgun("A Beretta model 1918","A Beretta shotgun ");
         closet.addItem(sword);
         Key kitchenKey = new Key("3","An old key","an old key hanging ");
         closet.addItem(kitchenKey);
+        closet.addItem(shotgun);
+        
 
         // The bathroom
         bathroom = new Room();
@@ -119,6 +125,17 @@ public class Map implements Serializable {
         cellar.setIsDark(true);
         cellar.addItem(potion);
         
+          // The Final room:
+        TreasureRoom = new Room();
+        TreasureRoom.setRoomName("TreasureRoom");
+        TreasureRoom.setDescription("You are in a big room. There is a giant three headed dog in front of you and it's guarding something.It looks at you and makes a loud growl!!");
+        TreasureRoom.setIsDark(false);
+        Chest treasurechest = new Chest(false, "A chest", "an old chest on the floor");
+        TreasureRoom.addItem(treasurechest);
+        Parchment parchment = new Parchment("A piece of parchment","An old piece of parchment saying....No treasure for you better luck next time!!");
+        treasurechest.addItem(parchment);
+        Boss dog = new Boss();
+        TreasureRoom.addEnemy(dog);
        
         
    
@@ -133,6 +150,7 @@ public class Map implements Serializable {
         connect.RoomInitialize(closet);
         connect.RoomInitialize(basement);
         connect.RoomInitialize(cellar);
+        connect.RoomInitialize(TreasureRoom);
 
         // Room connection with doors
         Door outNorthHall = new Door(outside, "north", "south", hallway, false, "Big green door", "2");
@@ -143,7 +161,9 @@ public class Map implements Serializable {
         Door hallNorthKitchen = new Door(kitchen, "north", "south", bathroom, false, "Big green door", "4");
         Door OfficeNorthbasement = new Door(office, "north", "south",basement , false, "wooden door", "7");
         Door BasementNorthCellar = new Door(basement, "north", "south",cellar , true, "wooden door", "8");
-
+        Door CellarNorthTreasureRoom = new Door(cellar, "north", "south",TreasureRoom , false, "wooden door", "9");
+        
+        
         // Return the starting room:
         startRoom = outside;
         return startRoom;
