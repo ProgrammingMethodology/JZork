@@ -56,7 +56,7 @@ public class Vault extends Item implements Serializable {
             System.out.print("Enter the vault's password: ");
             String pass = input.next();
 
-            while (!pass.equals(password) || pass.equals("quit")) {
+            while (!pass.equals(password) || !pass.equals("quit")) {
                 System.out.println("Wrong Password! Try again or type exit to quit");
                 pass = input.next();
             }
