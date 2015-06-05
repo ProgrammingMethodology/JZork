@@ -9,7 +9,6 @@ import gr.teicm.pm.jzork.commands.*;
 import gr.teicm.pm.jzork.entities.Player;
 import gr.teicm.pm.jzork.navigation.Map;
 import java.io.IOException;
-import jdk.nashorn.internal.codegen.CompilerConstants;
 
 /**
  *

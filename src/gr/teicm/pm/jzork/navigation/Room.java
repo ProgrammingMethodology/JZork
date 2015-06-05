@@ -6,7 +6,6 @@
 package gr.teicm.pm.jzork.navigation;
 
 import gr.teicm.pm.jzork.items.Door;
-import gr.teicm.pm.jzork.Inventory;
 import gr.teicm.pm.jzork.entities.Enemies;
 import gr.teicm.pm.jzork.items.Item;
 import java.io.Serializable;
@@ -26,26 +25,14 @@ public class Room implements Serializable {
     private boolean isDark;
     private final HashMap<String, Door> exits;
     public ArrayList<Item> items;
-    private HashMap<String, Inventory> figures;
     private final TreeMap<String, Enemies> monsters =
             new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
-    //private HashMap<String, Item> items;
     public Room() {
         exits = new HashMap<>();
         items = new ArrayList<>();
-        //items = new HashMap<String, Item>();
     }
 
-    public String getExitString() {
-        StringBuilder result = new StringBuilder(128);
-        result.append("Exits:");
-        exits.keySet().stream().forEach((direction) -> {
-            result.append(' ');
-            result.append(direction);
-        });
-        return result.toString();
-    }
 
     public void removeItem(String name) {
         Iterator<Item> item = items.iterator();
@@ -72,9 +59,6 @@ public class Room implements Serializable {
         return items;
     }
 
-    public Inventory getInventory(String name) {
-        return figures.get(name);
-    }
 
     public Item searchItem(String name) {
         Item itemFound = null;

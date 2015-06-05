@@ -38,9 +38,7 @@ public class Map implements Serializable {
         hallway.setRoomName("hallway");
         hallway.setDescription("You are now in the hallway room. There are four doors, one to your south, one to the north, one to your west and one to your east. ");
         Torch torch = new Torch("Just a torch", "a torch");
-        //hallway.addItem(torch);
         Key officeKey = new Key("1", "An old key", "a key");
-        //hallway.addItem(officeKey);
         Chest chest = new Chest(false, "A chest", "an old chest on the floor");
         hallway.addItem(chest);
         torch.setIsAvailable(false);
@@ -48,7 +46,6 @@ public class Map implements Serializable {
         chest.addItem(torch);
         chest.addItem(officeKey);
         
-
         // The Office:
         office = new Room();
         office.setRoomName("office");
@@ -68,9 +65,6 @@ public class Map implements Serializable {
         vault.addItem(bedroomKey);
         vault.addItem(potion);
         
-
-        
-        
         // The Kitchen:
         kitchen = new Room();
         kitchen.setRoomName("Kitchen");
@@ -89,7 +83,7 @@ public class Map implements Serializable {
         Revolver revolver = new Revolver("An old smith and wesson revolver","A revolver on the bed");
         bedroom.addItem(revolver);
         
-        //THe Bedroom Closet:
+        // THe Bedroom Closet:
         closet = new Room();
         closet.setRoomName("closet");
         closet.setDescription("You are now in the bedroom closet.");
@@ -101,14 +95,13 @@ public class Map implements Serializable {
         closet.addItem(kitchenKey);
         closet.addItem(shotgun);
         
-
         // The bathroom
         bathroom = new Room();
         bathroom.setRoomName("Bathroom");
         bathroom.setDescription("You are in the bathroom. The only exit is the door which you came from");
         bathroom.setIsDark(false);
         
-        //the basement
+        // The basement
         basement = new Room();
         basement.setRoomName("basement");
         basement.setDescription("You are in the basement.There is a door to the north and one in the south.There is a man dressed in a cloak who looks like an Assasin standing in front of you.");
@@ -118,14 +111,14 @@ public class Map implements Serializable {
         Assasin assasin = new Assasin();
         basement.addEnemy(assasin);
         
-       //the cellar
+        // The cellar
         cellar = new Room();
         cellar.setRoomName("cellar");
         cellar.setDescription("You are in an old cellar.The only door is the one you entered.There is an small potion vile on a old table.");
         cellar.setIsDark(true);
         cellar.addItem(potion);
         
-          // The Final room:
+        // The Final room:
         TreasureRoom = new Room();
         TreasureRoom.setRoomName("TreasureRoom");
         TreasureRoom.setDescription("You are in a big room. There is a giant three headed dog in front of you and it's guarding something.It looks at you and makes a loud growl!!");
